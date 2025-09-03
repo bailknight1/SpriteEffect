@@ -544,8 +544,13 @@ public class ART_SpriteEffectButton : Editor
         //Debug.LogWarning("CreateEffectMaterialFolder()");
         assetPath = resourcesPath +"/"+ materialAssetFolderName;
         //Debug.LogWarning(assetPath);
+        if (!AssetDatabase.IsValidFolder(resourcesPath))
+            AssetDatabase.CreateFolder("Assets", "Resources");
         if (!AssetDatabase.IsValidFolder(assetPath))
-        AssetDatabase.CreateFolder(resourcesPath, materialAssetFolderName);
+        {
+            AssetDatabase.CreateFolder(resourcesPath, materialAssetFolderName);
+            Initialize(); // 폴더 생성직후에 SerializedProperty의 밸류값이 null이 들어와서 예외오류가 발생하는걸 방지하기위해 이때만 한번 다시 프로퍼티 가져옴.
+        }
     }
 
     public void ApplyButtons()

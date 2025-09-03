@@ -44,30 +44,37 @@ public class ART_SpriteEffect : MonoBehaviour
 		public SpriteEffectProperties(Texture2D val)
 		{
 			textureValue = val;
+			overrideValue = false;
 		}
 		public SpriteEffectProperties(Vector4 val)
 		{
 			vector4Value = val;
+			overrideValue = false;
 		}
 		public SpriteEffectProperties(bool val)
 		{
 			boolValue = val;
+			overrideValue = false;
 		}
 		public SpriteEffectProperties(Color val)
 		{
 			colorValue = val;
+			overrideValue = false;
 		}
 		public SpriteEffectProperties(float val)
 		{
 			floatValue = val;
+			overrideValue = false;
 		}
 		public SpriteEffectProperties(LayerBlendMode val)
 		{
 			layerBlendModeValue = val;
+			overrideValue = false;
 		}
 		public SpriteEffectProperties(Gradient val)
 		{
 			gradientValue = val;
+			overrideValue = false;
 		}
 
 		public void CompareValue(Texture2D val, string valName, ref int counter)
@@ -1637,7 +1644,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			{
 				imageMaskableState = m_image.maskable;
 				isInitialized = false;
-				Debug.LogWarning("Image maskable state changed",this.gameObject);
+				//Debug.LogWarning("Image maskable state changed",this.gameObject);
 				return true;
 			}
 		}
@@ -2599,6 +2606,8 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		Material defaultMat = null;
 		string matName = "SpriteEffect_Default";
+		if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+			AssetDatabase.CreateFolder("Assets", "Resources");
 		if (!AssetDatabase.IsValidFolder(materialAssetPath))
 			AssetDatabase.CreateFolder("Assets/Resources", "SpriteEffectMaterial");
 		string[] existAssets = AssetDatabase.FindAssets(matName, new[] { materialAssetPath });
