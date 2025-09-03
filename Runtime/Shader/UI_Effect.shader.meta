@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 9449ba0cdf079af49bee738a4a09d71c
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _BaseCutOutTex: {instanceID: 0}
+  - _Effect1Tex: {instanceID: 0}
+  - _Effect1Mask: {instanceID: 0}
+  - _Effect2Tex: {instanceID: 0}
+  - _Effect2Mask: {instanceID: 0}
+  - _Effect3Tex: {instanceID: 0}
+  - _Effect3Mask: {instanceID: 0}
+  - _Effect4Tex: {instanceID: 0}
+  - _Effect4Mask: {instanceID: 0}
+  - _Effect5Tex: {instanceID: 0}
+  - _Effect5Mask: {instanceID: 0}
+  - _Effect6Tex: {instanceID: 0}
+  - _Effect6Mask: {instanceID: 0}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

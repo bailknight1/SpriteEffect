@@ -1,0 +1,16 @@
+{
+    "name": "com.bailknight.SpriteEffect",
+    "version": "1.0.0",
+    "displayName": "SpriteEffect",
+    "description": "VFX material generating tool for UI Image & Sprite Renderer",
+    "unity": "6000.1",
+    "author": {
+      "name": "bailknight",
+      "url": "https://github.com/bailknight1/SpriteEffect"
+    },
+    "keywords": [
+      "Sprite",
+      "UI",
+      "Effect"
+    ]
+}
