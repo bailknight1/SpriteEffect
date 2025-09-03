@@ -31,7 +31,7 @@ public class ART_SpriteEffectUIImageHelper : BaseMeshEffect
 
     private Vector2 GetNormalizedAtlasUV(Vector2 uv)
     {
-        if (image != null)
+        if (image != null && image.sprite != null)
         {
             Vector4 _Rect;
             if (image.sprite != null)
