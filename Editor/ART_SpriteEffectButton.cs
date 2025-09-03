@@ -41,7 +41,7 @@ public class ART_SpriteEffectButton : Editor
     public SerializedProperty[] effect_Gradient = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_Brightness = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_ScaleOrigin = new SerializedProperty[_numOfLayer];
-    public SerializedProperty[] effect_ScaleMultipier = new SerializedProperty[_numOfLayer];
+    public SerializedProperty[] effect_ScaleMultiplier = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_ScaleSpeed = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_ScalePingPong = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_RandomRotate = new SerializedProperty[_numOfLayer];
@@ -88,7 +88,7 @@ public class ART_SpriteEffectButton : Editor
     public SerializedProperty[] effect_Gradient_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_Brightness_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_ScaleOrigin_override = new SerializedProperty[_numOfLayer];
-    public SerializedProperty[] effect_ScaleMultipier_override = new SerializedProperty[_numOfLayer];
+    public SerializedProperty[] effect_ScaleMultiplier_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_ScaleSpeed_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_ScalePingPong_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_RandomRotate_override = new SerializedProperty[_numOfLayer];
@@ -408,7 +408,7 @@ public class ART_SpriteEffectButton : Editor
         effect_Gradient[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectGradient").FindPropertyRelative("gradientValue");
         effect_Brightness[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectBrightness").FindPropertyRelative("floatValue");
         effect_ScaleOrigin[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScale").FindPropertyRelative("floatValue");
-        effect_ScaleMultipier[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScaleMultipier").FindPropertyRelative("floatValue");
+        effect_ScaleMultiplier[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScaleMultiplier").FindPropertyRelative("floatValue");
         effect_ScaleSpeed[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScaleSpeed").FindPropertyRelative("floatValue");
         effect_ScalePingPong[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScalePingPong").FindPropertyRelative("boolValue");
         effect_RandomRotate[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectRandomRotation").FindPropertyRelative("boolValue");
@@ -456,7 +456,7 @@ public class ART_SpriteEffectButton : Editor
         effect_Gradient_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectGradient").FindPropertyRelative("overrideValue");
         effect_Brightness_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectBrightness").FindPropertyRelative("overrideValue");
         effect_ScaleOrigin_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScale").FindPropertyRelative("overrideValue");
-        effect_ScaleMultipier_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScaleMultipier").FindPropertyRelative("overrideValue");
+        effect_ScaleMultiplier_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScaleMultiplier").FindPropertyRelative("overrideValue");
         effect_ScaleSpeed_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScaleSpeed").FindPropertyRelative("overrideValue");
         effect_ScalePingPong_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScalePingPong").FindPropertyRelative("overrideValue");
         effect_RandomRotate_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectRandomRotation").FindPropertyRelative("overrideValue");
@@ -735,7 +735,7 @@ public class ART_SpriteEffectButton : Editor
 
     private void CustomSliderField(SerializedProperty property, string label, float min, float max , SerializedProperty overrideVal = null)  // 프로퍼티의 오버라이드여부에 따라 필드 색상 변경
     {
-        EditorGUIUtility.labelWidth = 30;
+        EditorGUIUtility.labelWidth = label.Length*8;
         if (overrideVal != null)
         {
             var defaultColor = GUI.backgroundColor;
@@ -1060,7 +1060,7 @@ public class ART_SpriteEffectButton : Editor
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 CustomPropertyField(effect_ScaleOrigin[i], new GUIContent("Scale"), effect_ScaleOrigin_override[i]);
-                CustomPropertyField(effect_ScaleMultipier[i], new GUIContent("Scale Anim Multipier"), effect_ScaleMultipier_override[i]);
+                CustomPropertyField(effect_ScaleMultiplier[i], new GUIContent("Scale Anim Multiplier"), effect_ScaleMultiplier_override[i]);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 CustomPropertyField(effect_ScaleSpeed[i], new GUIContent("Scale Speed"), effect_ScaleSpeed_override[i]);
@@ -1086,7 +1086,7 @@ public class ART_SpriteEffectButton : Editor
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 CustomPropertyField(effect_BlendMode[i], new GUIContent("Blend Mode"), effect_BlendMode_override[i]);
-                CustomPropertyField(effect_UniformUV[i], new GUIContent("Unstrech UV"), effect_UniformUV_override[i]);
+                CustomPropertyField(effect_UniformUV[i], new GUIContent("Unstretch UV"), effect_UniformUV_override[i]);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 EditorGUIUtility.labelWidth = 120;
@@ -1308,7 +1308,7 @@ public class ART_SpriteEffectButton : Editor
         effect_TextureTileOffset[i].vector4Value = new Vector4(1, 1, 0, 0);
         effect_Brightness[i].floatValue = 1f;
         effect_ScaleOrigin[i].floatValue = 1f;
-        effect_ScaleMultipier[i].floatValue = 1f;
+        effect_ScaleMultiplier[i].floatValue = 1f;
         effect_ScaleSpeed[i].floatValue = 0f;
         effect_Power[i].floatValue = 1f;
         effect_RotateAngle[i].floatValue = 0f;

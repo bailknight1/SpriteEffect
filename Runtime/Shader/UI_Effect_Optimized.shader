@@ -32,7 +32,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect1Color("Effect1 Color", Color) = (1,1,1,1)
         _Effect1Brightness("Effect1 Brightness", Float) = 1
         _Effect1ScaleOrigin("Effect1 Scale", Float) = 1
-        _Effect1ScaleMultipier("Effect1 Scale Multipier", Float) = 1
+        _Effect1ScaleMultiplier("Effect1 Scale Multiplier", Float) = 1
         _Effect1ScaleSpeed("Effect1 Scale Speed", Float) = 0
         _Effect1Power("Effect1 Power", Float) = 1
         _Effect1RotateAngle("Effect1 Rotate Angle", Float) = 0
@@ -61,7 +61,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect2Color("Effect2 Color", Color) = (1,1,1,1)
         _Effect2Brightness("Effect2 Brightness", Float) = 1
         _Effect2ScaleOrigin("Effect2 Scale", Float) = 1
-        _Effect2ScaleMultipier("Effect2 Scale Multipier", Float) = 1
+        _Effect2ScaleMultiplier("Effect2 Scale Multiplier", Float) = 1
         _Effect2ScaleSpeed("Effect2 Scale Speed", Float) = 0
         _Effect2Power("Effect2 Power", Float) = 1
         _Effect2RotateAngle("Effect2 Rotate Angle", Float) = 0
@@ -90,7 +90,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect3Color("Effect3 Color", Color) = (1,1,1,1)
         _Effect3Brightness("Effect3 Brightness", Float) = 1
         _Effect3ScaleOrigin("Effect3 Scale", Float) = 1
-        _Effect3ScaleMultipier("Effect3 Scale Multipier", Float) = 1
+        _Effect3ScaleMultiplier("Effect3 Scale Multiplier", Float) = 1
         _Effect3ScaleSpeed("Effect3 Scale Speed", Float) = 0
         _Effect3Power("Effect3 Power", Float) = 1
         _Effect3RotateAngle("Effect3 Rotate Angle", Float) = 0
@@ -119,7 +119,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect4Color("Effect4 Color", Color) = (1,1,1,1)
         _Effect4Brightness("Effect4 Brightness", Float) = 1
         _Effect4ScaleOrigin("Effect4 Scale", Float) = 1
-        _Effect4ScaleMultipier("Effect4 Scale Multipier", Float) = 1
+        _Effect4ScaleMultiplier("Effect4 Scale Multiplier", Float) = 1
         _Effect4ScaleSpeed("Effect4 Scale Speed", Float) = 0
         _Effect4Power("Effect4 Power", Float) = 1
         _Effect4RotateAngle("Effect4 Rotate Angle", Float) = 0
@@ -148,7 +148,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect5Color("Effect5 Color", Color) = (1,1,1,1)
         _Effect5Brightness("Effect5 Brightness", Float) = 1
         _Effect5ScaleOrigin("Effect5 Scale", Float) = 1
-        _Effect5ScaleMultipier("Effect5 Scale Multipier", Float) = 1
+        _Effect5ScaleMultiplier("Effect5 Scale Multiplier", Float) = 1
         _Effect5ScaleSpeed("Effect5 Scale Speed", Float) = 0
         _Effect5Power("Effect5 Power", Float) = 1
         _Effect5RotateAngle("Effect5 Rotate Angle", Float) = 0
@@ -177,7 +177,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect6Color("Effect6 Color", Color) = (1,1,1,1)
         _Effect6Brightness("Effect6 Brightness", Float) = 1
         _Effect6ScaleOrigin("Effect6 Scale", Float) = 1
-        _Effect6ScaleMultipier("Effect6 Scale Multipier", Float) = 1
+        _Effect6ScaleMultiplier("Effect6 Scale Multiplier", Float) = 1
         _Effect6ScaleSpeed("Effect6 Scale Speed", Float) = 0
         _Effect6Power("Effect6 Power", Float) = 1
         _Effect6RotateAngle("Effect6 Rotate Angle", Float) = 0
@@ -546,7 +546,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform fixed _Effect1GlowSpeed;
                 #if _EFFECT1USESCALE_ON || _EFFECT1USESCALEPINGPONG_ON
                 uniform fixed _Effect1ScaleSpeed;
-                uniform fixed _Effect1ScaleMultipier;
+                uniform fixed _Effect1ScaleMultiplier;
                 #endif
                 uniform fixed _Effect1TimingOffset;
 
@@ -603,7 +603,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform fixed _Effect2GlowSpeed;
                 #if _EFFECT2USESCALE_ON || _EFFECT2USESCALEPINGPONG_ON
                 uniform fixed _Effect2ScaleSpeed;
-                uniform fixed _Effect2ScaleMultipier;
+                uniform fixed _Effect2ScaleMultiplier;
                 #endif
                 uniform fixed _Effect2TimingOffset;
 
@@ -660,7 +660,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform fixed _Effect3GlowSpeed;
                 #if _EFFECT3USESCALE_ON || _EFFECT3USESCALEPINGPONG_ON
                 uniform fixed _Effect3ScaleSpeed;
-                uniform fixed _Effect3ScaleMultipier;
+                uniform fixed _Effect3ScaleMultiplier;
                 #endif
                 uniform fixed _Effect3TimingOffset;
 
@@ -717,7 +717,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform fixed _Effect4GlowSpeed;
                 #if _EFFECT4USESCALE_ON || _EFFECT4USESCALEPINGPONG_ON
                 uniform fixed _Effect4ScaleSpeed;
-                uniform fixed _Effect4ScaleMultipier;
+                uniform fixed _Effect4ScaleMultiplier;
                 #endif
                 uniform fixed _Effect4TimingOffset;
 
@@ -774,7 +774,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform fixed _Effect5GlowSpeed;
                 #if _EFFECT5USESCALE_ON || _EFFECT5USESCALEPINGPONG_ON
                 uniform fixed _Effect5ScaleSpeed;
-                uniform fixed _Effect5ScaleMultipier;
+                uniform fixed _Effect5ScaleMultiplier;
                 #endif
                 uniform fixed _Effect5TimingOffset;
 
@@ -831,7 +831,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform fixed _Effect6GlowSpeed;
                 #if _EFFECT6USESCALE_ON || _EFFECT6USESCALEPINGPONG_ON
                 uniform fixed _Effect6ScaleSpeed;
-                uniform fixed _Effect6ScaleMultipier;
+                uniform fixed _Effect6ScaleMultiplier;
                 #endif
                 uniform fixed _Effect6TimingOffset;
 
@@ -1305,11 +1305,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlowTex
-            fixed4 ScaleFlowTex(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset) {
+            fixed4 ScaleFlowTex(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 fixed4 texflow1 = tex2D(tex, flowUV1);
@@ -1321,11 +1321,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlowTex RandomRotate 
-            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset) {
+            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 flowUV1 = RandomRotateInterval(flowUV1, effectTime, scaleSpeed, 0, 0);
@@ -1339,11 +1339,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlowTex Timing Mask 
-            fixed4 ScaleFlowTex(sampler2D tex, float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal) {
+            fixed4 ScaleFlowTex(sampler2D tex, float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 fixed4 texflow1 = tex2D(tex, flowUV1);
@@ -1369,11 +1369,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlowTex RandomRotate Timing Mask 
-            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal) {
+            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 flowUV1 = RandomRotateInterval(flowUV1, effectTime, scaleSpeed,0, 0);
@@ -1400,10 +1400,10 @@ Shader "Hidden/UI_Effect_Optimized" {
                 return lerp(texflow1, texflow2, lerpVal);
             }
 
-            fixed4 ScalePIngPongTex(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset) {
+            fixed4 ScalePIngPongTex(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset) {
                 float effectTime = (cos(_Time.g * scaleSpeed + timingOffset)+1)/2;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale = lerp(scaleOrigin, scaleMultipier, effectTime);
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale = lerp(scaleOrigin, scaleMultiplier, effectTime);
                 uv = ScaleUV(uv, max(0.05, effect1Scale));
                 fixed4 texVal = tex2D(tex, uv);
                 texVal.rgb *= texVal.a;
@@ -1441,11 +1441,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow
-            fixed4 ScaleFlowTex(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
+            fixed4 ScaleFlowTex(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 float2 flowUVFlip1 = FlipBookUV(flowUV1, flipBookValue);
@@ -1459,11 +1459,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Blend
-            fixed4 ScaleFlowTexBlend(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
+            fixed4 ScaleFlowTexBlend(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 float2 flowUVFlip1 = FlipBookUV(flowUV1, flipBookValue);
@@ -1480,11 +1480,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Random Rotate
-            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
+            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 flowUV1 = RandomRotateInterval(flowUV1, effectTime, scaleSpeed, 0, 0);
@@ -1500,11 +1500,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Random Rotate Blend
-            fixed4 ScaleFlowTexRandomRotateBlend(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
+            fixed4 ScaleFlowTexRandomRotateBlend(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 flowUV1 = RandomRotateInterval(flowUV1, effectTime, scaleSpeed, 0, 0);
@@ -1523,11 +1523,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Timing Mask
-            fixed4 ScaleFlowTex(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
+            fixed4 ScaleFlowTex(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
 
@@ -1556,11 +1556,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Timing Mask Blend
-            fixed4 ScaleFlowTexBlend(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
+            fixed4 ScaleFlowTexBlend(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
                 float2 flowUVFlip1 = FlipBookUV(flowUV1, flipBookValue);
@@ -1590,11 +1590,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Random Rotate Timing Mask
-            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
+            fixed4 ScaleFlowTexRandomRotate(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
 
@@ -1626,11 +1626,11 @@ Shader "Hidden/UI_Effect_Optimized" {
             }
 
             //ScaleFlow Random Rotate Timing Mask Blend
-            fixed4 ScaleFlowTexRandomRotateBlend(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
+            fixed4 ScaleFlowTexRandomRotateBlend(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, sampler2D MaskTex, float4 timerMaskVal, float4 flipBookValue) {
                 float effectTime = _Time.g + timingOffset;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale1 = lerp(scaleOrigin, scaleMultipier, frac(effectTime * scaleSpeed));
-                float effect1Scale2 = lerp(scaleOrigin, scaleMultipier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale1 = lerp(scaleOrigin, scaleMultiplier, frac(effectTime * scaleSpeed));
+                float effect1Scale2 = lerp(scaleOrigin, scaleMultiplier, frac((effectTime - min(100, 0.5 / scaleSpeed)) * scaleSpeed));  //scaleSpeed가 0일때 0으로 나누기 대책
                 float2 flowUV1 = ScaleUV(uv, max(0.05, effect1Scale1));
                 float2 flowUV2 = ScaleUV(uv, max(0.05, effect1Scale2));
 
@@ -1662,10 +1662,10 @@ Shader "Hidden/UI_Effect_Optimized" {
                 return lerp(texflow1, texflow2, lerpVal);
             }
 
-            fixed4 ScalePIngPongTex(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
+            fixed4 ScalePIngPongTex(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
                 float effectTime = (cos(_Time.g * scaleSpeed + timingOffset) + 1) / 2;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale = lerp(scaleOrigin, scaleMultipier, effectTime);
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale = lerp(scaleOrigin, scaleMultiplier, effectTime);
                 uv = ScaleUV(uv, max(0.05, effect1Scale));
 
                 uv = FlipBookUV(uv, flipBookValue);
@@ -1675,10 +1675,10 @@ Shader "Hidden/UI_Effect_Optimized" {
                 return texVal;
             }
 
-            fixed4 ScalePIngPongTexBlend(sampler2D tex, inout float2 uv, float scaleMultipier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
+            fixed4 ScalePIngPongTexBlend(sampler2D tex, inout float2 uv, float scaleMultiplier, float scaleOrigin, float scaleSpeed, float timingOffset, float4 flipBookValue) {
                 float effectTime = (cos(_Time.g * scaleSpeed + timingOffset) + 1) / 2;
-                scaleMultipier = scaleOrigin * scaleMultipier;
-                float effect1Scale = lerp(scaleOrigin, scaleMultipier, effectTime);
+                scaleMultiplier = scaleOrigin * scaleMultiplier;
+                float effect1Scale = lerp(scaleOrigin, scaleMultiplier, effectTime);
                 uv = ScaleUV(uv, max(0.05, effect1Scale));
                 float2 uvFlip = FlipBookUV(uv, flipBookValue);
                 fixed4 texVal = tex2D(tex, uvFlip);
@@ -1847,19 +1847,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT1USESCALE_ON
                                 #if defined(_EFFECT1USETIMERMASK_ON) && defined(_EFFECT1USEMASK_ON)
                                     #if _EFFECT1RANDOMROTATE_ON
-                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotateBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotateBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
                                     #else
-                                    fixed4 _Effect1_var = ScaleFlowTexBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTexBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT1RANDOMROTATE_ON
-                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotateBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotateBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
                                     #else
-                                    fixed4 _Effect1_var = ScaleFlowTexBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTexBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT1USESCALEPINGPONG_ON
-                                fixed4 _Effect1_var = ScalePIngPongTexBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
+                                fixed4 _Effect1_var = ScalePIngPongTexBlend(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
                                 #if defined(_EFFECT1USETIMERMASK_ON) && defined(_EFFECT1USEMASK_ON)	
                                     half2 effect1TimerMaskUV;
                                     effect1TimerMaskUV = _Effect1UseTimerMaskBaseUV ? effect1MaskUV : i.uv0.zw;
@@ -1894,19 +1894,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT1USESCALE_ON
                                 #if defined(_EFFECT1USETIMERMASK_ON) && defined(_EFFECT1USEMASK_ON)
                                     #if _EFFECT1RANDOMROTATE_ON
-                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
                                     #else
-                                    fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal, _Effect1FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT1RANDOMROTATE_ON
-                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
                                     #else
-                                    fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
+                                    fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT1USESCALEPINGPONG_ON
-                                fixed4 _Effect1_var = ScalePIngPongTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
+                                fixed4 _Effect1_var = ScalePIngPongTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1FlipbookValue);
                                 #if defined(_EFFECT1USETIMERMASK_ON) && defined(_EFFECT1USEMASK_ON)	
                                     half2 effect1TimerMaskUV;
                                     effect1TimerMaskUV = _Effect1UseTimerMaskBaseUV ? effect1MaskUV : i.uv0.zw;
@@ -1934,19 +1934,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                         #elif _EFFECT1USESCALE_ON
                             #if defined(_EFFECT1USETIMERMASK_ON) && defined(_EFFECT1USEMASK_ON)
                                 #if _EFFECT1RANDOMROTATE_ON
-                                fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal);
+                                fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal);
                                 #else
-                                fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal);
+                                fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset, _Effect1Mask, _Effect1TimerMaskVal);
                                 #endif
                             #else
                                 #if _EFFECT1RANDOMROTATE_ON
-                                fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset);
+                                fixed4 _Effect1_var = ScaleFlowTexRandomRotate(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset);
                                 #else
-                                fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset);
+                                fixed4 _Effect1_var = ScaleFlowTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset);
                                 #endif
                             #endif
                         #elif _EFFECT1USESCALEPINGPONG_ON
-                            fixed4 _Effect1_var = ScalePIngPongTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultipier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset);
+                            fixed4 _Effect1_var = ScalePIngPongTex(_Effect1Tex, i.uv0.zw, _Effect1ScaleMultiplier, _Effect1ScaleOrigin, _Effect1ScaleSpeed, _Effect1TimingOffset);
                             #if defined(_EFFECT1USETIMERMASK_ON) && defined(_EFFECT1USEMASK_ON)	
                                 half2 effect1TimerMaskUV;
                                 effect1TimerMaskUV = _Effect1UseTimerMaskBaseUV ? effect1MaskUV : i.uv0.zw;
@@ -2068,19 +2068,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT2USESCALE_ON
                                 #if defined(_EFFECT2USETIMERMASK_ON) && defined(_EFFECT2USEMASK_ON)	
                                     #if _EFFECT2RANDOMROTATE_ON
-                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotateBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotateBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
                                     #else
-                                    fixed4 _Effect2_var = ScaleFlowTexBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTexBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT2RANDOMROTATE_ON
-                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotateBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotateBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
                                     #else
-                                    fixed4 _Effect2_var = ScaleFlowTexBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTexBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT2USESCALEPINGPONG_ON
-                                fixed4 _Effect2_var = ScalePIngPongTexBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
+                                fixed4 _Effect2_var = ScalePIngPongTexBlend(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
                         	    #if defined(_EFFECT2USETIMERMASK_ON) && defined(_EFFECT2USEMASK_ON)	
                                     half2 effect2TimerMaskUV;
                                     effect2TimerMaskUV = _Effect2UseTimerMaskBaseUV ? effect2MaskUV : i.uv1.xy;
@@ -2114,19 +2114,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT2USESCALE_ON
                                 #if defined(_EFFECT2USETIMERMASK_ON) && defined(_EFFECT2USEMASK_ON)	
                                     #if _EFFECT2RANDOMROTATE_ON
-                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
                                     #else
-                                    fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal, _Effect2FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT2RANDOMROTATE_ON
-                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
                                     #else
-                                    fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
+                                    fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT2USESCALEPINGPONG_ON
-                                fixed4 _Effect2_var = ScalePIngPongTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
+                                fixed4 _Effect2_var = ScalePIngPongTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2FlipbookValue);
                         	    #if defined(_EFFECT2USETIMERMASK_ON) && defined(_EFFECT2USEMASK_ON)	
                                     half2 effect2TimerMaskUV;
                                     effect2TimerMaskUV = _Effect2UseTimerMaskBaseUV ? effect2MaskUV : i.uv1.xy;
@@ -2154,19 +2154,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                         #elif _EFFECT2USESCALE_ON
                             #if defined(_EFFECT2USETIMERMASK_ON) && defined(_EFFECT2USEMASK_ON)	
                                 #if _EFFECT2RANDOMROTATE_ON
-                                fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal);
+                                fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal);
                                 #else
-                                fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal);
+                                fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset, _Effect2Mask, _Effect2TimerMaskVal);
                                 #endif
                             #else
                                 #if _EFFECT2RANDOMROTATE_ON
-                                fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset);
+                                fixed4 _Effect2_var = ScaleFlowTexRandomRotate(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset);
                                 #else
-                                fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset);
+                                fixed4 _Effect2_var = ScaleFlowTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset);
                                 #endif
                             #endif
                         #elif _EFFECT2USESCALEPINGPONG_ON
-                            fixed4 _Effect2_var = ScalePIngPongTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultipier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset);
+                            fixed4 _Effect2_var = ScalePIngPongTex(_Effect2Tex, i.uv1.xy, _Effect2ScaleMultiplier, _Effect2ScaleOrigin, _Effect2ScaleSpeed, _Effect2TimingOffset);
                         	#if defined(_EFFECT2USETIMERMASK_ON) && defined(_EFFECT2USEMASK_ON)	
                                     half2 effect2TimerMaskUV;
                                     effect2TimerMaskUV = _Effect2UseTimerMaskBaseUV ? effect2MaskUV : i.uv1.xy;
@@ -2289,19 +2289,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT3USESCALE_ON
                                 #if defined(_EFFECT3USETIMERMASK_ON) && defined(_EFFECT3USEMASK_ON)
                                     #if _EFFECT3RANDOMROTATE_ON
-                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotateBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotateBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
                                     #else
-                                    fixed4 _Effect3_var = ScaleFlowTexBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTexBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT3RANDOMROTATE_ON
-                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotateBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotateBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
                                     #else
-                                    fixed4 _Effect3_var = ScaleFlowTexBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTexBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT3USESCALEPINGPONG_ON 
-                                fixed4 _Effect3_var = ScalePIngPongTexBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
+                                fixed4 _Effect3_var = ScalePIngPongTexBlend(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
                                 #if defined(_EFFECT3USETIMERMASK_ON) && defined(_EFFECT3USEMASK_ON)
                                     half2 effect3TimerMaskUV;
                                     effect3TimerMaskUV = _Effect3UseTimerMaskBaseUV ? effect3MaskUV : i.uv1.zw;
@@ -2336,20 +2336,20 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT3USESCALE_ON
                                 #if defined(_EFFECT3USETIMERMASK_ON) && defined(_EFFECT3USEMASK_ON)
                                     #if _EFFECT3RANDOMROTATE_ON
-                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
                                     #else
-                                    fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal, _Effect3FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT3RANDOMROTATE_ON
-                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
                                     #else
-                                    fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
+                                    fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
                                     #endif
                                 #endif
 
                             #elif _EFFECT3USESCALEPINGPONG_ON 
-                                fixed4 _Effect3_var = ScalePIngPongTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
+                                fixed4 _Effect3_var = ScalePIngPongTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3FlipbookValue);
                                 #if defined(_EFFECT3USETIMERMASK_ON) && defined(_EFFECT3USEMASK_ON)
                                     half2 effect3TimerMaskUV;
                                     effect3TimerMaskUV = _Effect3UseTimerMaskBaseUV ? effect3MaskUV : i.uv1.zw;
@@ -2382,20 +2382,20 @@ Shader "Hidden/UI_Effect_Optimized" {
                         #elif _EFFECT3USESCALE_ON
                             #if defined(_EFFECT3USETIMERMASK_ON) && defined(_EFFECT3USEMASK_ON)
                                 #if _EFFECT3RANDOMROTATE_ON
-                                fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal);
+                                fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal);
                                 #else
-                                fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal);
+                                fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset, _Effect3Mask, _Effect3TimerMaskVal);
                                 #endif
                             #else
                                 #if _EFFECT3RANDOMROTATE_ON
-                                fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset);
+                                fixed4 _Effect3_var = ScaleFlowTexRandomRotate(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset);
                                 #else
-                                fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset);
+                                fixed4 _Effect3_var = ScaleFlowTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset);
                                 #endif
                             #endif
 
                         #elif _EFFECT3USESCALEPINGPONG_ON 
-                            fixed4 _Effect3_var = ScalePIngPongTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultipier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset);
+                            fixed4 _Effect3_var = ScalePIngPongTex(_Effect3Tex, i.uv1.zw, _Effect3ScaleMultiplier, _Effect3ScaleOrigin, _Effect3ScaleSpeed, _Effect3TimingOffset);
                             #if defined(_EFFECT3USETIMERMASK_ON) && defined(_EFFECT3USEMASK_ON)
                                     half2 effect3TimerMaskUV;
                                     effect3TimerMaskUV = _Effect3UseTimerMaskBaseUV ? effect3MaskUV : i.uv1.zw;
@@ -2520,19 +2520,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                            #elif _EFFECT4USESCALE_ON
                                  #if defined(_EFFECT4USETIMERMASK_ON) && defined(_EFFECT4USEMASK_ON)
                                      #if _EFFECT4RANDOMROTATE_ON
-                                     fixed4 _Effect4_var = ScaleFlowTexRandomRotateBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
+                                     fixed4 _Effect4_var = ScaleFlowTexRandomRotateBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
                                      #else
-                                     fixed4 _Effect4_var = ScaleFlowTexBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
+                                     fixed4 _Effect4_var = ScaleFlowTexBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
                                      #endif
                                  #else
                                      #if _EFFECT4RANDOMROTATE_ON
-                                     fixed4 _Effect4_var = ScaleFlowTexRandomRotateBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
+                                     fixed4 _Effect4_var = ScaleFlowTexRandomRotateBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
                                      #else
-                                     fixed4 _Effect4_var = ScaleFlowTexBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
+                                     fixed4 _Effect4_var = ScaleFlowTexBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
                                      #endif                              
                                  #endif
                            #elif _EFFECT4USESCALEPINGPONG_ON
-                                 fixed4 _Effect4_var = ScalePIngPongTexBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
+                                 fixed4 _Effect4_var = ScalePIngPongTexBlend(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
                                  #if defined(_EFFECT4USETIMERMASK_ON) && defined(_EFFECT4USEMASK_ON)
                                     half2 effect4TimerMaskUV;
                                     effect4TimerMaskUV = _Effect4UseTimerMaskBaseUV ? effect4MaskUV : i.uv2.xy;
@@ -2566,19 +2566,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT4USESCALE_ON
                                 #if defined(_EFFECT4USETIMERMASK_ON) && defined(_EFFECT4USEMASK_ON)
                                     #if _EFFECT4RANDOMROTATE_ON
-                                    fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
+                                    fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
                                     #else
-                                    fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
+                                    fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal, _Effect4FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT4RANDOMROTATE_ON
-                                    fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
+                                    fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
                                     #else
-                                    fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
+                                    fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
                                     #endif                              
                                 #endif
                             #elif _EFFECT4USESCALEPINGPONG_ON
-                                fixed4 _Effect4_var = ScalePIngPongTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
+                                fixed4 _Effect4_var = ScalePIngPongTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4FlipbookValue);
                                 #if defined(_EFFECT4USETIMERMASK_ON) && defined(_EFFECT4USEMASK_ON)
                                 half2 effect4TimerMaskUV;
                                 effect4TimerMaskUV = _Effect4UseTimerMaskBaseUV ? effect4MaskUV : i.uv2.xy;
@@ -2606,19 +2606,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                       #elif _EFFECT4USESCALE_ON
                             #if defined(_EFFECT4USETIMERMASK_ON) && defined(_EFFECT4USEMASK_ON)	
                                 #if _EFFECT4RANDOMROTATE_ON
-                                fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal);
+                                fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal);
                                 #else
-                                fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal);
+                                fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset, _Effect4Mask, _Effect4TimerMaskVal);
                                 #endif
                             #else
                                 #if _EFFECT4RANDOMROTATE_ON
-                                fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset);
+                                fixed4 _Effect4_var = ScaleFlowTexRandomRotate(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset);
                                 #else
-                                fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset);
+                                fixed4 _Effect4_var = ScaleFlowTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset);
                                 #endif
                             #endif
                       #elif _EFFECT4USESCALEPINGPONG_ON
-                            fixed4 _Effect4_var = ScalePIngPongTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultipier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset);
+                            fixed4 _Effect4_var = ScalePIngPongTex(_Effect4Tex, i.uv2.xy, _Effect4ScaleMultiplier, _Effect4ScaleOrigin, _Effect4ScaleSpeed, _Effect4TimingOffset);
                             #if defined(_EFFECT4USETIMERMASK_ON) && defined(_EFFECT4USEMASK_ON)
                                 half2 effect4TimerMaskUV;
                                 effect4TimerMaskUV = _Effect4UseTimerMaskBaseUV ? effect4MaskUV : i.uv2.xy;
@@ -2741,19 +2741,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT5USESCALE_ON
                                 #if defined(_EFFECT5USETIMERMASK_ON) && defined(_EFFECT5USEMASK_ON)	
                                     #if _EFFECT5RANDOMROTATE_ON
-		                            fixed4 _Effect5_var = ScaleFlowTexRandomRotateBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
+		                            fixed4 _Effect5_var = ScaleFlowTexRandomRotateBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
                                     #else
-		                            fixed4 _Effect5_var = ScaleFlowTexBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
+		                            fixed4 _Effect5_var = ScaleFlowTexBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT5RANDOMROTATE_ON
-                                    fixed4 _Effect5_var = ScaleFlowTexRandomRotateBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
+                                    fixed4 _Effect5_var = ScaleFlowTexRandomRotateBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
                                     #else
-                                    fixed4 _Effect5_var = ScaleFlowTexBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
+                                    fixed4 _Effect5_var = ScaleFlowTexBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT5USESCALEPINGPONG_ON
-                                fixed4 _Effect5_var = ScalePIngPongTexBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
+                                fixed4 _Effect5_var = ScalePIngPongTexBlend(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
                                 #if defined(_EFFECT5USETIMERMASK_ON) && defined(_EFFECT5USEMASK_ON)
                                     half2 effect5TimerMaskUV;
                                     effect5TimerMaskUV = _Effect5UseTimerMaskBaseUV ? effect5MaskUV : i.uv2.zw;
@@ -2787,19 +2787,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT5USESCALE_ON
                                 #if defined(_EFFECT5USETIMERMASK_ON) && defined(_EFFECT5USEMASK_ON)	
                                     #if _EFFECT5RANDOMROTATE_ON
-		                            fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
+		                            fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
                                     #else
-		                            fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
+		                            fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal, _Effect5FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT5RANDOMROTATE_ON
-                                    fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
+                                    fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
                                     #else
-                                    fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
+                                    fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT5USESCALEPINGPONG_ON
-                                fixed4 _Effect5_var = ScalePIngPongTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
+                                fixed4 _Effect5_var = ScalePIngPongTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5FlipbookValue);
                                 #if defined(_EFFECT5USETIMERMASK_ON) && defined(_EFFECT5USEMASK_ON)
                                     half2 effect5TimerMaskUV;
                                     effect5TimerMaskUV = _Effect5UseTimerMaskBaseUV ? effect5MaskUV : i.uv2.zw;
@@ -2827,19 +2827,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                         #elif _EFFECT5USESCALE_ON
                             #if defined(_EFFECT5USETIMERMASK_ON) && defined(_EFFECT5USEMASK_ON)
                                 #if _EFFECT5RANDOMROTATE_ON
-		                        fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal);
+		                        fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal);
                                 #else
-		                        fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal);
+		                        fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset, _Effect5Mask, _Effect5TimerMaskVal);
                                 #endif
                             #else
                                 #if _EFFECT5RANDOMROTATE_ON
-                                fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset);
+                                fixed4 _Effect5_var = ScaleFlowTexRandomRotate(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset);
                                 #else
-                                fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset);
+                                fixed4 _Effect5_var = ScaleFlowTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset);
                                 #endif
                             #endif
                         #elif _EFFECT5USESCALEPINGPONG_ON
-                            fixed4 _Effect5_var = ScalePIngPongTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultipier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset);
+                            fixed4 _Effect5_var = ScalePIngPongTex(_Effect5Tex, i.uv2.zw, _Effect5ScaleMultiplier, _Effect5ScaleOrigin, _Effect5ScaleSpeed, _Effect5TimingOffset);
                             #if defined(_EFFECT5USETIMERMASK_ON) && defined(_EFFECT5USEMASK_ON)
                                 half2 effect5TimerMaskUV;
                                 effect5TimerMaskUV = _Effect5UseTimerMaskBaseUV ? effect5MaskUV : i.uv2.zw;
@@ -2963,19 +2963,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT6USESCALE_ON
                                 #if defined(_EFFECT6USETIMERMASK_ON) && defined(_EFFECT6USEMASK_ON)
                                     #if _EFFECT6RANDOMROTATE_ON
-		                            fixed4 _Effect6_var = ScaleFlowTexRandomRotateBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
+		                            fixed4 _Effect6_var = ScaleFlowTexRandomRotateBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
                                     #else
-		                            fixed4 _Effect6_var = ScaleFlowTexBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
+		                            fixed4 _Effect6_var = ScaleFlowTexBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT6RANDOMROTATE_ON
-                                    fixed4 _Effect6_var = ScaleFlowTexRandomRotateBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
+                                    fixed4 _Effect6_var = ScaleFlowTexRandomRotateBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
                                     #else
-                                    fixed4 _Effect6_var = ScaleFlowTexBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
+                                    fixed4 _Effect6_var = ScaleFlowTexBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT6USESCALEPINGPONG_ON
-                                fixed4 _Effect6_var = ScalePIngPongTexBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
+                                fixed4 _Effect6_var = ScalePIngPongTexBlend(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
                                 #if defined(_EFFECT6USETIMERMASK_ON) && defined(_EFFECT6USEMASK_ON)
                                     half2 effect6TimerMaskUV;
                                     effect6TimerMaskUV = _Effect6UseTimerMaskBaseUV ? effect6MaskUV : i.uv3.xy;
@@ -3008,19 +3008,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                             #elif _EFFECT6USESCALE_ON
                                 #if defined(_EFFECT6USETIMERMASK_ON) && defined(_EFFECT6USEMASK_ON)
                                     #if _EFFECT6RANDOMROTATE_ON
-		                            fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
+		                            fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
                                     #else
-		                            fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
+		                            fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal, _Effect6FlipbookValue);
                                     #endif
                                 #else
                                     #if _EFFECT6RANDOMROTATE_ON
-                                    fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
+                                    fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
                                     #else
-                                    fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
+                                    fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
                                     #endif
                                 #endif
                             #elif _EFFECT6USESCALEPINGPONG_ON
-                                fixed4 _Effect6_var = ScalePIngPongTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
+                                fixed4 _Effect6_var = ScalePIngPongTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6FlipbookValue);
                                 #if defined(_EFFECT6USETIMERMASK_ON) && defined(_EFFECT6USEMASK_ON)
                                     half2 effect6TimerMaskUV;
                                     effect6TimerMaskUV = _Effect6UseTimerMaskBaseUV ? effect6MaskUV : i.uv3.xy;
@@ -3048,19 +3048,19 @@ Shader "Hidden/UI_Effect_Optimized" {
                         #elif _EFFECT6USESCALE_ON
                             #if defined(_EFFECT6USETIMERMASK_ON) && defined(_EFFECT6USEMASK_ON)
                                 #if _EFFECT6RANDOMROTATE_ON
-		                        fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal);
+		                        fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal);
                                 #else
-		                        fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal);
+		                        fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset, _Effect6Mask, _Effect6TimerMaskVal);
                                 #endif
                             #else
                                 #if _EFFECT6RANDOMROTATE_ON
-                                fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset);
+                                fixed4 _Effect6_var = ScaleFlowTexRandomRotate(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset);
                                 #else
-                                fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset);
+                                fixed4 _Effect6_var = ScaleFlowTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset);
                                 #endif
                             #endif
                         #elif _EFFECT6USESCALEPINGPONG_ON
-                            fixed4 _Effect6_var = ScalePIngPongTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultipier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset);
+                            fixed4 _Effect6_var = ScalePIngPongTex(_Effect6Tex, i.uv3.xy, _Effect6ScaleMultiplier, _Effect6ScaleOrigin, _Effect6ScaleSpeed, _Effect6TimingOffset);
                             #if defined(_EFFECT6USETIMERMASK_ON) && defined(_EFFECT6USEMASK_ON)
                                 half2 effect6TimerMaskUV;
                                 effect6TimerMaskUV = _Effect6UseTimerMaskBaseUV ? effect6MaskUV : i.uv3.xy;

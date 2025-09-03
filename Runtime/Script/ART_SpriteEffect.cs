@@ -136,7 +136,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		//[Range(0.001f, 10.0f)]
 		public SpriteEffectProperties effectScale = new SpriteEffectProperties(1f); //1f;
 		//[Range(0.001f, 10.0f)]
-		public SpriteEffectProperties effectScaleMultipier = new SpriteEffectProperties(1f); //1f;
+		public SpriteEffectProperties effectScaleMultiplier = new SpriteEffectProperties(1f); //1f;
 		public SpriteEffectProperties effectScaleSpeed = new SpriteEffectProperties(0f); //0f;
 		public SpriteEffectProperties effectScalePingPong = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectRandomRotation = new SpriteEffectProperties(false);  //bool false;
@@ -207,7 +207,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		[Range(0.001f, 10.0f)]
 		public float effectScale = 1f;
 		[Range(0.001f, 10.0f)]
-		public float effectScaleMultipier = 1f;
+		public float effectScaleMultiplier = 1f;
 		public float effectScaleSpeed = 0f;
 		public bool effectScalePingPong = false;
 		public bool effectRandomRotation = false;
@@ -742,7 +742,17 @@ public class ART_SpriteEffect : MonoBehaviour
 			mat = CreateMaterialInstance(createdMaterial);
 			return mat;
 		}
-		if (createdMaterial == null && mat == null)   // createdMaterial 과 mat이 둘다 없을때 임시생성
+        else if (tempMaterial != null)   //  아직 저장한 메테리얼이 없을때 이미 임시 메테리얼이 있으면 유지
+		{
+			//Debug.LogWarning("ManageMaterial() reuse Temp");
+			mat = tempMaterial;
+			if (tempMaterial.name != this.name + " (Instanced)")  // 메테리얼 이름을 바꿧을때 저장된 인스턴스 이름도 맞춰줌
+			{
+				tempMaterial.name = this.name + " (Instanced)";
+			}
+			return mat;
+		}
+		if (createdMaterial == null && mat == null && tempMaterial == null)   // createdMaterial 과 mat이 둘다 없을때 임시생성
 		{
 			if (Application.isPlaying)  // 플레이중일땐 기본메테리얼을 리턴 (실행중일땐 Async컴파일이 안되서 이팩트쉐이더로 메테리얼을 생성해도 의미가 없음)
             {
@@ -1477,7 +1487,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		Gradient layer1Gradient = spriteEffectLayers[layer1].effectGradient.gradientValue;
 		float layer1Brightness = spriteEffectLayers[layer1].effectBrightness.floatValue;
 		float layer1Scale = spriteEffectLayers[layer1].effectScale.floatValue;
-		float layer1ScaleMultipier = spriteEffectLayers[layer1].effectScaleMultipier.floatValue;
+		float layer1ScaleMultiplier = spriteEffectLayers[layer1].effectScaleMultiplier.floatValue;
 		float layer1ScaleSpeed = spriteEffectLayers[layer1].effectScaleSpeed.floatValue;
 		float layer1Power = spriteEffectLayers[layer1].effectPower.floatValue;
 		float layer1RotateAngle = spriteEffectLayers[layer1].effectRotateAngle.floatValue;
@@ -1525,7 +1535,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[layer1].effectGradient.gradientValue = spriteEffectLayers[layer2].effectGradient.gradientValue;
 		spriteEffectLayers[layer1].effectBrightness.floatValue = spriteEffectLayers[layer2].effectBrightness.floatValue;
 		spriteEffectLayers[layer1].effectScale.floatValue = spriteEffectLayers[layer2].effectScale.floatValue;
-		spriteEffectLayers[layer1].effectScaleMultipier.floatValue = spriteEffectLayers[layer2].effectScaleMultipier.floatValue;
+		spriteEffectLayers[layer1].effectScaleMultiplier.floatValue = spriteEffectLayers[layer2].effectScaleMultiplier.floatValue;
 		spriteEffectLayers[layer1].effectScaleSpeed.floatValue = spriteEffectLayers[layer2].effectScaleSpeed.floatValue;
 		spriteEffectLayers[layer1].effectPower.floatValue = spriteEffectLayers[layer2].effectPower.floatValue;
 		spriteEffectLayers[layer1].effectRotateAngle.floatValue = spriteEffectLayers[layer2].effectRotateAngle.floatValue;
@@ -1575,7 +1585,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteEffectLayers[layer2].effectGradient.gradientValue = layer1Gradient;
 			spriteEffectLayers[layer2].effectBrightness.floatValue = layer1Brightness;
 			spriteEffectLayers[layer2].effectScale.floatValue = layer1Scale;
-			spriteEffectLayers[layer2].effectScaleMultipier.floatValue = layer1ScaleMultipier;
+			spriteEffectLayers[layer2].effectScaleMultiplier.floatValue = layer1ScaleMultiplier;
 			spriteEffectLayers[layer2].effectScaleSpeed.floatValue = layer1ScaleSpeed;
 			spriteEffectLayers[layer2].effectPower.floatValue = layer1Power;
 			spriteEffectLayers[layer2].effectRotateAngle.floatValue = layer1RotateAngle;
@@ -1824,11 +1834,11 @@ public class ART_SpriteEffect : MonoBehaviour
 		}
 		mat.SetFloat($"_Effect{i + 1}Brightness", spriteEffectLayers[i].effectBrightness.floatValue);
 		mat.SetFloat($"_Effect{i + 1}ScaleOrigin", spriteEffectLayers[i].effectScale.floatValue);
-		mat.SetFloat($"_Effect{i + 1}ScaleMultipier", spriteEffectLayers[i].effectScaleMultipier.floatValue);
+		mat.SetFloat($"_Effect{i + 1}ScaleMultiplier", spriteEffectLayers[i].effectScaleMultiplier.floatValue);
 		SetToggleProperty(mat, $"_Effect{i + 1}ScaleSpeed", $"_EFFECT{i + 1}USESCALEPINGPONG_ON", spriteEffectLayers[i].effectScaleSpeed.floatValue, true, spriteEffectLayers[i].effectScalePingPong.boolValue);
 		SetToggleProperty(mat, $"_Effect{i + 1}ScaleSpeed", $"_EFFECT{i + 1}USESCALE_ON", spriteEffectLayers[i].effectScaleSpeed.floatValue, true, !spriteEffectLayers[i].effectScalePingPong.boolValue);
 		SetKeyword(mat, $"_EFFECT{i + 1}RANDOMROTATE_ON", spriteEffectLayers[i].effectRandomRotation.boolValue);
-		//SetToggleProperties(mat, $"_Effect{i + 1}ScaleMultipier", $"_Effect{i + 1}ScaleSpeed", $"_EFFECT{i + 1}USESCALE_ON", spriteEffectLayers[i].effectScaleMultipier, spriteEffectLayers[i].effectScaleSpeed, true);
+		//SetToggleProperties(mat, $"_Effect{i + 1}ScaleMultiplier", $"_Effect{i + 1}ScaleSpeed", $"_EFFECT{i + 1}USESCALE_ON", spriteEffectLayers[i].effectScaleMultiplier, spriteEffectLayers[i].effectScaleSpeed, true);
 		mat.SetFloat($"_Effect{i + 1}Power", spriteEffectLayers[i].effectPower.floatValue);
 		mat.SetVector($"_Effect{i + 1}Tex_ST", spriteEffectLayers[i].effectTextureTileOffset.vector4Value);
 
@@ -2223,7 +2233,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		}
 
 		spriteEffectLayers[i].effectScale.floatValue = mat.GetFloat($"_Effect{i + 1}ScaleOrigin");
-		spriteEffectLayers[i].effectScaleMultipier.floatValue = mat.GetFloat($"_Effect{i + 1}ScaleMultipier");
+		spriteEffectLayers[i].effectScaleMultiplier.floatValue = mat.GetFloat($"_Effect{i + 1}ScaleMultiplier");
 		spriteEffectLayers[i].effectScalePingPong.boolValue = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALEPINGPONG_ON");
         if (IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALE_ON") || IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALEPINGPONG_ON"))
         {
@@ -2431,7 +2441,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[i].effectColor.CompareValue(mat.GetColor($"_Effect{i + 1}Color"), $"_Effect{i + 1}Color", ref overrideList);
 		spriteEffectLayers[i].effectBrightness.CompareValue(mat.GetFloat($"_Effect{i + 1}Brightness"), $"_Effect{i + 1}Brightness", ref overrideList);
 		spriteEffectLayers[i].effectScale.CompareValue(mat.GetFloat($"_Effect{i + 1}ScaleOrigin"), $"_Effect{i + 1}ScaleOrigin", ref overrideList);
-		spriteEffectLayers[i].effectScaleMultipier.CompareValue(mat.GetFloat($"_Effect{i + 1}ScaleMultipier"), $"_Effect{i + 1}ScaleMultipier", ref overrideList);
+		spriteEffectLayers[i].effectScaleMultiplier.CompareValue(mat.GetFloat($"_Effect{i + 1}ScaleMultiplier"), $"_Effect{i + 1}ScaleMultiplier", ref overrideList);
 		spriteEffectLayers[i].effectScalePingPong.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALEPINGPONG_ON"), $"_EFFECT{i + 1}USESCALEPINGPONG_ON", ref overrideList);
 		spriteEffectLayers[i].effectRandomRotation.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}RANDOMROTATE_ON"), $"_EFFECT{i + 1}RANDOMROTATE_ON",ref overrideList);
 		spriteEffectLayers[i].effectScaleSpeed.CompareValue(mat.GetFloat($"_Effect{i + 1}ScaleSpeed"), $"_Effect{i + 1}ScaleSpeed", ref overrideList);
@@ -2471,7 +2481,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		DestroyMaterial(tempMaterial);
 		tempMaterial = new Material(Shader.Find(effectShader));
-		tempMaterial.name = new string(tempMaterial.name + " (Instanced)");
+		tempMaterial.name = new string(this.name + " (Instanced)");
 		tempMaterial.hideFlags = HideFlags.HideAndDontSave;
 		previousMaterial = tempMaterial;
 		return tempMaterial;
