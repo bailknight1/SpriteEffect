@@ -9,13 +9,13 @@ This package can create various texture based VFX material for UI Image & Sprite
 
 ## 📌 Key Features
 
-* UI Image 또는 Sprite Renderer용의 다양한 텍스쳐 기반 이팩트 제작툴
-* UV 스크롤, 스케일, 회전 기능, 마스킹, 디스토션, 색상변경, 디졸브, 플립북 등의 기능을 복합적으로 사용하는 이팩트 메테리얼을 최대 6 레이어까지 한번에 제작가능
-* 아틀라스화된 스프라이트 대응.
-* 마스킹된 스프라이트 대응.
-* 슬라이스되거나 타일링되는 스프라이트 대응.
-* 매니저 스크립트로 생성,삭제,여러 이팩트간 교채를 관리 가능.
-* Time 또는 AnimationCurve로 대부분의 값을 애니메이션 가능.
+* A versatile texture-based effect creation tool for UI Image or Sprite Renderers.
+* Create up to six layers of effect materials at once, combining features like UV scrolling, scaling, rotation, masking, distortion, color change, dissolving, and flipbooks.
+* Supports atlased sprites.
+* Supports masked sprites.
+* Supports sliced ​​and tiling sprites.
+* Create, delete, and manage multiple effects with a manager script.
+* Animate most values ​​with Time or AnimationCurve.
 
 <br><br>
 ## ⚙ Installation
