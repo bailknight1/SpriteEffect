@@ -2353,7 +2353,7 @@ public class ART_SpriteEffect : MonoBehaviour
 				//}
 
 				//Debug.LogWarning(this.gameObject.name + " property override count = " + overrideList.Count + "\n" + overrideNameList, this.gameObject);
-				Debug.LogWarning("SetOverride() true Count: " + overrideList);
+				//Debug.LogWarning("SetOverride() true Count: " + overrideList);
 				haveUnsavedChange = true;  //인스턴스 메테리얼 사용
 				needUpdate = true;
 				UpdateMat(effectMaterial);
