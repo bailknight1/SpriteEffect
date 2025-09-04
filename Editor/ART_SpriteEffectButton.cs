@@ -230,13 +230,11 @@ public class ART_SpriteEffectButton : Editor
 
     private void OnSceneGUI(SceneView sceneView)
     {
-        //Debug.LogWarning("OnSceneGUI");
         if (Event.current.modifiers == EventModifiers.Control)
         {
             if (!holdCtrlKey)
             {
-                //Debug.LogWarning("KeyDown");
-                EditorUtility.SetDirty(this);
+                 EditorUtility.SetDirty(this);
                 this.Repaint();
                 holdCtrlKey = true;
             }
@@ -244,7 +242,6 @@ public class ART_SpriteEffectButton : Editor
         else if (holdCtrlKey)
         {
             holdCtrlKey = false;
-            //Debug.LogWarning("KeyUp");
             EditorUtility.SetDirty(this);
             this.Repaint();
         }
@@ -253,7 +250,6 @@ public class ART_SpriteEffectButton : Editor
         {
             if (!holdAltKey)
             {
-                //Debug.LogWarning("KeyDown");
                 EditorUtility.SetDirty(this);
                 this.Repaint();
                 holdAltKey = true;
@@ -262,7 +258,6 @@ public class ART_SpriteEffectButton : Editor
         else if (holdAltKey)
         {
             holdAltKey = false;
-            //Debug.LogWarning("KeyUp");
             EditorUtility.SetDirty(this);
             this.Repaint();
         }
@@ -281,8 +276,7 @@ public class ART_SpriteEffectButton : Editor
 
     void Initialize()
     {
-        //Debug.LogWarning("Initialize()");
-        spriteEffect = (ART_SpriteEffect)target;
+         spriteEffect = (ART_SpriteEffect)target;
         effectMaterial = serializedObject.FindProperty("createdMaterial");
         effects = serializedObject.FindProperty("spriteEffectLayers");
         effect_Name = serializedObject.FindProperty("name");
@@ -384,13 +378,11 @@ public class ART_SpriteEffectButton : Editor
 
     void ApplySetting()
     {
-        //Debug.LogWarning("ApplySetting Call");
         spriteEffect.ApplySetting();
     }
 
     void GetProperties(int i)
     {
-        //Debug.LogWarning("GetProperties");
         effect_Texture[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTexture").FindPropertyRelative("textureValue");
         effect_TextureTileOffset[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTextureTileOffset").FindPropertyRelative("vector4Value");
         effect_UseFlipBook[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseFlipBook").FindPropertyRelative("boolValue");
@@ -476,7 +468,6 @@ public class ART_SpriteEffectButton : Editor
 
     public override void OnInspectorGUI()
     {
-        //Debug.LogWarning("OnInspectorGUI()");
         if (!Application.isPlaying)
         {
             guiTextStyle = MyEditorStyles.customStyle;
@@ -512,14 +503,11 @@ public class ART_SpriteEffectButton : Editor
                 // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
                 serializedObject.ApplyModifiedProperties();
 
-                //Debug.LogWarning("needUptate : " + _needUpdate);
                 if (spriteEffect.enabled && _needUpdate)   // 업데이트 할 필요가 있는지 체크
                 {
                     if (spriteEffect.CheckMaterialChange())  // 이팩트 메테리얼이 에디터에서 변경됏을경우 변경된 메테리얼 값을 에디터로 가져옴
                     {
-                        //Debug.LogWarning("Load Material Value about to call");
                         spriteEffect.LoadMaterialValue();
-                        //Debug.LogWarning("effectName Change from : "+ effectName);
                         effectName = effect_Name.stringValue;
                         spriteEffect.SaveSetting();
                     }
@@ -541,9 +529,7 @@ public class ART_SpriteEffectButton : Editor
 
     public void CreateEffectMaterialFolder()
     {
-        //Debug.LogWarning("CreateEffectMaterialFolder()");
-        assetPath = resourcesPath +"/"+ materialAssetFolderName;
-        //Debug.LogWarning(assetPath);
+        assetPath = resourcesPath + "/" + materialAssetFolderName;
         if (!AssetDatabase.IsValidFolder(resourcesPath))
             AssetDatabase.CreateFolder("Assets", "Resources");
         if (!AssetDatabase.IsValidFolder(assetPath))
@@ -569,10 +555,9 @@ public class ART_SpriteEffectButton : Editor
             GUI.backgroundColor = Color.green;
             if (GUILayout.Button("Copy Material"))
             {
-                CreateEffectMaterialFolder();
-                //Debug.LogWarning("IsNameChanged() : "+IsNameChanged() +" / "+ effectName + " : " + effect_Name.stringValue);
                 if (IsNameChanged())  // 이팩트명이 변경됏을경우 메테리얼에셋명도 변경
                 {
+                    CreateEffectMaterialFolder();
                     //SLog.LogWarning("effectName Change from : " + effectName);
                     effectName = effect_Name.stringValue;
                     spriteEffect.SaveAsNewMaterialAsset(assetPath);
@@ -601,10 +586,9 @@ public class ART_SpriteEffectButton : Editor
             GUI.backgroundColor = spriteEffect.haveUnsavedChange ? Color.red : defaultColor;
             if (GUILayout.Button("Save Material"))
             {
-                CreateEffectMaterialFolder();
-                //Debug.LogWarning("IsNameChanged() : "+IsNameChanged() +" / "+ effectName + " : " + effect_Name.stringValue);
                 if (IsNameChanged())  // 이팩트명이 변경됏을경우 메테리얼에셋명도 변경
                 {
+                    CreateEffectMaterialFolder();
                     //SLog.LogWarning("effectName Change from : " + effectName);
                     effectName = effect_Name.stringValue;
                     spriteEffect.CreateAndSaveMaterialAsset(assetPath);
@@ -716,8 +700,10 @@ public class ART_SpriteEffectButton : Editor
 
     private bool IsNameChanged()
     {
-        //Debug.LogWarning("IsNameChanged()");
-        //Debug.LogWarning(effectName + " / " + effect_Name.stringValue);
+        if (effect_Name.stringValue == "No Name" && !spriteEffect.HaveCreatedMaterial())
+        {
+            return true;
+        }
         return (effectName != effect_Name.stringValue) ? true : false;
     }
 
@@ -735,7 +721,7 @@ public class ART_SpriteEffectButton : Editor
 
     private void CustomSliderField(SerializedProperty property, string label, float min, float max , SerializedProperty overrideVal = null)  // 프로퍼티의 오버라이드여부에 따라 필드 색상 변경
     {
-        EditorGUIUtility.labelWidth = label.Length*8;
+        EditorGUIUtility.labelWidth = 30;
         if (overrideVal != null)
         {
             var defaultColor = GUI.backgroundColor;
@@ -1026,9 +1012,15 @@ public class ART_SpriteEffectButton : Editor
                 EditorGUILayout.BeginHorizontal();
                 EditorGUIUtility.labelWidth = 60;
                 CustomPropertyField(effect_Mask[i], new GUIContent("Mask"), effect_Mask_override[i]);
-
-                EditorGUIUtility.labelWidth = 70;
-                CustomPropertyField(effect_UseMaskUV[i], new GUIContent("Slice UV"), effect_UseMaskUV_override[i]);
+                if (!IsNone(effect_Mask[i])) 
+                {
+                    EditorGUIUtility.labelWidth = 70;
+                    CustomPropertyField(effect_UseMaskUV[i], new GUIContent("Slice UV"), effect_UseMaskUV_override[i]);
+                }
+                else
+                {
+                    effect_UseMaskUV[i].boolValue = false;
+                }
                 EditorGUIUtility.labelWidth = 120;
                 CustomPropertyField(effect_UseLuminanceMask[i], new GUIContent("Luminance Mask"), effect_UseLuminanceMask_override[i]);
                 EditorGUIUtility.labelWidth = 0;
@@ -1113,7 +1105,7 @@ public class ART_SpriteEffectButton : Editor
                 CustomSliderField(effect_DistortStrength[i],"Mask Distort Strength", 0f, 1f, effect_DistortStrength_override[i]);
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
-                EditorGUIUtility.labelWidth = 90;   // 라벨이랑 필드 사이의 간격을 작게 조절
+                EditorGUIUtility.labelWidth = 60;   // 라벨이랑 필드 사이의 간격을 작게 조절
                 CustomPropertyField(effect_UseScrollCurve[i], new GUIContent("Scroll"), effect_UseScrollCurve_override[i]);
                 CustomPropertyField(effect_UseRotateCurve[i], new GUIContent("Rotate"), effect_UseRotateCurve_override[i]);
                 CustomPropertyField(effect_UseScaleCurve[i], new GUIContent("Scale"), effect_UseScaleCurve_override[i]);

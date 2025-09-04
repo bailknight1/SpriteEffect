@@ -44,37 +44,30 @@ public class ART_SpriteEffect : MonoBehaviour
 		public SpriteEffectProperties(Texture2D val)
 		{
 			textureValue = val;
-			overrideValue = false;
 		}
 		public SpriteEffectProperties(Vector4 val)
 		{
 			vector4Value = val;
-			overrideValue = false;
 		}
 		public SpriteEffectProperties(bool val)
 		{
 			boolValue = val;
-			overrideValue = false;
 		}
 		public SpriteEffectProperties(Color val)
 		{
 			colorValue = val;
-			overrideValue = false;
 		}
 		public SpriteEffectProperties(float val)
 		{
 			floatValue = val;
-			overrideValue = false;
 		}
 		public SpriteEffectProperties(LayerBlendMode val)
 		{
 			layerBlendModeValue = val;
-			overrideValue = false;
 		}
 		public SpriteEffectProperties(Gradient val)
 		{
 			gradientValue = val;
-			overrideValue = false;
 		}
 
 		public void CompareValue(Texture2D val, string valName, ref int counter)
@@ -159,7 +152,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		public bool confirmRemove = false;     //에디터에서 레이어를 지울 예정인가?
 #endif
 #endregion
-        public bool isEffectActive = true;
+        public bool isEffectActive = false;
 		public SpriteEffectProperties effectTimingOffset = new SpriteEffectProperties(0f); //0;
 		public SpriteEffectProperties effectGradient;  //Gradient
 
@@ -694,7 +687,6 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private void UpdateMat(Material mat)  // 메인 업데이트 루프
 	{
-		//Debug.LogWarning("UpdateMat() "+mat,this);
 		if (this.enabled == true)
 		{
 			ResetBoolChecks();
@@ -742,7 +734,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			mat = CreateMaterialInstance(createdMaterial);
 			return mat;
 		}
-        else if (tempMaterial != null)   //  아직 저장한 메테리얼이 없을때 이미 임시 메테리얼이 있으면 유지
+		else if (tempMaterial != null)   //  아직 저장한 메테리얼이 없을때 이미 임시 메테리얼이 있으면 유지
 		{
 			//Debug.LogWarning("ManageMaterial() reuse Temp");
 			mat = tempMaterial;
@@ -752,7 +744,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			}
 			return mat;
 		}
-		if (createdMaterial == null && mat == null && tempMaterial == null)   // createdMaterial 과 mat이 둘다 없을때 임시생성
+		if (createdMaterial == null && mat == null)   // createdMaterial 과 mat이 둘다 없을때 임시생성
 		{
 			if (Application.isPlaying)  // 플레이중일땐 기본메테리얼을 리턴 (실행중일땐 Async컴파일이 안되서 이팩트쉐이더로 메테리얼을 생성해도 의미가 없음)
             {
@@ -775,7 +767,6 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private void UpdateMaterial(Material mat)   // 메테리얼 프로퍼티 셋팅
 	{
-		//Debug.LogWarning("UpdateMaterial",this);
 		if (mat != null)
 		{
 			if (CheckValueChange())  // 스크립트에 지정된 값을 메테리얼에 셋팅
@@ -793,7 +784,6 @@ public class ART_SpriteEffect : MonoBehaviour
 			{
 				if (CheckSpriteDataChange())    //스프라이트가 변경될경우
 				{
-					//Debug.LogWarning("CheckSpriteDataChange()",this.gameObject);
 					SetRect(mat);
 					SetMaskData(mat);
 				}
@@ -984,7 +974,6 @@ public class ART_SpriteEffect : MonoBehaviour
 			if (m_image.maskable == true)
 			{
 				m_image.RecalculateMasking();
-				//Debug.LogWarning("RecalculateMasking()", this.gameObject);
 			}
 		}
 		if (m_image.maskable == true && m_image.material == mat && m_image.materialForRendering != null)
@@ -1415,7 +1404,6 @@ public class ART_SpriteEffect : MonoBehaviour
 	/// </summary>
 	public void ApplySetting()  // 에디터용
 	{
-		//Debug.LogWarning("ApplySetting() true");
 		haveUnsavedChange = true;
 		Reload();
 	}
@@ -1435,7 +1423,6 @@ public class ART_SpriteEffect : MonoBehaviour
 	/// </summary>
 	public void SetDirty()  // 에디터용
 	{
-		//Debug.LogWarning("SetDirty() true");
 		haveUnsavedChange = true;
 		needUpdate = true;
 	}
@@ -1474,7 +1461,6 @@ public class ART_SpriteEffect : MonoBehaviour
 	/// </summary>
 	public void SwapLayer(int layer1, int layer2, bool copyLayer = false)   // 에디터용
 	{
-		//Debug.LogWarning("Copy = " + copyLayer);
 		bool layer1FolderOpen = spriteEffectLayers[layer1].isEffectvalueFolderOpen;
 		Texture2D layer1Texture = spriteEffectLayers[layer1].effectTexture.textureValue;
 		Vector4 layer1TextureTileOffset = spriteEffectLayers[layer1].effectTextureTileOffset.vector4Value;
@@ -1621,6 +1607,11 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteEffectLayers[layer2].effectTimerMaskBaseUV.boolValue = layer1UseTimerMaskBaseUV;
 		}
 	}
+
+	public bool HaveCreatedMaterial()
+    {
+		return createdMaterial != null ? true : false;
+    }
 
 	private void Reload()
 	{
@@ -2057,12 +2048,9 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	public void LoadCreatedMaterialValue()
 	{
-		//Debug.LogWarning(effectMaterial);
-		//createdMaterial = effectMaterial;
 		name = createdMaterial.name.Replace(materialAssetPrefix, "");
 		effectMaterial = createdMaterial;
 		GetMaterialValue(createdMaterial);
-		//Debug.LogWarning("LoadCreatedMaterialValue() false");
 		haveUnsavedChange = false;
 		needUpdate = true;
 		Reload();
@@ -2341,10 +2329,8 @@ public class ART_SpriteEffect : MonoBehaviour
 	#region CheckOverride
 	public void CheckOverride()
 	{
-		//Debug.LogWarning("CheckOverride()", this);
 		if (createdMaterial == null)
 		{
-			//Debug.LogWarning("CheckOverride() null return", this.gameObject);
 			return;
 		}
 		SetOverride(createdMaterial);
@@ -2367,7 +2353,7 @@ public class ART_SpriteEffect : MonoBehaviour
 				//}
 
 				//Debug.LogWarning(this.gameObject.name + " property override count = " + overrideList.Count + "\n" + overrideNameList, this.gameObject);
-				//Debug.LogWarning("SetOverride() true");
+				Debug.LogWarning("SetOverride() true Count: " + overrideList);
 				haveUnsavedChange = true;  //인스턴스 메테리얼 사용
 				needUpdate = true;
 				UpdateMat(effectMaterial);
@@ -2481,7 +2467,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		DestroyMaterial(tempMaterial);
 		tempMaterial = new Material(Shader.Find(effectShader));
-		tempMaterial.name = new string(this.name + " (Instanced)");
+		tempMaterial.name = new string(tempMaterial.name + " (Instanced)");
 		tempMaterial.hideFlags = HideFlags.HideAndDontSave;
 		previousMaterial = tempMaterial;
 		return tempMaterial;
@@ -2495,13 +2481,11 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		if (createdMaterial == null)
 		{
-			//Debug.LogWarning("Create Mat");
 			CreatMaterialAsset(path);
 			DestroyMaterial(tempMaterial);
 		}
 		else
 		{
-			//Debug.LogWarning("Rename Mat");
 			RenameMaterialAsset(path);
 		}
 		SaveSetting();
@@ -2547,13 +2531,13 @@ public class ART_SpriteEffect : MonoBehaviour
 			foreach (var existAsset in existAssets)   //바꿀 이름이랑 같은 이름이 이미 존재하는지 확인
 			{
 				//Debug.LogWarning("Exist Name : " + AssetDatabase.GUIDToAssetPath(existAsset).Replace(materialAssetPath, ""));
-				if (AssetDatabase.GUIDToAssetPath(existAsset).Replace(materialAssetPath, "") == matName + ".mat")   // 같은 이름이 존재할경우
+				if (AssetDatabase.GUIDToAssetPath(existAsset).Replace(materialAssetPath + "/", "") == matName + ".mat")   // 같은 이름이 존재할경우
 				{
 					Debug.LogWarning("중복된이름있음 : " + AssetDatabase.GUIDToAssetPath(existAsset).Replace(materialAssetPath, ""));
 					foreach (var existAsset2 in existAssets)
 					{
 						// 뒤에 matID를 붙이고 같은 이름이 존재하지 않을때까지 matID를 +1 하고 다시 체크
-						while (AssetDatabase.GUIDToAssetPath(existAsset2).Replace(materialAssetPath, "") == matName + "_" + matID + ".mat")
+						while (AssetDatabase.GUIDToAssetPath(existAsset2).Replace(materialAssetPath + "/", "") == matName + "_" + matID + ".mat")
 							matID++;
 					}
 					createdMaterial = new Material(Shader.Find(effectShader));
@@ -2683,5 +2667,5 @@ public class ART_SpriteEffect : MonoBehaviour
 	}
 
 #endif //UNITY_EDITOR
-	#endregion //Editor Only
+#endregion //Editor Only
 }
