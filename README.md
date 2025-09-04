@@ -46,19 +46,19 @@ _This package requires **Unity 2018.3 or later**._
 ### Component: ART_SpriteEffectManager
 
 `ART_SpriteEffectManager` can create or delete SpriteEffect to UIImage or SpriteRenderer.
-  - **Create Effect**: Create a new sprite effect. Multiple effects can be created for a single sprite renderer (or UI image). Only one effect can be applied at a time.
-  - **Play "Effect Name"**: Replace the renderer's material with the effect with the given name.
-  - **Remove "Effect Name"**: Delete the effect with the given name.
+- **Create Effect**: Create a new sprite effect. Multiple effects can be created for a single sprite renderer (or UI image). Only one effect can be applied at a time.
+- **Play "Effect Name"**: Replace the renderer's material with the effect with the given name.
+- **Remove "Effect Name"**: Delete the effect with the given name.
 <br><br>
 - **ART_SpriteEffectManager.ActiveEffect(int index):** Replaces the renderer material with the sprite effect corresponding to the given index value.
 
 <br><br>
 ### Component: ART_SpriteEffect
 `ART_SpriteEffect` can create SpriteEffect Material for UIImage or SpriteRenderer.
-    - **Main Properties**: Material properties.
-    - **Name:** The name of the effect material. When saved, it will be saved in the `Assets/Resources/SpriteEffectMaterial` folder in the format `SpriteEffect_"Name"`.
-    - **Material:** The last saved and currently editing effect material. If it hasn't been saved yet, it will be blank.
-    - **Save Material:** Saves the effect material to the `Assets/Resources/SpriteEffectMaterial` folder (it will be created automatically if it doesn't exist). Unsaved changes are shown in red.
+  - **Main Properties**: Material properties.
+  - **Name:** The name of the effect material. When saved, it will be saved in the `Assets/Resources/SpriteEffectMaterial` folder in the format `SpriteEffect_"Name"`.
+  - **Material:** The last saved and currently editing effect material. If it hasn't been saved yet, it will be blank.
+  - **Save Material:** Saves the effect material to the `Assets/Resources/SpriteEffectMaterial` folder (it will be created automatically if it doesn't exist). Unsaved changes are shown in red.
       - **Load Material:** Pressing the Alt key activates material load mode. Loads the material values ​​in the Material section into the editor.
       - **Copy Material:** Pressing the Ctrl key activates material copy mode. Copies the current editor values ​​to the material specified by `Name`.
   - **Focus Folder:** Focuses the effect material storage folder in the project.
@@ -161,6 +161,8 @@ _This package requires **Unity 2018.3 or later**._
 
 <br><br>
 
+---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
 ﻿# (유니티 패키지) UI Image & Sprite Renderer 용 스프라이트 이팩트 <!-- omit in toc -->
 
 유니티 UI이미지 & 스프라이트 랜더러용 텍스쳐기반 이팩트 메테리얼을 제작할수 있는 패키지.
