@@ -1,7 +1,9 @@
 ﻿# (Unity Package) Sprite Effect For UI Image & Sprite Renderer <!-- omit in toc -->
 
 This package can create various texture based VFX material for UI Image & Sprite renderer for Unity.
-
+![Image](https://github.com/user-attachments/assets/31dcfa96-b0ca-4199-ab20-b1d31db91120)
+<br>
+<img width="416" height="1034" alt="Image" src="https://github.com/user-attachments/assets/2b46da41-5142-477f-8771-014291dd2365" />
 
 <br><br>
 
