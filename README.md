@@ -25,7 +25,7 @@ _This package requires **Unity 2018.3 or later**._
 #### Install via UPM (with Package Manager UI)
 
 - Click `Window > Package Manager` to open Package Manager UI.
-- Click `+ > Add package from git URL...` and input the repository URL: `https://github.com/bailknight/SpriteEffect.git`  
+- Click `+ > Add package from git URL...` and input the repository URL: `https://github.com/bailknight1/SpriteEffect.git`  
 <br><br>
 
 ## 🚀 How to use
@@ -190,7 +190,7 @@ _**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
 #### 유니티 패키지 매니저로 설치
 
 - `Window > Package Manager` 를 클릭하여 패키지 매니저 열기.
-- `+ > Add package from git URL...` 를 클릭하고 다음 저장소 주소 입력: `https://github.com/bailknight/SpriteEffect.git`  
+- `+ > Add package from git URL...` 를 클릭하고 다음 저장소 주소 입력: `https://github.com/bailknight1/SpriteEffect.git`  
 <br><br>
 
 ## 🚀 사용법
