@@ -24,9 +24,6 @@ _This package requires **Unity 2018.3 or later**._
 
 - Click `Window > Package Manager` to open Package Manager UI.
 - Click `+ > Add package from git URL...` and input the repository URL: `https://github.com/bailknight/SpriteEffect.git`  
-- To update the package, change suffix `#{version}` to the target version.
-  - e.g. `https://github.com/bailknight/SpriteEffect.git#4.9.0`
-
 <br><br>
 ## 🚀 Usage
 
@@ -37,6 +34,7 @@ _This package requires **Unity 2018.3 or later**._
 - **Play "Effect Name"**: 해당 명칭의 이팩트로 렌더러 메테리얼을 교체
 - **Remove "Effect Name"**: 해당 명칭의 이팩트를 삭제.
 
+### Component: ART_SpriteEffect
 `ART_SpriteEffect` can create SpriteEffect Material for UIImage or SpriteRenderer.
 - **메인 속성**: 메테리얼의 속성
   - **Name:** 이팩트 메테리얼의 이름. 저장될때 SpriteEffect_"Name" 형식으로 Assets/Resources/SpriteEffectMaterial 폴더에 저장됨.
@@ -64,6 +62,10 @@ _This package requires **Unity 2018.3 or later**._
     - **Texturer** 
     - **Tile & Offset**
     - **Smoothness / Contrast / Min / Max**
+      - **X:**
+      - **Y:**
+      - **Z:**
+      - **W:**
     - **Edge Color / Edge Brightness**
     - **Fill Color / Fill Brightness**
     - **Slice UV**
@@ -72,7 +74,10 @@ _This package requires **Unity 2018.3 or later**._
     - **"_BaseCutOutProgress**
     - **Anim:**
   - **Sprite Vertex Animation**
-    - **X Y Z W**
+    - **X**
+    - **Y**
+    - **Z**
+    - **W**
 
 - **Add Effect "number":** 신규 이팩트 레이어를 추가 (최대 6까지)
   - **Texture:** Change the bake view size.
@@ -82,11 +87,18 @@ _This package requires **Unity 2018.3 or later**._
     - **Use Curve:**
     - **FlipBook Blending:**
   - **Use _SpriteEffectMask:**
-    - **x/y/z/w:**
+    - **X:**
+    - **Y:**
+    - **Z:**
+    - **W:**
   - **Mask:**
     - **Slice UV:**
     - **Luminance Mask:**
     - **Use Timer Mask(b):**
+      - **X:**
+      - **Y:**
+      - **Z:**
+      - **W:**
   - **Color:**
   - **Brightness:**
   - **GlowSpeed:**
@@ -113,6 +125,10 @@ _This package requires **Unity 2018.3 or later**._
   - **Rotate:**
   - **Scale:**
   - **Color:**
+  - **↓ & ↑:**
   - **Reset Effect "Layer number":**
+
+### Component: ART_SpriteEffectUIImageHelper
+`ART_SpriteEffectUIImageHelper` set necessary value for SpriteEffect work on UIImage correctly.
 
 <br><br>
