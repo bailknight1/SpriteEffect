@@ -721,7 +721,7 @@ public class ART_SpriteEffectButton : Editor
 
     private void CustomSliderField(SerializedProperty property, string label, float min, float max , SerializedProperty overrideVal = null)  // 프로퍼티의 오버라이드여부에 따라 필드 색상 변경
     {
-        EditorGUIUtility.labelWidth = 30;
+        EditorGUIUtility.labelWidth = label.Length * 8;
         if (overrideVal != null)
         {
             var defaultColor = GUI.backgroundColor;
