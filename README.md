@@ -1,6 +1,6 @@
-﻿# Sprite Effect For UI Image & Sprite Renderer <!-- omit in toc -->
+﻿# (Unity Package) Sprite Effect For UI Image & Sprite Renderer <!-- omit in toc -->
 
-This package can create various texture based VFX material for UI Image & Sprite renderer.
+This package can create various texture based VFX material for UI Image & Sprite renderer for Unity.
 
 
 <br><br>
@@ -37,7 +37,7 @@ _This package requires **Unity 2018.3 or later**._
 - **주의** 반드시 빌드에 `Assets\Resources\SpriteEffectMaterial` 폴더안에 있는 `SpriteEffect_`로 시작되는 메테리얼들을 포함시킬것.
 - **주의** 이팩트가 필요한 스프라이트마다 유니크한 이름을 지정하여 개별 메테리얼로 저장할것.
 - **주의** `UIImage`에 사용할경우 반드시 `ART_SpriteEffectUIImageHelper`컴포넌트가 함깨 붙어있어야 정상적으로 동작함.
-
+<br><br>
 
 ## 🚀 Menu explanation
 
@@ -153,7 +153,7 @@ _This package requires **Unity 2018.3 or later**._
   - **Reset Effect "Layer number":** 현재 이팩트 레이어의 설정값을 초기값으로 리셋.
   <br><br>
 - **ART_SpriteEffect.SpriteChange()**: 런타임에서 렌더러의 스프라이트를 교채할경우 스프라이트 변경 직후 반드시 한번 호출해야 정상동작.
-
+<br><br>
 ### Component: ART_SpriteEffectUIImageHelper
 `ART_SpriteEffectUIImageHelper` set necessary value for SpriteEffect work properly when use with UIImage.
 
