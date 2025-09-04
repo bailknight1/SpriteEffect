@@ -30,15 +30,15 @@ _This package requires **Unity 2018.3 or later**._
 
 ## 🚀 How to use
 
-1. 이팩트를 붙이고 싶은 `UIImage` 또는 `SpriteRenderer`에 `ART_SpriteEffectManager`컴포넌트 부착.
-2. 매니저에서 `Create Effect` 버튼을 눌러서 신규 `ART_SpriteEffect` 생성.
-3. 생성된 `ART_SpriteEffect`를 원하는 값으로 셋팅후 `Save Material` 버튼을 눌러서 메테리얼 저장.
-4. 런타임에서 잘 나오면 끝.
-
-- **주의** 반드시 작업 완료후 `Save Material` 버튼을 눌러서 메테리얼을 저장할것. 저장되지않은 변경값은 플레이시 반영되지 않음.
-- **주의** 반드시 빌드에 `Assets\Resources\SpriteEffectMaterial` 폴더안에 있는 `SpriteEffect_`로 시작되는 메테리얼들을 포함시킬것.
-- **주의** 이팩트가 필요한 스프라이트마다 유니크한 이름을 지정하여 개별 메테리얼로 저장할것.
-- **주의** `UIImage`에 사용할경우 반드시 `ART_SpriteEffectUIImageHelper`컴포넌트가 함깨 붙어있어야 정상적으로 동작함.
+1. Attach the `ART_SpriteEffectManager` component to the `UIImage` or `SpriteRenderer` to which you want to add an effect.
+2. Click the `Create Effect` button in the manager to create a new `ART_SpriteEffect`.
+3. Set the created `ART_SpriteEffect` to the desired values ​​and click the `Save Material` button to save the material.
+4. If it shows as you intended at runtime, PROFIT.
+<br><br>
+- **Caution** Be sure to save the material by pressing the `Save Material` button after completing the work. Unsaved changes will not be reflected in the build.
+- **Caution** Be sure to include the materials starting with `SpriteEffect_` in the `Assets\Resources\SpriteEffectMaterial` folder in the build.
+- **Caution** Give each sprite that requires an effect a unique name and save it as a separate material.
+- **Caution** When using `UIImage`, the `ART_SpriteEffectUIImageHelper` component must be attached to work properly.
 <br><br>
 
 ## 🚀 Menu explanation
@@ -46,6 +46,169 @@ _This package requires **Unity 2018.3 or later**._
 ### Component: ART_SpriteEffectManager
 
 `ART_SpriteEffectManager` can create or delete SpriteEffect to UIImage or SpriteRenderer.
+  - **Create Effect**: Create a new sprite effect. Multiple effects can be created for a single sprite renderer (or UI image). Only one effect can be applied at a time.
+  - **Play "Effect Name"**: Replace the renderer's material with the effect with the given name.
+  - **Remove "Effect Name"**: Delete the effect with the given name.
+<br><br>
+- **ART_SpriteEffectManager.ActiveEffect(int index):** Replaces the renderer material with the sprite effect corresponding to the given index value.
+
+<br><br>
+### Component: ART_SpriteEffect
+`ART_SpriteEffect` can create SpriteEffect Material for UIImage or SpriteRenderer.
+    - **Main Properties**: Material properties.
+    - **Name:** The name of the effect material. When saved, it will be saved in the `Assets/Resources/SpriteEffectMaterial` folder in the format `SpriteEffect_"Name"`.
+    - **Material:** The last saved and currently editing effect material. If it hasn't been saved yet, it will be blank.
+    - **Save Material:** Saves the effect material to the `Assets/Resources/SpriteEffectMaterial` folder (it will be created automatically if it doesn't exist). Unsaved changes are shown in red.
+      - **Load Material:** Pressing the Alt key activates material load mode. Loads the material values ​​in the Material section into the editor.
+      - **Copy Material:** Pressing the Ctrl key activates material copy mode. Copies the current editor values ​​to the material specified by `Name`.
+  - **Focus Folder:** Focuses the effect material storage folder in the project.
+  - **Set Sprite Transparent**: Makes the sprite assigned to the renderer transparent. This makes the renderer sprite act as a transparency mask for the effect material.
+  - **Use Unscaled Time:** Shaders are animated at a fixed timescale, ignoring unity timescale. (At runtime, the shader must be passed the global shader property `_ShaderUnscaledTime` for this to work.)
+  - **Luminance Mask Threshold:** If any of other effects request a Luminance Mask, enable this. This allows you to use the sprite's grayscale shading as a mask.
+<br><br>
+- **Show Sprite Options**: Expands the sprite's option folder.
+  - **Sprite GrayScale:** Converts the sprite color to black and white.
+    - **0~1 Slider** full color(0) to Black and white(1).
+    - **Anim:** Adjusts the black and white level over time using an animation curve.
+  - **Sprite Brightness:** Adjusts the brightness of the sprite.
+    - **0~10 Slider** Black(0) to very bright(10) (default brightness 1).
+    - **Anim:** Adjusts the brightness level over time using an animation curve.
+  - **Luminance Mask:** Masks the area to be brightened using a luminance mask.
+  - **Sprite Tint Color:** Multiply color on a sprite.
+    - **Color Picker** Selects the color to multiply. When using an animation curve, it operates in gradient mode.
+    - **Anim:** Adjusts the color over time using an animation curve.
+    - **Luminance Mask:** Masks the area to be multiplied with a luminance mask.
+  - **Sprite Cutout:** Cuts off a sprite below a certain transparency level, based on the color alpha value of the sprite renderer.
+    - **Texture** Cutout mask texture (R channel only).
+    - **Tile & Offset** Cutout mask texture tile & offset.
+    - **Smoothness / Contrast / Min / Max**
+        - **X:** The softness of the cutout edge (sharp(0) to soft(1)).
+        - **Y:** Controls the contrast of the cutout mask (no contrast(0) to high contrast(1 or greater), default value is 1).
+        - **Z:** The minimum cutout value of the cutout mask (e.g., if set to 0.5, pixels will be cut out starting at cutout progress 0.5).
+        - **W:** The maximum cutout value of the cutout mask (e.g., if set to 0.5, all pixels will be cut out at cutout progress 0.5).
+    - **Edge Color / Edge Brightness** Color/brightness of the cutout edge. Disabled when brightness is 0.
+    - **Fill Color / Fill Brightness** Color/brightness of the area other than the cutout edge. Disabled when brightness is 0.
+    - **Slice UV** Uses sliced ​​or tiled sprite UVs as the UV for the cutout mask texture (cannot be used simultaneously with Uniform UV).
+    - **Uniform UV** Forces the cutout mask texture UV to be square regardless of the sprite aspect ratio (cannot be used simultaneously with Slice UV).
+    - **Do not use Alpha Val** Uses the `_BaseCutOutProgress` shader property as the cutout progress instead of the sprite renderer's color alpha value.
+    - **"_BaseCutOutProgress** Shader property that can be used for cutout progress.
+    - **Anim:** Control the `_BaseCutOutProgress` value over time with an animation curve.
+  - **Sprite Vertex Animation** Sprite vertex animation. Area masking is possible with the B channel of the sprite secondary texture `_MaskMap`.
+      - **X** X-axis animation intensity.
+      - **Y** Y-axis animation intensity.
+      - **Z** Adjusts the intensity of the animation offset based on the world position of each vertex (0 disables it).
+      - **W** Vertex animation playback speed.
+  - **Add Effect "number":** Add a new effect layer (up to 6)
+<br><br>
+- **Effect "Number"**: Effect layer properties.
+  - **Remove Effect "Layer number":** Deletes the current effect layer.
+  - **Texture:** Effect texture.
+  - **Tile & Offset:** Effect texture tiles and offsets.
+  - **Use FlipBook UV:** Flipbook animation function.
+      - **X** Horizontal sprite count.
+      - **Y** Vertical sprite count.
+      - **Z** Sprite index.
+      - **W** Flipbook playback speed.
+    - **Use Curve:** Adjust the flipbook index over time with an animation curve.
+    - **FlipBook Blending:** Smoothly linearly interpolates the transition between the current and next indexes.
+  - **Use _SpriteEffectMask:** Use the sprite secondary texture `_SpriteEffectMask` as the effect mask.
+    - **X:** If set to 1, use the R channel of the _SpriteEffectMask mask as the mask. If set to 0, disable it.
+    - **Y:** If set to 1, use the G channel of the _SpriteEffectMask mask as the mask. If set to 0, disable it.
+    - **Z:** If set to 1, use the B channel of the _SpriteEffectMask mask as the mask. If set to 0, disable it.
+    - **W:** If set to 1, use the A channel of the _SpriteEffectMask mask as the mask. If set to 0, disable it.
+  - **Mask:** Effect mask. 3-channel configuration (R: Transparency mask / G: UV distortion mask / B: Timer mask).
+    - **Slice UV:** Uses sliced ​​or tiled sprite UVs as mask UVs.
+    - **Luminance Mask:** Uses the Luminance Mask as a mask.
+    - **Use Timer Mask(b):** Timer mask function (B channel). Can be used to make an effect appear and disappear over time.
+      - **X:** The point at which the effect appears (0-1).
+      - **Y:** The point at which the effect disappears (0-1).
+      - **Z:** The smooth interval at which the effect appears or disappears (0-1).
+      - **W:** The animation playback speed.
+      - (Example: If x:0.3/y:0.7/z:0.1/w:1, the effect appears smoothly for 0.3 to 0.4 seconds, lasts for 0.6 seconds, and then disappears smoothly for 0.6 to 0.7 seconds.)
+  - **Color:** The color to multiply the effect by.
+  - **Brightness:** The brightness of the effect.
+  - **GlowSpeed:** The speed at which the effect blinks over time. 0 disables this.
+  - **Scale:** The scale of the effect.
+  - **Scale Anim Multiplier:** The target scale factor for animating the effect's scale (e.g., a value of 2 will cause the scale animation to repeat between `Scale` and `Scale`*2). 0 disables this.
+  - **Scale Speed:** The speed of the scale animation. The default scale method is a one-way flow loop. A value of 0 disables the scale animation.
+    - **PingPong Scale:** Instead of a one-way flow loop, a ping-pong loop is used, returning to the original value when the target value is reached. (Cannot be used with `Random Rotation`.)
+    - **Random Rotation:** Randomly applies the effect rotation value every loop in a one-way flow loop. (Cannot be used with `PingPong Scale`.)
+  - **Power:** The contrast of the effect (default 1).
+  - **Rotate Angle:** The fixed rotation angle of the effect (0-360 degrees).
+  - **Rotate Speed:** The rotation speed of the effect (negative values ​​indicate counterclockwise rotation).
+  - **Vertical Speed:** The vertical scroll speed of the effect (negative values ​​indicate downward scrolling).
+  - **Horizontal Speed:** The horizontal scroll speed of the effect (negative values ​​indicate left scrolling).
+  - **Timing Offset:** The offset of the timing used for effect animations.
+  - **Use Alpha:** Use the alpha channel value of the effect texture as transparency (only works when the `AlphaBlend` blending mode is set).
+  - **Blend Mode:** Determines how the current effect layer will blend with other layers.
+    - **Additive:** Additive blending with the upper layer (the brighter the color, the brighter it becomes, and the closer it is to black, the more transparent it becomes).
+    - **AlphaBlend:** Alpha blending with the upper layer (using the brightness value of the effect as transparency for blending. When the `Use Alpha` option is used, the alpha channel value of the effect texture is used as transparency).
+    - **Mask:** Use as an effect mask for the next numbered layer (Note: Mask mode always applies as a mask only to the layer immediately following the number. If a number is skipped, it will not be applied. When in mask mode, the effect of the current layer becomes transparent).
+  - **Unstretch UV:** Forces the effect texture UV to be square regardless of the sprite aspect ratio.
+  - **Directional Scroll:** Applies the effect rotation angle to the effect scroll direction (e.g., if an effect is rotated 90 degrees and scrolled vertically, it will scroll in the 90 degree rotated direction instead of vertically).
+  - **Mask Distort Strength:** Sets the distortion strength of the effect texture UV by the effect mask G channel (0 means no distortion).
+  - **Scroll:** Control the scroll distance of the time-based effect using an animation curve.
+  - **Rotate:** Control the rotation angle of the time-based effect using an animation curve.
+  - **Scale:** Control the size of the time-based effect using an animation curve.
+  - **Color:** Control the color of the time-based effect using an animation curve.
+  - **↓ & ↑:** Move effect settings to the upper or lower effect layer. Pressing the `Ctrl` key activates the settings copy mode.
+  - **Reset Effect "Layer number":** Resets the settings of the current effect layer to their default values.
+  <br><br>
+- **ART_SpriteEffect.SpriteChange()**: When replacing the renderer's sprite at runtime, this must be called once immediately after changing the sprite for properly operate.
+<br><br>
+### Component: ART_SpriteEffectUIImageHelper
+`ART_SpriteEffectUIImageHelper` set necessary value for SpriteEffect work properly when use with UIImage.
+
+<br><br>
+
+﻿# (유니티 패키지) UI Image & Sprite Renderer 용 스프라이트 이팩트 <!-- omit in toc -->
+
+유니티 UI이미지 & 스프라이트 랜더러용 텍스쳐기반 이팩트 메테리얼을 제작할수 있는 패키지.
+![Image](https://github.com/user-attachments/assets/31dcfa96-b0ca-4199-ab20-b1d31db91120)
+<br>
+<img width="416" height="1034" alt="Image" src="https://github.com/user-attachments/assets/2b46da41-5142-477f-8771-014291dd2365" />
+
+<br><br>
+
+## 📌 핵심기능
+
+* UI Image 또는 Sprite Renderer용의 다양한 텍스쳐 기반 이팩트 제작툴
+* UV 스크롤, 스케일, 회전 기능, 마스킹, 디스토션, 색상변경, 디졸브, 플립북 등의 기능을 복합적으로 사용하는 이팩트 메테리얼을 최대 6 레이어까지 한번에 제작가능
+* 아틀라스화된 스프라이트 대응.
+* 마스킹된 스프라이트 대응.
+* 슬라이스되거나 타일링되는 스프라이트 대응.
+* 매니저 스크립트로 생성,삭제,여러 이팩트간 교채를 관리 가능.
+* Time 또는 AnimationCurve로 대부분의 값을 애니메이션 가능.
+
+<br><br>
+## ⚙ 설치방법
+
+_**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
+
+#### 유니티 패키지 매니저로 설치
+
+- `Window > Package Manager` 를 클릭하여 패키지 매니저 열기.
+- `+ > Add package from git URL...` 를 클릭하고 다음 저장소 주소 입력: `https://github.com/bailknight/SpriteEffect.git`  
+<br><br>
+
+## 🚀 사용법
+
+1. 이팩트를 붙이고 싶은 `UIImage` 또는 `SpriteRenderer`에 `ART_SpriteEffectManager`컴포넌트 부착.
+2. 매니저에서 `Create Effect` 버튼을 눌러서 신규 `ART_SpriteEffect` 생성.
+3. 생성된 `ART_SpriteEffect`를 원하는 값으로 셋팅후 `Save Material` 버튼을 눌러서 메테리얼 저장.
+4. 런타임에서 잘 나오면 끝.
+<br><br>
+- **주의** 반드시 작업 완료후 `Save Material` 버튼을 눌러서 메테리얼을 저장할것. 저장되지않은 변경값은 플레이시 반영되지 않음.
+- **주의** 반드시 빌드에 `Assets\Resources\SpriteEffectMaterial` 폴더안에 있는 `SpriteEffect_`로 시작되는 메테리얼들을 포함시킬것.
+- **주의** 이팩트가 필요한 스프라이트마다 유니크한 이름을 지정하여 개별 메테리얼로 저장할것.
+- **주의** `UIImage`에 사용할경우 반드시 `ART_SpriteEffectUIImageHelper`컴포넌트가 함깨 붙어있어야 정상적으로 동작함.
+<br><br>
+
+## 🚀 메뉴 설명
+
+### ART_SpriteEffectManager 컴포넌트
+
+`ART_SpriteEffectManager` 로 UI이미지나 스프라이트 렌더러에 스프라이트 이팩트를 생성또는 삭제 가능.
   - **Create Effect**: 신규 스프라이트 이팩트를 생성. 한 스프라이트렌더러(또는 UI이미지)에 복수의 이팩트를 생성 가능. 한번에 한개의 이팩트만 적용할수 있음.
   - **Play "Effect Name"**: 해당 명칭의 이팩트로 렌더러 메테리얼을 교체
   - **Remove "Effect Name"**: 해당 명칭의 이팩트를 삭제.
@@ -53,8 +216,8 @@ _This package requires **Unity 2018.3 or later**._
 - **ART_SpriteEffectManager.ActiveEffect(int index):** index값에 해당되는 스프라이트 이팩트로 렌더러 메테리얼을 교체.
 
 <br><br>
-### Component: ART_SpriteEffect
-`ART_SpriteEffect` can create SpriteEffect Material for UIImage or SpriteRenderer.
+### ART_SpriteEffect 컴포넌트
+`ART_SpriteEffect` 로 UI이미지나 스프라이트 렌더러용 VFX메테리얼 작성 가능.
 - **메인 속성**: 메테리얼의 속성.
   - **Name:** 이팩트 메테리얼의 이름. 저장될때 SpriteEffect_"Name" 형식으로 Assets/Resources/SpriteEffectMaterial 폴더에 저장됨.
   - **Material:** 마지막으로 저장하고 현재 편집중인 이팩트 메테리얼. 아직 한번도 저장하지 않았을경우 빈칸.
@@ -68,7 +231,7 @@ _This package requires **Unity 2018.3 or later**._
 <br><br>
 - **Show Sprite Options**: 스프라이트의 속성폴더 확장.
   - **Sprite GrayScale:** 스프라이트 색상을 흑백으로.
-    - **0~1 Slider** 흑백 0 ~ 1 풀컬러.
+    - **0~1 Slider**  풀컬러 0 ~ 1 흑백.
     - **Anim:**  시간별 흑백 정도를 애니메이션 커브로 조절.
   - **Sprite Brightness:** 스프라이트 밝기 조절.
     - **0~10 Slider** 검정 0 ~ 10 아주밝음(기본밝기 1).
@@ -156,7 +319,7 @@ _This package requires **Unity 2018.3 or later**._
   <br><br>
 - **ART_SpriteEffect.SpriteChange()**: 런타임에서 렌더러의 스프라이트를 교채할경우 스프라이트 변경 직후 반드시 한번 호출해야 정상동작.
 <br><br>
-### Component: ART_SpriteEffectUIImageHelper
-`ART_SpriteEffectUIImageHelper` set necessary value for SpriteEffect work properly when use with UIImage.
+### ART_SpriteEffectUIImageHelper 컴포넌트
+`ART_SpriteEffectUIImageHelper` 스프라이트 이팩트가 UI이미지에 제대로 동작하는데 필요한 도우미.
 
 <br><br>
