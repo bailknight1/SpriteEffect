@@ -3117,7 +3117,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 #if _BASECUTOUT_ON
                     fixed cutOutMask = tex2D(_BaseCutOutTex, i.uv3.zw).r;
                     fixed cutOff = max(0.01, _BaseCutOutVal.x);
-                    cutOutMask = remap(cutOutMask, 0, 1, _BaseCutOutVal.z, _BaseCutOutVal.w - cutOff);
+                    cutOutMask = remap(cutOutMask, 0, 1, _BaseCutOutVal.z, _BaseCutOutVal.w);
                     cutOutMask = pow(cutOutMask, _BaseCutOutVal.y);
                     fixed cutOutMask1 = saturate(InverseLerp_float(0, cutOff, cutOutMask + cutOff - (1 - cutOutVal)) * 1.5);
 
