@@ -28,10 +28,10 @@ _This package requires **Unity 2018.3 or later**._
 
 ## 🚀 How to use
 
-1.이팩트를 붙이고 싶은 `UIImage` 또는 `SpriteRenderer`에 `ART_SpriteEffectManager`컴포넌트 부착.
-2.매니저에서 `Create Effect` 버튼을 눌러서 신규 `ART_SpriteEffect` 생성.
-3.생성된 `ART_SpriteEffect`를 원하는 값으로 셋팅후 `Save Material` 버튼을 눌러서 메테리얼 저장.
-4.런타임에서 잘 나오면 끝.
+1. 이팩트를 붙이고 싶은 `UIImage` 또는 `SpriteRenderer`에 `ART_SpriteEffectManager`컴포넌트 부착.
+2. 매니저에서 `Create Effect` 버튼을 눌러서 신규 `ART_SpriteEffect` 생성.
+3. 생성된 `ART_SpriteEffect`를 원하는 값으로 셋팅후 `Save Material` 버튼을 눌러서 메테리얼 저장.
+4. 런타임에서 잘 나오면 끝.
 
 - **주의** 반드시 작업 완료후 `Save Material` 버튼을 눌러서 메테리얼을 저장할것. 저장되지않은 변경값은 플레이시 반영되지 않음.
 - **주의** 반드시 빌드에 `Assets\Resources\SpriteEffectMaterial` 폴더안에 있는 `SpriteEffect_`로 시작되는 메테리얼드를 포함시킬것.
@@ -44,12 +44,13 @@ _This package requires **Unity 2018.3 or later**._
 ### Component: ART_SpriteEffectManager
 
 `ART_SpriteEffectManager` can create or delete SpriteEffect to UIImage or SpriteRenderer.
-- **Create Effect**: 신규 스프라이트 이팩트를 생성. 한 스프라이트렌더러(또는 UI이미지)에 복수의 이팩트를 생성 가능. 한번에 한개의 이팩트만 적용할수 있음.
-- **Play "Effect Name"**: 해당 명칭의 이팩트로 렌더러 메테리얼을 교체
-- **Remove "Effect Name"**: 해당 명칭의 이팩트를 삭제.
-<br>
-- **ART_SpriteEffectManager.ActiveEffect(int index)**: index값에 해당되는 스프라이트 이팩트로 렌더러 메테리얼을 교체.
+  - **Create Effect**: 신규 스프라이트 이팩트를 생성. 한 스프라이트렌더러(또는 UI이미지)에 복수의 이팩트를 생성 가능. 한번에 한개의 이팩트만 적용할수 있음.
+  - **Play "Effect Name"**: 해당 명칭의 이팩트로 렌더러 메테리얼을 교체
+  - **Remove "Effect Name"**: 해당 명칭의 이팩트를 삭제.
+<br><br>
+- **ART_SpriteEffectManager.ActiveEffect(int index):** index값에 해당되는 스프라이트 이팩트로 렌더러 메테리얼을 교체.
 
+<br><br>
 ### Component: ART_SpriteEffect
 `ART_SpriteEffect` can create SpriteEffect Material for UIImage or SpriteRenderer.
 - **메인 속성**: 메테리얼의 속성.
@@ -62,7 +63,8 @@ _This package requires **Unity 2018.3 or later**._
   - **Set Sprite Transparent**: 렌더러에 지정된 스프라이트를 투명하게 만듬. 이렇게 할경우 렌더러 스프라이트는 이팩트메테리얼의 투명도 마스크처럼 동작.
   - **Use Unscaled Time:** TimeScale을 무시하고 픽스된 타임스케일로 쉐이더가 애니메이션됨. (런타임에서는 반드시 쉐이더에 글로벌 쉐이더 프로퍼티 "_ShaderUnscaledTime" 을 전달해줘야 동작)
   - **Luminance Mask Threshold:** 이팩트들중에 Luminanace Mask를 요청하는 이팩트가 있으면 활성화. 스프라이트의 그레이스케일 명암을 마스크용도로 사용가능.
-- **Show Sprite Options**: 스프라이트의 속성.
+<br><br>
+- **Show Sprite Options**: 스프라이트의 속성폴더 확장.
   - **Sprite GrayScale:** 스프라이트 색상을 흑백으로.
     - **0~1 Slider** 흑백 0 ~ 1 풀컬러.
     - **Anim:**  시간별 흑백 정도를 애니메이션 커브로 조절.
@@ -94,8 +96,9 @@ _This package requires **Unity 2018.3 or later**._
     - **Y** Y축 애니메이션 강도.
     - **Z** 각 버택스의 월드포지션에 의한 애니메이션 오프셋의 강도 조절(0일경우 비활성화).
     - **W** 버택스 애니메이션 재생속도.
-
-- **Add Effect "number":** 신규 이팩트 레이어를 추가 (최대 6까지)
+  - **Add Effect "number":** 신규 이팩트 레이어를 추가 (최대 6까지)
+<br><br>
+- **Effect "Number"**: 이팩트 레이어의 속성.
   - **Remove Effect "Layer number":** 현재 이팩트 레이어를 삭제.
   - **Texture:** 이팩트 텍스쳐.
   - **Tile & Offset:** 이팩트 텍스쳐 타일 & 오프셋.
@@ -148,7 +151,7 @@ _This package requires **Unity 2018.3 or later**._
   - **Color:** 시간별 이팩트 색상을 애니메이션 커브로 제어.
   - **↓ & ↑:** 상위 또는 하위 이팩트 레이어로 이팩트 설정값을 이동. `Ctrl`키 입력시 설정값 복사 모드로 동작.
   - **Reset Effect "Layer number":** 현재 이팩트 레이어의 설정값을 초기값으로 리셋.
-  <br>
+  <br><br>
 - **ART_SpriteEffect.SpriteChange()**: 런타임에서 렌더러의 스프라이트를 교채할경우 스프라이트 변경 직후 반드시 한번 호출해야 정상동작.
 
 ### Component: ART_SpriteEffectUIImageHelper
