@@ -34,7 +34,7 @@ _This package requires **Unity 2018.3 or later**._
 4. 런타임에서 잘 나오면 끝.
 
 - **주의** 반드시 작업 완료후 `Save Material` 버튼을 눌러서 메테리얼을 저장할것. 저장되지않은 변경값은 플레이시 반영되지 않음.
-- **주의** 반드시 빌드에 `Assets\Resources\SpriteEffectMaterial` 폴더안에 있는 `SpriteEffect_`로 시작되는 메테리얼드를 포함시킬것.
+- **주의** 반드시 빌드에 `Assets\Resources\SpriteEffectMaterial` 폴더안에 있는 `SpriteEffect_`로 시작되는 메테리얼들을 포함시킬것.
 - **주의** 이팩트가 필요한 스프라이트마다 유니크한 이름을 지정하여 개별 메테리얼로 저장할것.
 - **주의** `UIImage`에 사용할경우 반드시 `ART_SpriteEffectUIImageHelper`컴포넌트가 함깨 붙어있어야 정상적으로 동작함.
 
