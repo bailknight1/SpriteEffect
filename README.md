@@ -68,36 +68,36 @@ _This package requires **Unity 2018.3 or later**._
 <br><br>
 - **Show Sprite Options**: Expands the sprite's option folder.
   - **Sprite GrayScale:** Converts the sprite color to black and white.
-    - **0~1 Slider** full color(0) to Black and white(1).
+    - **0~1 Slider:** full color(0) to Black and white(1).
     - **Anim:** Adjusts the black and white level over time using an animation curve.
   - **Sprite Brightness:** Adjusts the brightness of the sprite.
-    - **0~10 Slider** Black(0) to very bright(10) (default brightness 1).
+    - **0~10 Slider:** Black(0) to very bright(10) (default brightness 1).
     - **Anim:** Adjusts the brightness level over time using an animation curve.
   - **Luminance Mask:** Masks the area to be brightened using a luminance mask.
   - **Sprite Tint Color:** Multiply color on a sprite.
-    - **Color Picker** Selects the color to multiply. When using an animation curve, it operates in gradient mode.
+    - **Color Picker:** Selects the color to multiply. When using an animation curve, it operates in gradient mode.
     - **Anim:** Adjusts the color over time using an animation curve.
     - **Luminance Mask:** Masks the area to be multiplied with a luminance mask.
   - **Sprite Cutout:** Cuts off a sprite below a certain transparency level, based on the color alpha value of the sprite renderer.
-    - **Texture** Cutout mask texture (R channel only).
-    - **Tile & Offset** Cutout mask texture tile & offset.
+    - **Texture:** Cutout mask texture (R channel only).
+    - **Tile & Offset:** Cutout mask texture tile & offset.
     - **Smoothness / Contrast / Min / Max**
         - **X:** The softness of the cutout edge (sharp(0) to soft(1)).
         - **Y:** Controls the contrast of the cutout mask (no contrast(0) to high contrast(1 or greater), default value is 1).
         - **Z:** The minimum cutout value of the cutout mask (e.g., if set to 0.5, pixels will be cut out starting at cutout progress 0.5).
         - **W:** The maximum cutout value of the cutout mask (e.g., if set to 0.5, all pixels will be cut out at cutout progress 0.5).
-    - **Edge Color / Edge Brightness** Color/brightness of the cutout edge. Disabled when brightness is 0.
-    - **Fill Color / Fill Brightness** Color/brightness of the area other than the cutout edge. Disabled when brightness is 0.
-    - **Slice UV** Uses sliced ​​or tiled sprite UVs as the UV for the cutout mask texture (cannot be used simultaneously with Uniform UV).
-    - **Uniform UV** Forces the cutout mask texture UV to be square regardless of the sprite aspect ratio (cannot be used simultaneously with Slice UV).
-    - **Do not use Alpha Val** Uses the `_BaseCutOutProgress` shader property as the cutout progress instead of the sprite renderer's color alpha value.
-    - **"_BaseCutOutProgress** Shader property that can be used for cutout progress.
+    - **Edge Color / Edge Brightness:** Color/brightness of the cutout edge. Disabled when brightness is 0.
+    - **Fill Color / Fill Brightness:** Color/brightness of the area other than the cutout edge. Disabled when brightness is 0.
+    - **Slice UV:** Uses sliced ​​or tiled sprite UVs as the UV for the cutout mask texture (cannot be used simultaneously with Uniform UV).
+    - **Uniform UV:** Forces the cutout mask texture UV to be square regardless of the sprite aspect ratio (cannot be used simultaneously with Slice UV).
+    - **Do not use Alpha Val:** Uses the `_BaseCutOutProgress` shader property as the cutout progress instead of the sprite renderer's color alpha value.
+    - **"_BaseCutOutProgress:** Shader property that can be used for cutout progress.
     - **Anim:** Control the `_BaseCutOutProgress` value over time with an animation curve.
-  - **Sprite Vertex Animation** Sprite vertex animation. Area masking is possible with the B channel of the sprite secondary texture `_MaskMap`.
-      - **X** X-axis animation intensity.
-      - **Y** Y-axis animation intensity.
-      - **Z** Adjusts the intensity of the animation offset based on the world position of each vertex (0 disables it).
-      - **W** Vertex animation playback speed.
+  - **Sprite Vertex Animation:** Sprite vertex animation. Area masking is possible with the B channel of the sprite secondary texture `_MaskMap`.
+      - **X:** X-axis animation intensity.
+      - **Y:** Y-axis animation intensity.
+      - **Z:** Adjusts the intensity of the animation offset based on the world position of each vertex (0 disables it).
+      - **W:** Vertex animation playback speed.
   - **Add Effect "number":** Add a new effect layer (up to 6)
 <br><br>
 - **Effect "Number"**: Effect layer properties.
@@ -105,10 +105,10 @@ _This package requires **Unity 2018.3 or later**._
   - **Texture:** Effect texture.
   - **Tile & Offset:** Effect texture tiles and offsets.
   - **Use FlipBook UV:** Flipbook animation function.
-      - **X** Horizontal sprite count.
-      - **Y** Vertical sprite count.
-      - **Z** Sprite index.
-      - **W** Flipbook playback speed.
+      - **X:** Horizontal sprite count.
+      - **Y:** Vertical sprite count.
+      - **Z:** Sprite index.
+      - **W:** Flipbook playback speed.
     - **Use Curve:** Adjust the flipbook index over time with an animation curve.
     - **FlipBook Blending:** Smoothly linearly interpolates the transition between the current and next indexes.
   - **Use _SpriteEffectMask:** Use the sprite secondary texture `_SpriteEffectMask` as the effect mask.
@@ -233,36 +233,36 @@ _**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
 <br><br>
 - **Show Sprite Options**: 스프라이트의 속성폴더 확장.
   - **Sprite GrayScale:** 스프라이트 색상을 흑백으로.
-    - **0~1 Slider**  풀컬러 0 ~ 1 흑백.
+    - **0~1 Slider:**  풀컬러 0 ~ 1 흑백.
     - **Anim:**  시간별 흑백 정도를 애니메이션 커브로 조절.
   - **Sprite Brightness:** 스프라이트 밝기 조절.
-    - **0~10 Slider** 검정 0 ~ 10 아주밝음(기본밝기 1).
+    - **0~10 Slider:** 검정 0 ~ 10 아주밝음(기본밝기 1).
     - **Anim:**  시간별 밝기 정도를 애니메이션 커브로 조절.
     - **Luminance Mask:** 밝게 만들 부분을 Luminanace Mask로 마스킹.
   - **Sprite Tint Color:** 스프라이트에 색 곱하기.
-    - **Color Picker** 곱할 색상 선택. 애니메이션 커브 사용시엔 그라디언트로 모드로 동작.
+    - **Color Picker:** 곱할 색상 선택. 애니메이션 커브 사용시엔 그라디언트로 모드로 동작.
     - **Anim:** 시간별 색상을 애니메이션 커브로 조절.
     - **Luminance Mask:** 색상을 곱할 부분을 Luminanace Mask로 마스킹.
   - **Sprite Cutout:** 스프라이트 렌더러의 컬러 알파값에 따라 스프라이트의 일정 투명도 이하를 잘라냄.
-    - **Texture** 컷아웃 마스크 텍스쳐(R채널만 사용).
-    - **Tile & Offset** 컷아웃 마스크 텍스쳐 타일& 오프셋.
+    - **Texture:** 컷아웃 마스크 텍스쳐(R채널만 사용).
+    - **Tile & Offset:** 컷아웃 마스크 텍스쳐 타일& 오프셋.
     - **Smoothness / Contrast / Min / Max**
       - **X:** 컷아웃 경계의 부드러운 정도 (날카로움 0 ~ 1 부드러움).
       - **Y:** 컷아웃 마스크의 대비 조절 (대비없음 0 ~ 1이상 고대비, 기본값 1).
       - **Z:** 컷아웃 마스크의 최소컷아웃지점 (예: 0.5로 설정할 경우 컷아웃 진행도 0.5부터 컷아웃되는 픽셀이 생김).
       - **W:** 컷아웃 마스크의 최대컷아웃지점 (예: 0.5로 설정할 경우 컷아웃 진행도 0.5에서 모든 픽셀이 컷아웃됨).
-    - **Edge Color / Edge Brightness** 컷아웃 경계 색상/밝기. 밝기가 0일경우 비활성화됨.
-    - **Fill Color / Fill Brightness** 컷아웃 경계 이외의 부분의 색상/밝기. 밝기가 0일경우 비활성화됨.
-    - **Slice UV** 컷아웃 마스크 텍스쳐의 UV로 sliced 또는 tiled된 스프라이트 UV를 사용(Uniform UV와 동시에 사용불가).
-    - **Uniform UV** 스프라이트 종횡비에 관계없이 컷아웃 마스트 텍스쳐 UV를 정사각형으로 고정(Slice UV와 동시에 사용불가).
-    - **Do not use Alpha Val** 스프라이트 렌더러의 컬러 알파값 대신 쉐이더 프로퍼티 `_BaseCutOutProgress` 프로퍼티를 컷아웃 진행도로 사용.
-    - **"_BaseCutOutProgress** 컷아웃 진행도용으로 사용할수 있는 쉐이더 프로퍼티.
+    - **Edge Color / Edge Brightness:** 컷아웃 경계 색상/밝기. 밝기가 0일경우 비활성화됨.
+    - **Fill Color / Fill Brightness:** 컷아웃 경계 이외의 부분의 색상/밝기. 밝기가 0일경우 비활성화됨.
+    - **Slice UV:** 컷아웃 마스크 텍스쳐의 UV로 sliced 또는 tiled된 스프라이트 UV를 사용(Uniform UV와 동시에 사용불가).
+    - **Uniform UV:** 스프라이트 종횡비에 관계없이 컷아웃 마스트 텍스쳐 UV를 정사각형으로 고정(Slice UV와 동시에 사용불가).
+    - **Do not use Alpha Val:** 스프라이트 렌더러의 컬러 알파값 대신 쉐이더 프로퍼티 `_BaseCutOutProgress` 프로퍼티를 컷아웃 진행도로 사용.
+    - **"_BaseCutOutProgress:** 컷아웃 진행도용으로 사용할수 있는 쉐이더 프로퍼티.
     - **Anim:** 시간별 `_BaseCutOutProgress` 값을 애니메이션 커브로 조절.
-  - **Sprite Vertex Animation** 스프라이트 버택스 애니메이션. 스프라이트 세컨데리 텍스쳐 `_MaskMap` B채널로 적용범위 마스킹 가능.
-    - **X** X축 애니메이션 강도.
-    - **Y** Y축 애니메이션 강도.
-    - **Z** 각 버택스의 월드포지션에 의한 애니메이션 오프셋의 강도 조절(0일경우 비활성화).
-    - **W** 버택스 애니메이션 재생속도.
+  - **Sprite Vertex Animation:** 스프라이트 버택스 애니메이션. 스프라이트 세컨데리 텍스쳐 `_MaskMap` B채널로 적용범위 마스킹 가능.
+    - **X:** X축 애니메이션 강도.
+    - **Y:** Y축 애니메이션 강도.
+    - **Z:** 각 버택스의 월드포지션에 의한 애니메이션 오프셋의 강도 조절(0일경우 비활성화).
+    - **W:** 버택스 애니메이션 재생속도.
   - **Add Effect "number":** 신규 이팩트 레이어를 추가 (최대 6까지)
 <br><br>
 - **Effect "Number"**: 이팩트 레이어의 속성.
@@ -270,10 +270,10 @@ _**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
   - **Texture:** 이팩트 텍스쳐.
   - **Tile & Offset:** 이팩트 텍스쳐 타일 & 오프셋.
   - **Use FlipBook UV:** 플립북 애니메이션 기능
-    - **X** 가로 스프라이트 갯수.
-    - **Y** 세로 스프라이트 갯수.
-    - **Z** 스프라이트 인덱스.
-    - **W** 플립북 재생속도.
+    - **X:** 가로 스프라이트 갯수.
+    - **Y:** 세로 스프라이트 갯수.
+    - **Z:** 스프라이트 인덱스.
+    - **W:** 플립북 재생속도.
     - **Use Curve:** 시간별 플립북 인덱스를 애니메이션 커브로 조절.
     - **FlipBook Blending:** 현재 인덱스와 다음 인덱스 전환을 부드럽게 선형보간.
   - **Use _SpriteEffectMask:** 스프라이트 세컨데리 텍스쳐 `_SpriteEffectMask`를 이팩트 마스크로 사용.
