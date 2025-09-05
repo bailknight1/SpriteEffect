@@ -8,6 +8,11 @@
       "name": "bailknight",
       "url": "https://github.com/bailknight1/SpriteEffect"
     },
+    "author": {
+        "name": "bailknight",
+        "email": "bailknight@hotmail.com",
+        "url": "https://github.com/bailknight1"
+    },
     "keywords": [
       "Sprite",
       "UI",
@@ -16,4 +21,5 @@
     ]
 
 }
+
 
