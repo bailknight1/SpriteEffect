@@ -18,10 +18,7 @@
       "UI",
       "Effect",
       "VFX"
-    ]
-
-}
-{
+    ],
     "samples": [
         {
             "displayName": "Configuration Sample",
@@ -30,6 +27,8 @@
         }
     ]
 }
+
+
 
 
 
