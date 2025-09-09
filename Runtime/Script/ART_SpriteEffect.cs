@@ -1507,7 +1507,12 @@ public class ART_SpriteEffect : MonoBehaviour
 		bool layer1UseTimerMask = spriteEffectLayers[layer1].effectUseTimerMask.boolValue;
 		Vector4 layer1TimerMaskVal = spriteEffectLayers[layer1].effectTimerMaskValue.vector4Value;
 		bool layer1UseTimerMaskBaseUV = spriteEffectLayers[layer1].effectTimerMaskBaseUV.boolValue;
-
+		float layer1EffectTimeScrollX = spriteEffectLayers[layer1].effectTimeScrollX;
+		float layer1EffectTimeScrollY = spriteEffectLayers[layer1].effectTimeScrollY;
+		float layer1EffectTimeRotate = spriteEffectLayers[layer1].effectTimeRotate;
+		float layer1EffectTimeScale = spriteEffectLayers[layer1].effectTimeScale;
+		float layer1EffectTimeColor = spriteEffectLayers[layer1].effectTimeColor;
+		float layer1EffectTimeFlipBook = spriteEffectLayers[layer1].effectTimeFlipBook;
 
 		spriteEffectLayers[layer1].isEffectvalueFolderOpen = spriteEffectLayers[layer2].isEffectvalueFolderOpen;
 		spriteEffectLayers[layer1].effectTexture.textureValue = spriteEffectLayers[layer2].effectTexture.textureValue;
@@ -1542,12 +1547,12 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[layer1].effectUseScaleCurve = spriteEffectLayers[layer2].effectUseScaleCurve;
 		spriteEffectLayers[layer1].effectUseColorCurve = spriteEffectLayers[layer2].effectUseColorCurve;
 		spriteEffectLayers[layer1].effectUseFlipBookCurve = spriteEffectLayers[layer2].effectUseFlipBookCurve;
-		spriteEffectLayers[layer1].effectScrollCurveX = spriteEffectLayers[layer2].effectScrollCurveX;
-		spriteEffectLayers[layer1].effectScrollCurveY = spriteEffectLayers[layer2].effectScrollCurveY;
-		spriteEffectLayers[layer1].effectRotateCurve = spriteEffectLayers[layer2].effectRotateCurve;
-		spriteEffectLayers[layer1].effectScaleCurve = spriteEffectLayers[layer2].effectScaleCurve;
-		spriteEffectLayers[layer1].effectColorCurve = spriteEffectLayers[layer2].effectColorCurve;
-		spriteEffectLayers[layer1].effectFlipBookCurve = spriteEffectLayers[layer2].effectFlipBookCurve;
+		spriteEffectLayers[layer1].effectScrollCurveX.CopyFrom(spriteEffectLayers[layer2].effectScrollCurveX);
+		spriteEffectLayers[layer1].effectScrollCurveY.CopyFrom(spriteEffectLayers[layer2].effectScrollCurveY);
+		spriteEffectLayers[layer1].effectRotateCurve.CopyFrom(spriteEffectLayers[layer2].effectRotateCurve);
+		spriteEffectLayers[layer1].effectScaleCurve.CopyFrom(spriteEffectLayers[layer2].effectScaleCurve);
+		spriteEffectLayers[layer1].effectColorCurve.CopyFrom(spriteEffectLayers[layer2].effectColorCurve);
+		spriteEffectLayers[layer1].effectFlipBookCurve.CopyFrom(spriteEffectLayers[layer2].effectFlipBookCurve);
 		spriteEffectLayers[layer1].effectUseLuminanceMask.boolValue = spriteEffectLayers[layer2].effectUseLuminanceMask.boolValue;
 		spriteEffectLayers[layer1].effectUseFlipBook.boolValue = spriteEffectLayers[layer2].effectUseFlipBook.boolValue;
 		spriteEffectLayers[layer1].effectUseFlipBookBlend.boolValue = spriteEffectLayers[layer2].effectUseFlipBookBlend.boolValue;
@@ -1555,6 +1560,12 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[layer1].effectUseTimerMask.boolValue = spriteEffectLayers[layer2].effectUseTimerMask.boolValue;
 		spriteEffectLayers[layer1].effectTimerMaskValue.vector4Value = spriteEffectLayers[layer2].effectTimerMaskValue.vector4Value;
 		spriteEffectLayers[layer1].effectTimerMaskBaseUV.boolValue = spriteEffectLayers[layer2].effectTimerMaskBaseUV.boolValue;
+		spriteEffectLayers[layer1].effectTimeScrollX = spriteEffectLayers[layer2].effectTimeScrollX;
+		spriteEffectLayers[layer1].effectTimeScrollY = spriteEffectLayers[layer2].effectTimeScrollY;
+		spriteEffectLayers[layer1].effectTimeRotate = spriteEffectLayers[layer2].effectTimeRotate;
+		spriteEffectLayers[layer1].effectTimeScale = spriteEffectLayers[layer2].effectTimeScale;
+		spriteEffectLayers[layer1].effectTimeColor = spriteEffectLayers[layer2].effectTimeColor;
+		spriteEffectLayers[layer1].effectTimeFlipBook = spriteEffectLayers[layer2].effectTimeFlipBook;
 
 
 		if (!copyLayer)
@@ -1592,12 +1603,12 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteEffectLayers[layer2].effectUseScaleCurve = layer1UseScaleCurve;
 			spriteEffectLayers[layer2].effectUseColorCurve = layer1UseColorCurve;
 			spriteEffectLayers[layer2].effectUseFlipBookCurve = layer1UseFlipBookCurve;
-			spriteEffectLayers[layer2].effectScrollCurveX = layer1ScrollCurveX;
-			spriteEffectLayers[layer2].effectScrollCurveY = layer1ScrollCurveY;
-			spriteEffectLayers[layer2].effectRotateCurve = layer1RotateCurve;
-			spriteEffectLayers[layer2].effectScaleCurve = layer1ScaleCurve;
-			spriteEffectLayers[layer2].effectColorCurve = layer1ColorCurve;
-			spriteEffectLayers[layer2].effectFlipBookCurve = layer1FlipBookCurve;
+			spriteEffectLayers[layer2].effectScrollCurveX.CopyFrom(layer1ScrollCurveX);
+			spriteEffectLayers[layer2].effectScrollCurveY.CopyFrom(layer1ScrollCurveY);
+			spriteEffectLayers[layer2].effectRotateCurve.CopyFrom(layer1RotateCurve);
+			spriteEffectLayers[layer2].effectScaleCurve.CopyFrom(layer1ScaleCurve);
+			spriteEffectLayers[layer2].effectColorCurve.CopyFrom(layer1ColorCurve);
+			spriteEffectLayers[layer2].effectFlipBookCurve.CopyFrom(layer1FlipBookCurve);
 			spriteEffectLayers[layer2].effectUseLuminanceMask.boolValue = layer1UseLuminanceMask;
 			spriteEffectLayers[layer2].effectUseFlipBook.boolValue = layer1UseFlipBook;
 			spriteEffectLayers[layer2].effectUseFlipBookBlend.boolValue = layer1UseFlipBookBlend;
@@ -1605,6 +1616,12 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteEffectLayers[layer2].effectUseTimerMask.boolValue = layer1UseTimerMask;
 			spriteEffectLayers[layer2].effectTimerMaskValue.vector4Value = layer1TimerMaskVal;
 			spriteEffectLayers[layer2].effectTimerMaskBaseUV.boolValue = layer1UseTimerMaskBaseUV;
+			spriteEffectLayers[layer2].effectTimeScrollX = layer1EffectTimeScrollX;
+			spriteEffectLayers[layer2].effectTimeScrollY = layer1EffectTimeScrollY;
+			spriteEffectLayers[layer2].effectTimeRotate = layer1EffectTimeRotate;
+			spriteEffectLayers[layer2].effectTimeScale = layer1EffectTimeScale;
+			spriteEffectLayers[layer2].effectTimeColor = layer1EffectTimeColor;
+			spriteEffectLayers[layer2].effectTimeFlipBook = layer1EffectTimeFlipBook;
 		}
 	}
 

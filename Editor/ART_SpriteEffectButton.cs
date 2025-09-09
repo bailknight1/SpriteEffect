@@ -798,14 +798,13 @@ public class ART_SpriteEffectButton : Editor
                     if (effect_SpriteGrayScaleMode.boolValue == true)
                     {
                         CustomSliderField(effect_SpriteGrayScaleValue,"",0f,1f, effect_SpriteGrayScaleValue_override);
-                        EditorGUIUtility.labelWidth = 30;
-                        CustomPropertyField(effect_SpriteGrayScaleUseCurve, new GUIContent("Anim"), effect_SpriteGrayScaleUseCurve_override);
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
                         EditorGUIUtility.labelWidth = 0;
+                        CustomPropertyField(effect_SpriteGrayScaleUseCurve, new GUIContent("    └ Use AnimCurve"), effect_SpriteGrayScaleUseCurve_override);
                         if (effect_SpriteGrayScaleUseCurve.boolValue == true)
                         {
-                            EditorGUILayout.EndHorizontal();
-                            EditorGUILayout.BeginHorizontal();
-                            CustomPropertyField(effect_SpriteGrayScaleCurve, new GUIContent("   └ GrayScale Curve"),effect_SpriteGrayScaleCurve_override);
+                            CustomPropertyField(effect_SpriteGrayScaleCurve, new GUIContent(""),effect_SpriteGrayScaleCurve_override);
                         }
                     }
                     else
@@ -818,16 +817,17 @@ public class ART_SpriteEffectButton : Editor
                     if (effect_SpriteBrightnessMode.boolValue == true)
                     {
                         CustomSliderField(effect_SpriteBrightnessValue, "",0f,10f, effect_SpriteBrightnessValue_override);
-                        EditorGUIUtility.labelWidth = 30;
-                        CustomPropertyField(effect_SpriteBrightnessUseCurve, new GUIContent("Anim"), effect_SpriteBrightnessUseCurve_override);
-                        CustomPropertyField(effect_SpriteBrightnessUseLuminanceMask, new GUIContent("Luminance Mask"), effect_SpriteBrightnessUseLuminanceMask_override);
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
                         EditorGUIUtility.labelWidth = 0;
+                        CustomPropertyField(effect_SpriteBrightnessUseCurve, new GUIContent("    └ Use AnimCurve"), effect_SpriteBrightnessUseCurve_override);
                         if (effect_SpriteBrightnessUseCurve.boolValue == true)
                         {
-                            EditorGUILayout.EndHorizontal();
-                            EditorGUILayout.BeginHorizontal();
-                            CustomPropertyField(effect_SpriteBrightnessCurve, new GUIContent("   └ Brightness Curve"), effect_SpriteBrightnessCurve_override);
+                            CustomPropertyField(effect_SpriteBrightnessCurve, new GUIContent(""), effect_SpriteBrightnessCurve_override);
                         }
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                        CustomPropertyField(effect_SpriteBrightnessUseLuminanceMask, new GUIContent("    └ Use Luminance Mask"), effect_SpriteBrightnessUseLuminanceMask_override);
                     }
                     else
                     {
@@ -846,16 +846,17 @@ public class ART_SpriteEffectButton : Editor
                         {
                             CustomPropertyField(effect_SpriteTintColorValue, new GUIContent(""), effect_SpriteTintColorValue_override);
                         }
-                        EditorGUIUtility.labelWidth = 30;
-                        CustomPropertyField(effect_SpriteTintColorUseCurve, new GUIContent("Anim"), effect_SpriteTintColorUseCurve_override);
-                        CustomPropertyField(effect_SpriteTintColorUseLuminanceMask, new GUIContent("Luminance Mask"), effect_SpriteTintColorUseLuminanceMask_override);
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
                         EditorGUIUtility.labelWidth = 0;
+                        CustomPropertyField(effect_SpriteTintColorUseCurve, new GUIContent("    └ Use AnimCurve"), effect_SpriteTintColorUseCurve_override);
                         if (effect_SpriteTintColorUseCurve.boolValue == true)
                         {
-                            EditorGUILayout.EndHorizontal();
-                            EditorGUILayout.BeginHorizontal();
-                            CustomPropertyField(effect_SpriteTintColorCurve, new GUIContent("   └ Gradient Curve"), effect_SpriteTintColorCurve_override);
+                            CustomPropertyField(effect_SpriteTintColorCurve, new GUIContent(""), effect_SpriteTintColorCurve_override);
                         }
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                        CustomPropertyField(effect_SpriteTintColorUseLuminanceMask, new GUIContent("    └ Use Luminance Mask"), effect_SpriteTintColorUseLuminanceMask_override);
                     }
                     else
                     {
@@ -903,14 +904,13 @@ public class ART_SpriteEffectButton : Editor
                         CustomPropertyField(effect_SpriteCutOutDoNotUseAlpha, new GUIContent("   └ \"_BaseCutOutProgress\""), effect_SpriteCutOutDoNotUseAlpha_override);
                         CustomSliderField(effect_SpriteCutOutProgress, "", 0f,1f, effect_SpriteCutOutProgress_override);
                     }
-                    EditorGUIUtility.labelWidth = 30;
-                    CustomPropertyField(effect_SpriteCutOutUseCurve, new GUIContent("Anim"), effect_SpriteCutOutUseCurve_override);
+                    EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.BeginHorizontal();
                     EditorGUIUtility.labelWidth = 0;
+                    CustomPropertyField(effect_SpriteCutOutUseCurve, new GUIContent("    └ Use AnimCurve"), effect_SpriteCutOutUseCurve_override);
                     if (effect_SpriteCutOutUseCurve.boolValue == true)
                     {
-                        EditorGUILayout.EndHorizontal();
-                        EditorGUILayout.BeginHorizontal();
-                        CustomPropertyField(effect_SpriteCutOutCurve, new GUIContent("   └ Cut Out Curve"), effect_SpriteCutOutCurve_override);
+                        CustomPropertyField(effect_SpriteCutOutCurve, new GUIContent(""), effect_SpriteCutOutCurve_override);
                     }
                 }
                 EditorGUILayout.EndHorizontal();
