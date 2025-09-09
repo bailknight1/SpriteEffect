@@ -69,15 +69,15 @@ _This package requires **Unity 2018.3 or later**._
 - **Show Sprite Options**: Expands the sprite's option folder.
   - **Sprite GrayScale:** Converts the sprite color to black and white.
     - **0~1 Slider:** full color(0) to Black and white(1).
-    - **Anim:** Adjusts the black and white level over time using an animation curve.
+    - **Use AnimCurve:** Adjusts the black and white level over time using an animation curve.
   - **Sprite Brightness:** Adjusts the brightness of the sprite.
     - **0~10 Slider:** Black(0) to very bright(10) (default brightness 1).
-    - **Anim:** Adjusts the brightness level over time using an animation curve.
-  - **Luminance Mask:** Masks the area to be brightened using a luminance mask.
+    - **Use AnimCurve:** Adjusts the brightness level over time using an animation curve.
+    - **Use Luminance Mask:** Masks the area to be brightened using a luminance mask.
   - **Sprite Tint Color:** Multiply color on a sprite.
     - **Color Picker:** Selects the color to multiply. When using an animation curve, it operates in gradient mode.
-    - **Anim:** Adjusts the color over time using an animation curve.
-    - **Luminance Mask:** Masks the area to be multiplied with a luminance mask.
+    - **Use AnimCurve:** Adjusts the color over time using an animation curve.
+    - **Use Luminance Mask:** Masks the area to be multiplied with a luminance mask.
   - **Sprite Cutout:** Cuts off a sprite below a certain transparency level, based on the color alpha value of the sprite renderer.
     - **Texture:** Cutout mask texture (R channel only).
     - **Tile & Offset:** Cutout mask texture tile & offset.
@@ -92,7 +92,7 @@ _This package requires **Unity 2018.3 or later**._
     - **Uniform UV:** Forces the cutout mask texture UV to be square regardless of the sprite aspect ratio (cannot be used simultaneously with Slice UV).
     - **Do not use Alpha Val:** Uses the `_BaseCutOutProgress` shader property as the cutout progress instead of the sprite renderer's color alpha value.
     - **"_BaseCutOutProgress:** Shader property that can be used for cutout progress.
-    - **Anim:** Control the `_BaseCutOutProgress` value over time with an animation curve.
+    - **Use AnimCurve:** Control the `_BaseCutOutProgress` value over time with an animation curve.
   - **Sprite Vertex Animation:** Sprite vertex animation. Area masking is possible with the B channel of the sprite secondary texture `_MaskMap`.
       - **X:** X-axis animation intensity.
       - **Y:** Y-axis animation intensity.
@@ -234,15 +234,15 @@ _**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
 - **Show Sprite Options**: 스프라이트의 속성폴더 확장.
   - **Sprite GrayScale:** 스프라이트 색상을 흑백으로.
     - **0~1 Slider:**  풀컬러 0 ~ 1 흑백.
-    - **Anim:**  시간별 흑백 정도를 애니메이션 커브로 조절.
+    - **Use AnimCurve:**  시간별 흑백 정도를 애니메이션 커브로 조절.
   - **Sprite Brightness:** 스프라이트 밝기 조절.
     - **0~10 Slider:** 검정 0 ~ 10 아주밝음(기본밝기 1).
-    - **Anim:**  시간별 밝기 정도를 애니메이션 커브로 조절.
-    - **Luminance Mask:** 밝게 만들 부분을 Luminanace Mask로 마스킹.
+    - **Use AnimCurve:**  시간별 밝기 정도를 애니메이션 커브로 조절.
+    - **Use Luminance Mask:** 밝게 만들 부분을 Luminanace Mask로 마스킹.
   - **Sprite Tint Color:** 스프라이트에 색 곱하기.
     - **Color Picker:** 곱할 색상 선택. 애니메이션 커브 사용시엔 그라디언트로 모드로 동작.
-    - **Anim:** 시간별 색상을 애니메이션 커브로 조절.
-    - **Luminance Mask:** 색상을 곱할 부분을 Luminanace Mask로 마스킹.
+    - **Use AnimCurve:** 시간별 색상을 애니메이션 커브로 조절.
+    - **Use Luminance Mask:** 색상을 곱할 부분을 Luminanace Mask로 마스킹.
   - **Sprite Cutout:** 스프라이트 렌더러의 컬러 알파값에 따라 스프라이트의 일정 투명도 이하를 잘라냄.
     - **Texture:** 컷아웃 마스크 텍스쳐(R채널만 사용).
     - **Tile & Offset:** 컷아웃 마스크 텍스쳐 타일& 오프셋.
@@ -257,7 +257,7 @@ _**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
     - **Uniform UV:** 스프라이트 종횡비에 관계없이 컷아웃 마스트 텍스쳐 UV를 정사각형으로 고정(Slice UV와 동시에 사용불가).
     - **Do not use Alpha Val:** 스프라이트 렌더러의 컬러 알파값 대신 쉐이더 프로퍼티 `_BaseCutOutProgress` 프로퍼티를 컷아웃 진행도로 사용.
     - **"_BaseCutOutProgress:** 컷아웃 진행도용으로 사용할수 있는 쉐이더 프로퍼티.
-    - **Anim:** 시간별 `_BaseCutOutProgress` 값을 애니메이션 커브로 조절.
+    - **Use AnimCurve:** 시간별 `_BaseCutOutProgress` 값을 애니메이션 커브로 조절.
   - **Sprite Vertex Animation:** 스프라이트 버택스 애니메이션. 스프라이트 세컨데리 텍스쳐 `_MaskMap` B채널로 적용범위 마스킹 가능.
     - **X:** X축 애니메이션 강도.
     - **Y:** Y축 애니메이션 강도.
