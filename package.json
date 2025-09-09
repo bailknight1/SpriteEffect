@@ -21,5 +21,14 @@
     ]
 
 }
+{
+    "samples": [
+        {
+            "displayName": "Configuration Sample",
+            "description": "Contains sample setting for achieve various effect for UI Image",
+            "path": "Samples~/"
+        }
+    ]
+}
 
 
