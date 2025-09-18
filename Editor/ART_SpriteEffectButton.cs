@@ -69,7 +69,7 @@ public class ART_SpriteEffectButton : Editor
     public SerializedProperty[] effect_FlipBookCurve = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_Active = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UseLuminanceMask = new SerializedProperty[_numOfLayer];
-    public SerializedProperty[] effect_ValueFolderOpen = new SerializedProperty[_numOfLayer];
+    //public SerializedProperty[] effect_ValueFolderOpen = new SerializedProperty[_numOfLayer];
 
     public SerializedProperty[] effect_Texture_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_TextureTileOffset_override = new SerializedProperty[_numOfLayer];
@@ -428,7 +428,7 @@ public class ART_SpriteEffectButton : Editor
         effect_FlipBookCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectFlipBookCurve");
         effect_UseLuminanceMask[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseLuminanceMask").FindPropertyRelative("boolValue");
         effect_Active[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("isEffectActive");
-        effect_ValueFolderOpen[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("isEffectvalueFolderOpen"); 
+        //effect_ValueFolderOpen[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("isEffectvalueFolderOpen"); 
         _isEffectActive[i] = effect_Active[i].boolValue;
 
         effect_Texture_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTexture").FindPropertyRelative("overrideValue");
@@ -913,6 +913,10 @@ public class ART_SpriteEffectButton : Editor
                         CustomPropertyField(effect_SpriteCutOutCurve, new GUIContent(""), effect_SpriteCutOutCurve_override);
                     }
                 }
+                else
+                {
+                    effect_SpriteCutOutUseCurve.boolValue = false;
+                }
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
                 CustomPropertyField(effect_SpriteVertexAnimMode, new GUIContent("└ Sprite Vertex Animation"), effect_SpriteVertexAnimMode_override);
@@ -960,9 +964,9 @@ public class ART_SpriteEffectButton : Editor
         //effect_ValueFolderOpen[i].boolValue = _isEffectValueOpen[i];
         //if (_isEffectActive[i])
         //{
-            _isEffectValueOpen[i] = spriteEffect.spriteEffectLayers[i].isEffectvalueFolderOpen;
-            _isEffectValueOpen[i] = EditorGUILayout.Foldout(_isEffectValueOpen[i], new GUIContent("Show Animation Value"));
-            spriteEffect.spriteEffectLayers[i].isEffectvalueFolderOpen = _isEffectValueOpen[i];
+        _isEffectValueOpen[i] = spriteEffect.spriteEffectLayers[i].isEffectvalueFolderOpen;
+        _isEffectValueOpen[i] = EditorGUILayout.Foldout(_isEffectValueOpen[i], new GUIContent("Show Animation Value"));
+        spriteEffect.spriteEffectLayers[i].isEffectvalueFolderOpen = _isEffectValueOpen[i];
         //}
 
         CustomPropertyField(effect_Texture[i], new GUIContent("Texture"), effect_Texture_override[i]);
