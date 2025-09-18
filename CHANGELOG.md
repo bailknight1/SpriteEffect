@@ -1,3 +1,5 @@
+## [1.0.3-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.3-alpha) (2025-09-18)
+-Bugfix : Fix possibility that cause animation curve can be used in script even if it set to off in editor.
 ## [1.0.2-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.2-alpha) (2025-09-09)
 -Add sample scene and resource.<br>
 -Bugfix when copy or move layers with using animation curves.
