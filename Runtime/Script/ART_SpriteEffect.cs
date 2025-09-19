@@ -571,8 +571,6 @@ public class ART_SpriteEffect : MonoBehaviour
 	private bool needCurveReset = false;
 	private Vector3 previousRendererScale = Vector3.one;
 
-	//private bool needMaterialUpdate = false;
-
 #if UNITY_EDITOR
 	private string effectShader = "Hidden/UI_Effect_Optimized";
 	//private string oldEffectShader = "Hidden/UI_Effect_Variant";
@@ -710,10 +708,6 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private Material RenderingMat(Material mat)    // 렌더러에 사용될 적절한 메테리얼을 반환
 	{
-		//if (needMaterialUpdate)   //커브사용시 haveUnsavedChange 를 항상 참으로(인스턴스 상시사용)
-		//{
-		//	haveUnsavedChange = true;
-		//}
 		if (createdMaterial != null && !haveUnsavedChange)   // 변경사항이 없고 createdMaterial이 있으면 mat로 설정
 		{
 			//Debug.LogWarning("ManageMaterial() set to create");
