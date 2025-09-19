@@ -571,7 +571,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	private bool needCurveReset = false;
 	private Vector3 previousRendererScale = Vector3.one;
 
-	private bool needMaterialUpdate = false;
+	//private bool needMaterialUpdate = false;
 
 #if UNITY_EDITOR
 	private string effectShader = "Hidden/UI_Effect_Optimized";
@@ -581,6 +581,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	private bool? isSpriteChanged = null;  //이번프레임에 스프라이트 변경 체크를 이미 했는가?
 	private bool killCheck = false;   //킬체크 실행했는가?
 	private bool imageMaskableState = false;    //이전 마스커블 상태
+	private bool isPlayCurveInEditor = false; // 에디터에서 커브를 업데이트할것인가?
 #endif
 
 	private Vector2 previousSpriteRendererSize;
@@ -594,6 +595,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	private bool? isUseCurve = null;    //이번프레임에 커브체크를 이미 했는가?
 	private bool? isAspectChanged = null;  //이번프레임에 종횡비 변경 체크를 이미 했는가?
 	private bool isInitialized = false;  //초기화되었는가?
+
 
 
 	void OnEnable()
@@ -708,10 +710,10 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private Material RenderingMat(Material mat)    // 렌더러에 사용될 적절한 메테리얼을 반환
 	{
-		if (needMaterialUpdate)   //커브사용시 haveUnsavedChange 를 항상 참으로(인스턴스 상시사용)
-		{
-			haveUnsavedChange = true;
-		}
+		//if (needMaterialUpdate)   //커브사용시 haveUnsavedChange 를 항상 참으로(인스턴스 상시사용)
+		//{
+		//	haveUnsavedChange = true;
+		//}
 		if (createdMaterial != null && !haveUnsavedChange)   // 변경사항이 없고 createdMaterial이 있으면 mat로 설정
 		{
 			//Debug.LogWarning("ManageMaterial() set to create");
@@ -1230,7 +1232,11 @@ public class ART_SpriteEffect : MonoBehaviour
 			}
 			else return false;
 		}
-		else return CheckUseCurveInternal();
+		else if (isPlayCurveInEditor)
+		{
+			return CheckUseCurveInternal();
+		}
+		else return false;
 	}
 
 	private bool CheckUseCurveInternal()  //실제로 커브를 사용중인지 검사
@@ -1405,6 +1411,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	public void ApplySetting()  // 에디터용
 	{
 		haveUnsavedChange = true;
+		isPlayCurveInEditor = false;
 		Reload();
 	}
 
@@ -1415,6 +1422,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		haveUnsavedChange = false;
 		needUpdate = true;
+		isPlayCurveInEditor = false;
 		Reload();
 	}
 
@@ -1647,6 +1655,10 @@ public class ART_SpriteEffect : MonoBehaviour
 		{
 			return;
 		}
+        if (!isPlayCurveInEditor)
+        {
+			return;
+        }
 		if (CheckImageMaskableStateChanged() || CheckUseCurve())  //마스크 체크를 먼저해야함. 커브를 먼저 체크할경우 마스크체크가 스킵됨
         {
 			UpdateMat(effectMaterial);
@@ -2536,6 +2548,31 @@ public class ART_SpriteEffect : MonoBehaviour
 		{
 			return false;
 		}
+	}
+
+	/// <summary>
+	/// 에디터 전용. 다른 코드에서 호출하면 안됨.
+	/// </summary>
+	public void PlayCurveInEditor()
+    {
+		isPlayCurveInEditor = !isPlayCurveInEditor;
+		ResetTimeCurve();
+	}
+
+	/// <summary>
+	/// 에디터 전용. 다른 코드에서 호출하면 안됨.
+	/// </summary>
+	public bool IsPlayCurveInEditor()
+    {
+		return isPlayCurveInEditor;
+	}
+
+	/// <summary>
+	/// 에디터 전용. 다른 코드에서 호출하면 안됨.
+	/// </summary>
+	public bool CheckUseCurveInEditor()
+	{
+		return CheckUseCurveInternal();
 	}
 
 	private void CreatMaterialAsset(string materialAssetPath)

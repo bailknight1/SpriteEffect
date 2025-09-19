@@ -927,8 +927,32 @@ public class ART_SpriteEffectButton : Editor
                 }
                 EditorGUILayout.EndHorizontal();
             }
+        EditorGUILayout.BeginHorizontal();
+        DoPlayCurveButton();
+        EditorGUILayout.EndHorizontal();
         //}
     }
+    void DoPlayCurveButton()
+    {
+        if (spriteEffect.CheckUseCurveInEditor())
+        {
+            if (spriteEffect.IsPlayCurveInEditor())
+            {
+                if (GUILayout.Button($"Stop Animation Curve"))
+                {
+                    spriteEffect.PlayCurveInEditor();
+                }
+            }
+            else
+            {
+                if (GUILayout.Button($"Play Animation Curve"))
+                {
+                    spriteEffect.PlayCurveInEditor();
+                }
+            }
+        }
+    }
+
     void DoEffectArea(int i)
     {
         if (effect_Active[i] == null)
