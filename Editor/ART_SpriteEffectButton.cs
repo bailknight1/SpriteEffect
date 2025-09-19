@@ -832,6 +832,7 @@ public class ART_SpriteEffectButton : Editor
                     else
                     {
                         effect_SpriteBrightnessUseCurve.boolValue = false;
+                        effect_SpriteBrightnessUseLuminanceMask.boolValue = false;
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -861,6 +862,7 @@ public class ART_SpriteEffectButton : Editor
                     else
                     {
                         effect_SpriteTintColorUseCurve.boolValue = false;
+                        effect_SpriteTintColorUseLuminanceMask.boolValue = false;
                     }
                     EditorGUILayout.EndHorizontal();
                 }

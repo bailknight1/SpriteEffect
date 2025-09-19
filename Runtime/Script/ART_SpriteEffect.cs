@@ -2551,6 +2551,7 @@ public class ART_SpriteEffect : MonoBehaviour
     {
 		isPlayCurveInEditor = !isPlayCurveInEditor;
 		ResetTimeCurve();
+		SetAnimCurve(RenderingMat(effectMaterial));
 	}
 
 	/// <summary>
