@@ -1226,10 +1226,12 @@ public class ART_SpriteEffect : MonoBehaviour
 			}
 			else return false;
 		}
+#if UNITY_EDITOR
 		else if (isPlayCurveInEditor)
 		{
 			return CheckUseCurveInternal();
 		}
+#endif
 		else return false;
 	}
 
