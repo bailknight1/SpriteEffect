@@ -1,10 +1,6 @@
-(2025-09-22) <br>
--BugFix : Fixed a bug where pressing the "Play Animation Curve" or "Stop Animation Curve" buttons would not properly reset the cutout curve time value.
--BugFix : In Editor, the red override indicator on the "Use animation curve" buttons was not work properly.
-(2025-09-19) <br>
+## [1.0.3-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.3-alpha) (2025-09-22)
 -NewFeature : Use the "Play Animation Curve" button in the editor to update the animation curves Instead of always updating while using animation curves.
-
-## [1.0.3-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.3-alpha) (2025-09-18)
+-BugFix : In Editor, the red override indicator on the "Use animation curve" buttons was not work properly.
 -Bugfix : Fixed the possibility of using animation curves in scripts even if animation curves are turned off in the editor.
 ## [1.0.2-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.2-alpha) (2025-09-09)
 -Add sample scene and resource.<br>
