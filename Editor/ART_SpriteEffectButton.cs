@@ -415,11 +415,11 @@ public class ART_SpriteEffectButton : Editor
         effect_BlendMode[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectBlendMode").FindPropertyRelative("layerBlendModeValue");
         effect_UseAlpha[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseAlpha").FindPropertyRelative("boolValue");
         effect_DistortStrength[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectDistortStrength").FindPropertyRelative("floatValue");
-        effect_UseScrollCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseScrollCurve");
-        effect_UseRotateCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseRotateCurve");
-        effect_UseScaleCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseScaleCurve");
-        effect_UseColorCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseColorCurve");
-        effect_UseFlipBookCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseFlipBookCurve");
+        effect_UseScrollCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseScrollCurve").FindPropertyRelative("boolValue");
+        effect_UseRotateCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseRotateCurve").FindPropertyRelative("boolValue");
+        effect_UseScaleCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseScaleCurve").FindPropertyRelative("boolValue");
+        effect_UseColorCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseColorCurve").FindPropertyRelative("boolValue");
+        effect_UseFlipBookCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseFlipBookCurve").FindPropertyRelative("boolValue");
         effect_ScrollCurveX[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScrollCurveX");
         effect_ScrollCurveY[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectScrollCurveY");
         effect_RotateCurve[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectRotateCurve");
@@ -442,7 +442,7 @@ public class ART_SpriteEffectButton : Editor
         effect_UseMaskUV_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseMaskUV").FindPropertyRelative("overrideValue");
         effect_UniformUV_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUniformUV").FindPropertyRelative("overrideValue");
         effect_UseTimerMask_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseTimerMask").FindPropertyRelative("overrideValue");
-        effect_TimerMaskValue_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTimerMaskValue").FindPropertyRelative("overrideValue");
+        effect_TimerMaskValue_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTimerMaskValue").FindPropertyRelative("overrideffect_FlipBookCurve_overrideeValue");
         effect_TimerMaskBaseUV_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTimerMaskBaseUV").FindPropertyRelative("overrideValue");
         effect_Color_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectColor").FindPropertyRelative("overrideValue");
         effect_Gradient_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectGradient").FindPropertyRelative("overrideValue");
@@ -463,6 +463,11 @@ public class ART_SpriteEffectButton : Editor
         effect_BlendMode_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectBlendMode").FindPropertyRelative("overrideValue");
         effect_UseAlpha_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseAlpha").FindPropertyRelative("overrideValue");
         effect_DistortStrength_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectDistortStrength").FindPropertyRelative("overrideValue");
+        effect_UseScrollCurve_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseScrollCurve").FindPropertyRelative("overrideValue");
+        effect_UseRotateCurve_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseRotateCurve").FindPropertyRelative("overrideValue");
+        effect_UseScaleCurve_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseScaleCurve").FindPropertyRelative("overrideValue");
+        effect_UseColorCurve_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseColorCurve").FindPropertyRelative("overrideValue");
+        effect_UseFlipBookCurve_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseFlipBookCurve").FindPropertyRelative("overrideValue");
         effect_UseLuminanceMask_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseLuminanceMask").FindPropertyRelative("overrideValue");
     }
 
@@ -797,7 +802,10 @@ public class ART_SpriteEffectButton : Editor
                     CustomPropertyField(effect_SpriteGrayScaleMode, new GUIContent("└ Sprite GrayScale"), effect_SpriteGrayScaleMode_override);
                     if (effect_SpriteGrayScaleMode.boolValue == true)
                     {
-                        CustomSliderField(effect_SpriteGrayScaleValue,"",0f,1f, effect_SpriteGrayScaleValue_override);
+                        if (effect_SpriteGrayScaleUseCurve.boolValue == false)
+                        {
+                            CustomSliderField(effect_SpriteGrayScaleValue, "", 0f, 1f, effect_SpriteGrayScaleValue_override);
+                        }
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.BeginHorizontal();
                         EditorGUIUtility.labelWidth = 0;
@@ -816,7 +824,10 @@ public class ART_SpriteEffectButton : Editor
                     CustomPropertyField(effect_SpriteBrightnessMode, new GUIContent("└ Sprite Brightness"), effect_SpriteBrightnessMode_override);
                     if (effect_SpriteBrightnessMode.boolValue == true)
                     {
-                        CustomSliderField(effect_SpriteBrightnessValue, "",0f,10f, effect_SpriteBrightnessValue_override);
+                        if (effect_SpriteBrightnessUseCurve.boolValue == false)
+                        {
+                            CustomSliderField(effect_SpriteBrightnessValue, "", 0f, 10f, effect_SpriteBrightnessValue_override);
+                        }
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.BeginHorizontal();
                         EditorGUIUtility.labelWidth = 0;

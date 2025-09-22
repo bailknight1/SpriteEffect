@@ -26,6 +26,11 @@ Shader "Hidden/UI_Effect_Optimized" {
         _BaseSpriteTintColor("Base Sprite TintColor", Int) = 0
         _BaseTintColorUseLuminanceMask("Base Tint Color Use Luminance Mask", Int) = 0
 
+        _BaseGrayscaleUseCurve("Base Grayscale Use Curve", Int) = 0
+        _BaseBrightnessUseCurve("Base Brightness Use Curve", Int) = 0
+        _BaseTintColorUseCurve("Base Tint Color Use Curve", Int) = 0
+        _BaseCutOutUseCurve("Base CutOut Use Curve", Int) = 0
+
         _Effect1Tex ("Effect1 Texture", 2D) = "black" {}
         _Effect1Mask ("Effect1 Mask", 2D) = "white" {}
         _Effect1SpriteMaskValue("Effect1 SpriteMask Value", Vector) = (0,0,0,0)
@@ -54,6 +59,8 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect1BlendMask("Effect1 Blend Mask", Int) = 0
         _Effect1UseGlow("Effect1 Use Glow", Int) = 0
         _Effect1UseSpriteMask("Effect1 Use SpriteMask", Int) = 0
+        _Effect1UseColorCurve("Effect1 Use Color Curve", Int) = 0
+        _Effect1UseFlipBookCurve("Effect1 Use FlipBook Curve", Int) = 0
 
         _Effect2Tex("Effect2 Texture", 2D) = "black" {}
         _Effect2Mask("Effect2 Mask", 2D) = "white" {}
@@ -83,6 +90,8 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect2BlendMask("Effect2 Blend Mask", Int) = 0
         _Effect2UseGlow("Effect2 Use Glow", Int) = 0
         _Effect2UseSpriteMask("Effect2 Use SpriteMask", Int) = 0
+        _Effect2UseColorCurve("Effect2 Use Color Curve", Int) = 0
+        _Effect2UseFlipBookCurve("Effect2 Use FlipBook Curve", Int) = 0
 
         _Effect3Tex("Effect3 Texture", 2D) = "black" {}
         _Effect3Mask("Effect3 Mask", 2D) = "white" {}
@@ -112,6 +121,8 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect3BlendMask("Effect3 Blend Mask", Int) = 0
         _Effect3UseGlow("Effect3 Use Glow", Int) = 0
         _Effect3UseSpriteMask("Effect3 Use SpriteMask", Int) = 0
+        _Effect3UseColorCurve("Effect3 Use Color Curve", Int) = 0
+        _Effect3UseFlipBookCurve("Effect3 Use FlipBook Curve", Int) = 0
 
         _Effect4Tex("Effect4 Texture", 2D) = "black" {}
         _Effect4Mask("Effect4 Mask", 2D) = "white" {}
@@ -141,6 +152,8 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect4BlendMask("Effect4 Blend Mask", Int) = 0
         _Effect4UseGlow("Effect4 Use Glow", Int) = 0
         _Effect4UseSpriteMask("Effect4 Use SpriteMask", Int) = 0
+        _Effect4UseColorCurve("Effect4 Use Color Curve", Int) = 0
+        _Effect4UseFlipBookCurve("Effect4 Use FlipBook Curve", Int) = 0
 
         _Effect5Tex("Effect5 Texture", 2D) = "black" {}
         _Effect5Mask("Effect5 Mask", 2D) = "white" {}
@@ -170,6 +183,8 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect5BlendMask("Effect5 Blend Mask", Int) = 0
         _Effect5UseGlow("Effect5 Use Glow", Int) = 0
         _Effect5UseSpriteMask("Effect5 Use SpriteMask", Int) = 0
+        _Effect5UseColorCurve("Effect5 Use Color Curve", Int) = 0
+        _Effect5UseFlipBookCurve("Effect5 Use FlipBook Curve", Int) = 0
 
         _Effect6Tex("Effect6 Texture", 2D) = "black" {}
         _Effect6Mask("Effect6 Mask", 2D) = "white" {}
@@ -199,6 +214,8 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect6BlendMask("Effect6 Blend Mask", Int) = 0
         _Effect6UseGlow("Effect6 Use Glow", Int) = 0
         _Effect6UseSpriteMask("Effect6 Use SpriteMask", Int) = 0
+        _Effect6UseColorCurve("Effect6 Use Color Curve", Int) = 0
+        _Effect6UseFlipBookCurve("Effect6 Use FlipBook Curve", Int) = 0
 
         _LuminanceMaskThresholdMin("Luminance Mask Threshold Min", Float) = 0.01
         _LuminanceMaskThresholdMax("Luminance Mask Threshold Max", Float) = 0.1

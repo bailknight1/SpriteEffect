@@ -156,11 +156,11 @@ public class ART_SpriteEffect : MonoBehaviour
 		public SpriteEffectProperties effectTimingOffset = new SpriteEffectProperties(0f); //0;
 		public SpriteEffectProperties effectGradient;  //Gradient
 
-		public bool effectUseColorCurve = false;
-		public bool effectUseScrollCurve = false;
-		public bool effectUseRotateCurve = false;
-		public bool effectUseScaleCurve = false;
-		public bool effectUseFlipBookCurve = false;
+		public SpriteEffectProperties effectUseColorCurve = new SpriteEffectProperties(false);
+		public SpriteEffectProperties effectUseScrollCurve = new SpriteEffectProperties(false);
+		public SpriteEffectProperties effectUseRotateCurve = new SpriteEffectProperties(false);
+		public SpriteEffectProperties effectUseScaleCurve = new SpriteEffectProperties(false);
+		public SpriteEffectProperties effectUseFlipBookCurve = new SpriteEffectProperties(false);
 		public SpriteEffectProperties effectFlipBookValue = new SpriteEffectProperties(new Vector4(1, 1, 0, 0));	// = new Vector4(1, 1, 0, 0);
 
 		public float effectTimeColor = 0f;
@@ -1015,8 +1015,8 @@ public class ART_SpriteEffect : MonoBehaviour
 #endif
 			if (!setSpriteTransparent.boolValue)
 			{
-				SetSpriteCurve(mat, spriteGrayScaleValueID, spriteGrayScaleCurve, ref spriteTimeGrayScale, spriteGrayScaleValue.floatValue, deltatime, spriteGrayScaleUseCurve.boolValue);
-				SetSpriteCurve(mat, spriteBrightnessValueID, spriteBrightnessCurve, ref spriteTimeBrightness, spriteBrightnessValue.floatValue, deltatime, spriteBrightnessUseCurve.boolValue);
+				SetSpriteCurve(mat, spriteGrayScaleValueID, spriteGrayScaleCurve, ref spriteTimeGrayScale, deltatime, spriteGrayScaleUseCurve.boolValue);
+				SetSpriteCurve(mat, spriteBrightnessValueID, spriteBrightnessCurve, ref spriteTimeBrightness, deltatime, spriteBrightnessUseCurve.boolValue);
 				SetGradientCurve(mat, spriteTintColorID, spriteTintColorCurve, spriteTintColorGradient.gradientValue, ref spriteTimeTintColor, deltatime, 0f, spriteTintColorUseCurve.boolValue);
 			}
 
@@ -1024,20 +1024,20 @@ public class ART_SpriteEffect : MonoBehaviour
 
 			for (int i = 0; i < _numOfLayer; i++)
 			{
-				SetScrollCurve(mat, curveID[i].scrollString, spriteEffectLayers[i].effectScrollCurveX, spriteEffectLayers[i].effectScrollCurveY, ref spriteEffectLayers[i].effectTimeScrollX, ref spriteEffectLayers[i].effectTimeScrollY, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseScrollCurve);
-				SetRotateCurve(mat, curveID[i].rotateString, spriteEffectLayers[i].effectRotateCurve, ref spriteEffectLayers[i].effectTimeRotate, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseRotateCurve);
-				SetScaleCurve(mat, curveID[i].scaleString, spriteEffectLayers[i].effectScaleCurve, ref spriteEffectLayers[i].effectTimeScale, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseScaleCurve);
-				SetGradientCurve(mat, curveID[i].colorString, spriteEffectLayers[i].effectColorCurve, spriteEffectLayers[i].effectGradient.gradientValue, ref spriteEffectLayers[i].effectTimeColor, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseColorCurve);
-				SetFlipBookCurve(mat, curveID[i].flipBookString, spriteEffectLayers[i].effectFlipBookCurve, ref spriteEffectLayers[i].effectTimeFlipBook, ref spriteEffectLayers[i].effectFlipBookValue.vector4Value, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseFlipBookCurve);
+				SetScrollCurve(mat, curveID[i].scrollString, spriteEffectLayers[i].effectScrollCurveX, spriteEffectLayers[i].effectScrollCurveY, ref spriteEffectLayers[i].effectTimeScrollX, ref spriteEffectLayers[i].effectTimeScrollY, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseScrollCurve.boolValue);
+				SetRotateCurve(mat, curveID[i].rotateString, spriteEffectLayers[i].effectRotateCurve, ref spriteEffectLayers[i].effectTimeRotate, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseRotateCurve.boolValue);
+				SetScaleCurve(mat, curveID[i].scaleString, spriteEffectLayers[i].effectScaleCurve, ref spriteEffectLayers[i].effectTimeScale, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseScaleCurve.boolValue);
+				SetGradientCurve(mat, curveID[i].colorString, spriteEffectLayers[i].effectColorCurve, spriteEffectLayers[i].effectGradient.gradientValue, ref spriteEffectLayers[i].effectTimeColor, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseColorCurve.boolValue);
+				SetFlipBookCurve(mat, curveID[i].flipBookString, spriteEffectLayers[i].effectFlipBookCurve, ref spriteEffectLayers[i].effectTimeFlipBook, ref spriteEffectLayers[i].effectFlipBookValue.vector4Value, deltatime, spriteEffectLayers[i].effectTimingOffset.floatValue, spriteEffectLayers[i].effectUseFlipBookCurve.boolValue);
 			}
 		}
 	}
 
-	private void SetSpriteCurve(Material mat, int propertyID, AnimationCurve animCurve, ref float effectTime, float maxValue, float deltaTime, bool isEnabled)
+	private void SetSpriteCurve(Material mat, int propertyID, AnimationCurve animCurve, ref float effectTime, float deltaTime, bool isEnabled)
 	{
 		if (isEnabled)
 		{
-			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, 0f)) * maxValue);
+			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, 0f)));
 		}
 	}
 
@@ -1101,15 +1101,15 @@ public class ART_SpriteEffect : MonoBehaviour
 		{
 			var lastFrameTime = animCurve[animCurve.length - 1].time;
 			effectTime += deltaTime;
-			if (effectTime > lastFrameTime)
-			{
-				effectTime = 0;
-			}
+			//if (effectTime > lastFrameTime)    // 자동으로 루프처리하던걸 안하고 애니메이션커브의 루프기능을 쓰는편이 훨씬 좋을것같다.
+			//{
+			//	effectTime = 0;
+			//}
 			var evalTime = effectTime + timeOffset;
-			if (evalTime > lastFrameTime)
-			{
-				evalTime = evalTime - lastFrameTime;
-			}
+			//if (evalTime > lastFrameTime)
+			//{
+			//	evalTime = evalTime - lastFrameTime;
+			//}
 			if (normalize)
 			{
 				evalTime /= lastFrameTime;
@@ -1256,7 +1256,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		{
 			if (spriteEffectLayers[i] != null) // 매니저에서 신규생성할때 처음에 null이 됨. 왜 그럴까...?
 			{
-				if (spriteEffectLayers[i].effectUseScrollCurve || spriteEffectLayers[i].effectUseRotateCurve || spriteEffectLayers[i].effectUseScaleCurve || spriteEffectLayers[i].effectUseColorCurve || spriteEffectLayers[i].effectUseFlipBookCurve)
+				if (spriteEffectLayers[i].effectUseScrollCurve.boolValue || spriteEffectLayers[i].effectUseRotateCurve.boolValue || spriteEffectLayers[i].effectUseScaleCurve.boolValue || spriteEffectLayers[i].effectUseColorCurve.boolValue || spriteEffectLayers[i].effectUseFlipBookCurve.boolValue)
 				{
 					needCurveReset = true;
 					isUseCurve = true;
@@ -1498,11 +1498,11 @@ public class ART_SpriteEffect : MonoBehaviour
 		bool layer1RandomRotation = spriteEffectLayers[layer1].effectRandomRotation.boolValue;
 		bool layer1ScrollDirectional = spriteEffectLayers[layer1].effectScrollDirectional.boolValue;
 		float layer1DistortStrength = spriteEffectLayers[layer1].effectDistortStrength.floatValue;
-		bool layer1UseScrollCurve = spriteEffectLayers[layer1].effectUseScrollCurve;
-		bool layer1UseRotateCurve = spriteEffectLayers[layer1].effectUseRotateCurve;
-		bool layer1UseScaleCurve = spriteEffectLayers[layer1].effectUseScaleCurve;
-		bool layer1UseColorCurve = spriteEffectLayers[layer1].effectUseColorCurve;
-		bool layer1UseFlipBookCurve = spriteEffectLayers[layer1].effectUseFlipBookCurve;
+		bool layer1UseScrollCurve = spriteEffectLayers[layer1].effectUseScrollCurve.boolValue;
+		bool layer1UseRotateCurve = spriteEffectLayers[layer1].effectUseRotateCurve.boolValue;
+		bool layer1UseScaleCurve = spriteEffectLayers[layer1].effectUseScaleCurve.boolValue;
+		bool layer1UseColorCurve = spriteEffectLayers[layer1].effectUseColorCurve.boolValue;
+		bool layer1UseFlipBookCurve = spriteEffectLayers[layer1].effectUseFlipBookCurve.boolValue;
 		AnimationCurve layer1ScrollCurveX = spriteEffectLayers[layer1].effectScrollCurveX;
 		AnimationCurve layer1ScrollCurveY = spriteEffectLayers[layer1].effectScrollCurveY;
 		AnimationCurve layer1RotateCurve = spriteEffectLayers[layer1].effectRotateCurve;
@@ -1607,11 +1607,11 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteEffectLayers[layer2].effectRandomRotation.boolValue = layer1RandomRotation;
 			spriteEffectLayers[layer2].effectScrollDirectional.boolValue = layer1ScrollDirectional;
 			spriteEffectLayers[layer2].effectDistortStrength.floatValue = layer1DistortStrength;
-			spriteEffectLayers[layer2].effectUseScrollCurve = layer1UseScrollCurve;
-			spriteEffectLayers[layer2].effectUseRotateCurve = layer1UseRotateCurve;
-			spriteEffectLayers[layer2].effectUseScaleCurve = layer1UseScaleCurve;
-			spriteEffectLayers[layer2].effectUseColorCurve = layer1UseColorCurve;
-			spriteEffectLayers[layer2].effectUseFlipBookCurve = layer1UseFlipBookCurve;
+			spriteEffectLayers[layer2].effectUseScrollCurve.boolValue = layer1UseScrollCurve;
+			spriteEffectLayers[layer2].effectUseRotateCurve.boolValue = layer1UseRotateCurve;
+			spriteEffectLayers[layer2].effectUseScaleCurve.boolValue = layer1UseScaleCurve;
+			spriteEffectLayers[layer2].effectUseColorCurve.boolValue = layer1UseColorCurve;
+			spriteEffectLayers[layer2].effectUseFlipBookCurve.boolValue = layer1UseFlipBookCurve;
 			spriteEffectLayers[layer2].effectScrollCurveX.CopyFrom(layer1ScrollCurveX);
 			spriteEffectLayers[layer2].effectScrollCurveY.CopyFrom(layer1ScrollCurveY);
 			spriteEffectLayers[layer2].effectRotateCurve.CopyFrom(layer1RotateCurve);
@@ -1734,6 +1734,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		//SetKeyword(mat, "_BASESPRITEGRAYSCALE_ON", setSpriteGrayScale.boolValue);
 		mat.SetFloat("_BaseSpriteGrayscale", setSpriteGrayScale.boolValue ? 1 : 0);
 		mat.SetFloat("_BaseGrayscaleValue", spriteGrayScaleValue.floatValue);
+		mat.SetFloat("_BaseGrayscaleUseCurve", spriteGrayScaleUseCurve.boolValue ? 1 : 0);
 		//SetKeyword(mat, "_BASESPRITEGRAYSCALELUMINANCEMASK_ON", spriteGrayScaleUseLuminanceMask.boolValue);
 
 		//SetKeyword(mat, "_BASESPRITEBRIGHTNESS_ON", setSpriteBrightness.boolValue);
@@ -1741,10 +1742,12 @@ public class ART_SpriteEffect : MonoBehaviour
 		mat.SetFloat("_BaseBrightnessValue", spriteBrightnessValue.floatValue);
 		//SetKeyword(mat, "_BASESPRITEBRIGHTNESSLUMINANCEMASK_ON", spriteBrightnessUseLuminanceMask.boolValue);
 		mat.SetFloat("_BaseBrightnessUseLuminanceMask", spriteBrightnessUseLuminanceMask.boolValue ? 1 : 0);
+		mat.SetFloat("_BaseBrightnessUseCurve", spriteBrightnessUseCurve.boolValue ? 1 : 0);
 
 		//SetKeyword(mat, "_BASETINTCOLOR_ON", setSpriteTintColor.boolValue);
 		mat.SetFloat("_BaseSpriteTintColor", setSpriteTintColor.boolValue ? 1 : 0);
 		mat.SetFloat("_BaseTintColorUseLuminanceMask", spriteTintColorUseLuminanceMask.boolValue ? 1 : 0);
+		mat.SetFloat("_BaseTintColorUseCurve", spriteTintColorUseCurve.boolValue ? 1 : 0);
 		if (!spriteTintColorUseCurve.boolValue)
 		{
 			mat.SetColor("_BaseTintColor", spriteTintColorValue.colorValue);
@@ -1775,6 +1778,7 @@ public class ART_SpriteEffect : MonoBehaviour
             //{
 				mat.SetFloat(spriteCutOutProgressID, spriteCutOutProgress.floatValue);
 			//}
+			mat.SetFloat("_BaseCutOutUseCurve", spriteCutOutUseCurve.boolValue ? 1 : 0);
 		}
 
 		SetKeyword(mat, "_BASEVERTEXANIM_ON", setSpriteVertexAnim.boolValue);
@@ -1807,7 +1811,7 @@ public class ART_SpriteEffect : MonoBehaviour
         {
 			SetKeyword(mat, $"_EFFECT{i + 1}USEFLIPBOOKBLEND_ON", spriteEffectLayers[i].effectUseFlipBookBlend.boolValue);
 		}
-		if (spriteEffectLayers[i].effectUseFlipBook.boolValue && !spriteEffectLayers[i].effectUseFlipBookCurve)
+		if (spriteEffectLayers[i].effectUseFlipBook.boolValue && !spriteEffectLayers[i].effectUseFlipBookCurve.boolValue)
 		{
 			mat.SetVector($"_Effect{i + 1}FlipbookValue", spriteEffectLayers[i].effectFlipBookValue.vector4Value);
 		}
@@ -1849,7 +1853,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			SetKeyword(mat, $"_EFFECT{i + 1}USETIMEROFFSETMASK_ON", false);
 			SetKeyword(mat, $"_EFFECT{i + 1}USETIMERMASK_ON", false);
 		}
-		if (!spriteEffectLayers[i].effectUseColorCurve)
+		if (!spriteEffectLayers[i].effectUseColorCurve.boolValue)
 		{
 			mat.SetColor($"_Effect{i + 1}Color", spriteEffectLayers[i].effectColor.colorValue);
 		}
@@ -1863,25 +1867,25 @@ public class ART_SpriteEffect : MonoBehaviour
 		mat.SetFloat($"_Effect{i + 1}Power", spriteEffectLayers[i].effectPower.floatValue);
 		mat.SetVector($"_Effect{i + 1}Tex_ST", spriteEffectLayers[i].effectTextureTileOffset.vector4Value);
 
-		if (spriteEffectLayers[i].effectUseScrollCurve)
+		if (spriteEffectLayers[i].effectUseScrollCurve.boolValue)
 		{
-			SetKeyword(mat, $"_EFFECT{i + 1}USESCROLL_ON", spriteEffectLayers[i].effectUseScrollCurve);
+			SetKeyword(mat, $"_EFFECT{i + 1}USESCROLL_ON", spriteEffectLayers[i].effectUseScrollCurve.boolValue);
 		}
 		else
 		{
 			SetToggleProperties(mat, $"_Effect{i + 1}VerticalSpeed", $"_Effect{i + 1}HorizontalSpeed", $"_EFFECT{i + 1}USESCROLL_ON", spriteEffectLayers[i].effectVerticalSpeed.floatValue, spriteEffectLayers[i].effectHorizontalSpeed.floatValue, true);
 		}
-		SetKeyword(mat, $"_EFFECT{i + 1}USESCROLLCURVE_ON", spriteEffectLayers[i].effectUseScrollCurve);
+		SetKeyword(mat, $"_EFFECT{i + 1}USESCROLLCURVE_ON", spriteEffectLayers[i].effectUseScrollCurve.boolValue);
 
-		if (spriteEffectLayers[i].effectUseRotateCurve)
+		if (spriteEffectLayers[i].effectUseRotateCurve.boolValue)
 		{
-			SetKeyword(mat, $"_EFFECT{i + 1}USEROTATE_ON", spriteEffectLayers[i].effectUseRotateCurve);
+			SetKeyword(mat, $"_EFFECT{i + 1}USEROTATE_ON", spriteEffectLayers[i].effectUseRotateCurve.boolValue);
 		}
 		else
 		{
 			SetToggleProperties(mat, $"_Effect{i + 1}RotateSpeed", $"_Effect{i + 1}RotateAngle", $"_EFFECT{i + 1}USEROTATE_ON", spriteEffectLayers[i].effectRotateSpeed.floatValue, -Mathf.Deg2Rad * spriteEffectLayers[i].effectRotateAngle.floatValue, true);
 		}
-		SetKeyword(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON", spriteEffectLayers[i].effectUseRotateCurve);
+		SetKeyword(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON", spriteEffectLayers[i].effectUseRotateCurve.boolValue);
 
 		//SetToggleProperty(mat, $"_Effect{i + 1}GlowSpeed", $"_EFFECT{i + 1}USEGLOW_ON", spriteEffectLayers[i].effectGlowSpeed.floatValue, false);
 		SetToggleIntProperty(mat, $"_Effect{i + 1}GlowSpeed", $"_Effect{i + 1}UseGlow", spriteEffectLayers[i].effectGlowSpeed.floatValue, false);
@@ -1895,11 +1899,14 @@ public class ART_SpriteEffect : MonoBehaviour
 		SetKeyword(mat, $"_EFFECT{i + 1}USEDIRECTIONALSCROLL_ON", spriteEffectLayers[i].effectScrollDirectional.boolValue);
 		//SetToggleProperty(mat, $"_Effect{i + 1}MaskDistortStrength", $"_EFFECT{i + 1}USEDISTORTMASK_ON", spriteEffectLayers[i].effectDistortStrength.floatValue*0.2f, false);
 		SetToggleIntProperty(mat, $"_Effect{i + 1}MaskDistortStrength", $"_Effect{i + 1}UseDistortMask", spriteEffectLayers[i].effectDistortStrength.floatValue * 0.2f, false);
-		SetKeyword(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON", spriteEffectLayers[i].effectUseRotateCurve);
-		SetKeyword(mat, $"_EFFECT{i + 1}USESCALECURVE_ON", spriteEffectLayers[i].effectUseScaleCurve);
+		SetKeyword(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON", spriteEffectLayers[i].effectUseRotateCurve.boolValue);
+		SetKeyword(mat, $"_EFFECT{i + 1}USESCALECURVE_ON", spriteEffectLayers[i].effectUseScaleCurve.boolValue);
 		//SetKeyword(mat, $"_EFFECT{i + 1}USEFLIPBOOKCURVE_ON", spriteEffectLayers[i].effectUseFlipBookCurve);
 		//SetKeyword(mat, $"_EFFECT{i + 1}USELUMINANCEMASK_ON", spriteEffectLayers[i].effectUseLuminanceMask.boolValue);
 		mat.SetFloat($"_Effect{i + 1}UseLuminanceMask", spriteEffectLayers[i].effectUseLuminanceMask.boolValue ? 1 : 0);
+
+		mat.SetFloat($"_Effect{i + 1}UseColorCurve", spriteEffectLayers[i].effectUseColorCurve.boolValue ? 1 : 0);
+		mat.SetFloat($"_Effect{i + 1}UseFlipBookCurve", spriteEffectLayers[i].effectUseFlipBookCurve.boolValue ? 1 : 0);
 	}
 
 	private void SetToggleProperty(Material mat, string propertyName, string togglerName, float value, bool isHaveMinusValue = false, bool isEnabled = true)
@@ -2092,11 +2099,14 @@ public class ART_SpriteEffect : MonoBehaviour
         if (setSpriteGrayScale.boolValue)
         {
 			spriteGrayScaleValue.floatValue = mat.GetFloat("_BaseGrayscaleValue");
+			spriteGrayScaleUseCurve.boolValue = mat.GetFloat("_BaseGrayscaleUseCurve") > 0 ? true : false;
 		}
         else
         {
 			spriteGrayScaleValue.floatValue = 1f;
 			mat.SetFloat("_BaseGrayscaleValue",1f);
+			spriteGrayScaleUseCurve.boolValue = false;
+			mat.SetFloat("_BaseGrayscaleUseCurve", 0);
 		}
 
 		setSpriteBrightness.boolValue = IsKeywordOrIntEnabled(mat, "_BASESPRITEBRIGHTNESS_ON", "_BaseSpriteBrightness");
@@ -2104,25 +2114,33 @@ public class ART_SpriteEffect : MonoBehaviour
         {
 			spriteBrightnessValue.floatValue = mat.GetFloat("_BaseBrightnessValue");
 			spriteBrightnessUseLuminanceMask.boolValue = mat.GetFloat("_BaseBrightnessUseLuminanceMask") > 0 ? true : false;
+			spriteBrightnessUseCurve.boolValue = mat.GetFloat("_BaseBrightnessUseCurve") > 0 ? true : false;
 		}
         else
         {
 			spriteBrightnessValue.floatValue = 10f;
 			mat.SetFloat("_BaseBrightnessValue",10f);
+			spriteBrightnessUseLuminanceMask.boolValue = false;
 			mat.SetFloat("_BaseBrightnessUseLuminanceMask", 0);
+			spriteBrightnessUseCurve.boolValue = false;
+			mat.SetFloat("_BaseBrightnessUseCurve", 0);
 		}
 
-		setSpriteTintColor.boolValue = IsKeywordOrIntEnabled(mat, "_BASETINTCOLOR_ON", "_BaseSpriteTintColor");
-        if (setSpriteTintColor.boolValue)
+		setSpriteTintColor.boolValue = IsKeywordOrIntEnabled(mat, "_BASETINTCOLOR_ON", "_BaseTintColor");
+		if (setSpriteTintColor.boolValue)
 		{
 			spriteTintColorValue.colorValue = mat.GetColor("_BaseTintColor");
-			spriteBrightnessUseLuminanceMask.boolValue = mat.GetFloat("_BaseBrightnessUseLuminanceMask") > 0 ? true : false;
+			spriteTintColorUseLuminanceMask.boolValue = mat.GetFloat("_BaseTintColorUseLuminanceMask") > 0 ? true : false;
+			spriteTintColorUseCurve.boolValue = mat.GetFloat("_BaseTintColorUseCurve") > 0 ? true : false;
 		}
-        else
-        {
+		else
+		{
 			spriteTintColorValue.colorValue = Color.white;
-			mat.SetColor("_BaseTintColor",Color.white);
+			mat.SetColor("_BaseTintColor", Color.white);
+			spriteTintColorUseLuminanceMask.boolValue = false;
 			mat.SetFloat("_BaseTintColorUseLuminanceMask", 0);
+			spriteTintColorUseCurve.boolValue = false;
+			mat.SetFloat("_BaseTintColorUseCurve", 0);
 		}
 
 		setSpriteCutOut.boolValue = IsKeywordEnabled(mat, "_BASECUTOUT_ON");
@@ -2139,6 +2157,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteCutOutUniformUV.boolValue = IsKeywordEnabled(mat, "_BASECUTOUTUNIFORMUV_ON");
 			spriteCutOutDoNotUseAlpha.boolValue = IsKeywordEnabled(mat, "_BASECUTOUTDONOTUSEALPHA_ON");
 			spriteCutOutProgress.floatValue = mat.GetFloat("_BaseCutOutProgress");
+			spriteCutOutUseCurve.boolValue = mat.GetFloat("_BaseCutOutUseCurve") > 0 ? true : false;
 		}
         else
         {
@@ -2153,6 +2172,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteCutOutUniformUV.boolValue = false;
 			spriteCutOutDoNotUseAlpha.boolValue = false;
 			spriteCutOutProgress.floatValue = 0f;
+			spriteCutOutUseCurve.boolValue = false;
 			mat.SetVector("_BaseCutOutVal", new Vector4(0.5f, 1, 0, 1));
 			mat.SetTexture($"_BaseCutOutTex", null);
 			mat.SetVector("_BaseCutOutTex_ST", new Vector4(1, 1, 0, 0));
@@ -2164,6 +2184,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			SetKeyword(mat, "_BASECUTOUTUNIFORMUV_ON", false);
 			SetKeyword(mat, "_BASECUTOUTDONOTUSEALPHA_ON", false);
 			mat.SetFloat("_BaseCutOutProgress", 0f);
+			mat.SetFloat("_BaseCutOutUseCurve", 0);
 		}
 
 		setSpriteVertexAnim.boolValue = IsKeywordEnabled(mat, "_BASEVERTEXANIM_ON");
@@ -2317,9 +2338,12 @@ public class ART_SpriteEffect : MonoBehaviour
 
 		spriteEffectLayers[i].effectUseLuminanceMask.boolValue = mat.GetFloat($"_Effect{i + 1}UseLuminanceMask") > 0 ? true : false;
 
-		spriteEffectLayers[i].effectUseScrollCurve = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCROLLCURVE_ON");
-		spriteEffectLayers[i].effectUseRotateCurve = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON");
-		spriteEffectLayers[i].effectUseScaleCurve = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALECURVE_ON");
+		spriteEffectLayers[i].effectUseScrollCurve.boolValue = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCROLLCURVE_ON");
+		spriteEffectLayers[i].effectUseRotateCurve.boolValue = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON");
+		spriteEffectLayers[i].effectUseScaleCurve.boolValue = IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALECURVE_ON");
+
+		spriteEffectLayers[i].effectUseColorCurve.boolValue = mat.GetFloat($"_Effect{i + 1}UseColorCurve") > 0 ? true : false;
+		spriteEffectLayers[i].effectUseFlipBookCurve.boolValue = mat.GetFloat($"_Effect{i + 1}UseFlipBookCurve") > 0 ? true : false;
 	}
 
 	private LayerBlendMode GetLayerBlendMode(Material mat, string BlendMaskPropertyName, string AlphaBlendPropertyName)
@@ -2394,13 +2418,16 @@ public class ART_SpriteEffect : MonoBehaviour
 	private void CompareMaterialValue(Material mat, ref int overrideList)
 	{
 		setSpriteGrayScale.CompareValue(IsKeywordOrIntEnabled(mat, "_BASESPRITEGRAYSCALE_ON", "_BaseSpriteGrayscale"), "_BaseSpriteGrayscale", ref overrideList);
+		spriteGrayScaleUseCurve.CompareValue(mat.GetFloat("_BaseGrayscaleUseCurve") > 0 ? true : false, "_BaseGrayscaleUseCurve", ref overrideList);
 		spriteGrayScaleValue.CompareValue(mat.GetFloat("_BaseGrayscaleValue"), "_BaseGrayscaleValue", ref overrideList);
 		setSpriteBrightness.CompareValue(IsKeywordOrIntEnabled(mat, "_BASESPRITEBRIGHTNESS_ON", "_BaseSpriteBrightness"), "_BaseSpriteBrightness", ref overrideList);
 		spriteBrightnessValue.CompareValue(mat.GetFloat("_BaseBrightnessValue"), "_BaseBrightnessValue", ref overrideList);
 		spriteBrightnessUseLuminanceMask.CompareValue(mat.GetFloat("_BaseBrightnessUseLuminanceMask") > 0 ? true : false, "_BaseBrightnessUseLuminanceMask",ref overrideList);
+		spriteBrightnessUseCurve.CompareValue(mat.GetFloat("_BaseBrightnessUseCurve") > 0 ? true : false, "_BaseBrightnessUseCurve", ref overrideList);
 		setSpriteTintColor.CompareValue(IsKeywordOrIntEnabled(mat, "_BASETINTCOLOR_ON", "_BaseSpriteTintColor"), "_BaseSpriteTintColor", ref overrideList);
 		spriteTintColorValue.CompareValue(mat.GetColor("_BaseTintColor"), "_BaseTintColor", ref overrideList);
 		spriteTintColorUseLuminanceMask.CompareValue(mat.GetFloat("_BaseTintColorUseLuminanceMask") > 0 ? true : false, "_BaseTintColorUseLuminanceMask", ref overrideList);
+		spriteTintColorUseCurve.CompareValue(mat.GetFloat("_BaseTintColorUseCurve") > 0 ? true : false, "_BaseTintColorUseCurve", ref overrideList);
 		setSpriteCutOut.CompareValue(IsKeywordEnabled(mat, "_BASECUTOUT_ON"), "_BASECUTOUT_ON", ref overrideList);
 		spriteCutOutValue.CompareValue(mat.GetVector("_BaseCutOutVal"), "_BaseCutOutVal",ref overrideList);
 		spriteCutOutTexture.CompareValue(mat.GetTexture($"_BaseCutOutTex") as Texture2D, $"_BaseCutOutTex",ref overrideList);
@@ -2413,6 +2440,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteCutOutUniformUV.CompareValue(IsKeywordEnabled(mat, "_BASECUTOUTUNIFORMUV_ON"), "_BASECUTOUTUNIFORMUV_ON", ref overrideList);
 		spriteCutOutDoNotUseAlpha.CompareValue(IsKeywordEnabled(mat, "_BASECUTOUTDONOTUSEALPHA_ON"), "_BASECUTOUTDONOTUSEALPHA_ON", ref overrideList);
 		spriteCutOutProgress.CompareValue(mat.GetFloat("_BaseCutOutProgress"), "_BaseCutOutProgress", ref overrideList);
+		spriteCutOutUseCurve.CompareValue(mat.GetFloat("_BaseCutOutUseCurve") > 0 ? true : false, "_BaseCutOutUseCurve", ref overrideList);
 		setSpriteVertexAnim.CompareValue(IsKeywordEnabled(mat, "_BASEVERTEXANIM_ON"), "_BASEVERTEXANIM_ON", ref overrideList);
 		spriteVertexAnimValue.CompareValue(mat.GetVector("_BaseVertexAnimVal"), "_BaseVertexAnimVal", ref overrideList);
 
@@ -2475,6 +2503,12 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[i].effectScrollDirectional.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}USEDIRECTIONALSCROLL_ON"), $"_EFFECT{i + 1}USEDIRECTIONALSCROLL_ON", ref overrideList);
 		spriteEffectLayers[i].effectDistortStrength.CompareValue(mat.GetFloat($"_Effect{i + 1}MaskDistortStrength")*5f, $"_Effect{i + 1}MaskDistortStrength", ref overrideList);
 		spriteEffectLayers[i].effectUseLuminanceMask.CompareValue(IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}USELUMINANCEMASK_ON", $"_Effect{i + 1}UseLuminanceMask"), $"_Effect{i + 1}UseLuminanceMask", ref overrideList);
+
+		spriteEffectLayers[i].effectUseScrollCurve.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCROLLCURVE_ON"), $"_Effect{i + 1}UseScrollCurve", ref overrideList);
+		spriteEffectLayers[i].effectUseRotateCurve.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}USEROTATECURVE_ON"), $"_Effect{i + 1}UseRotateCurve", ref overrideList);
+		spriteEffectLayers[i].effectUseScaleCurve.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}USESCALECURVE_ON"), $"_Effect{i + 1}UseScaleCurve", ref overrideList);
+		spriteEffectLayers[i].effectUseColorCurve.CompareValue(mat.GetFloat($"_Effect{i + 1}UseColorCurve") > 0 ? true : false, $"_Effect{i + 1}UseColorCurve", ref overrideList);
+		spriteEffectLayers[i].effectUseFlipBookCurve.CompareValue(mat.GetFloat($"_Effect{i + 1}UseFlipBookCurve") > 0 ? true : false, $"_Effect{i + 1}UseFlipBookCurve", ref overrideList);
 	}
 	#endregion
 
