@@ -1,5 +1,6 @@
 (2025-09-22) <br>
 -BugFix : Fixed a bug where pressing the "Play Animation Curve" or "Stop Animation Curve" buttons would not properly reset the cutout curve time value.
+-BugFix : In Editor, the red override indicator on the "Use animation curve" buttons was not work properly.
 (2025-09-19) <br>
 -NewFeature : Use the "Play Animation Curve" button in the editor to update the animation curves Instead of always updating while using animation curves.
 
