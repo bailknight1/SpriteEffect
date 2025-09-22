@@ -990,7 +990,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	}
 
 	#region Set Animtaion Curve
-	private void SetAnimCurve(Material mat)
+	private void SetAnimCurve(Material mat, bool resetCurve = false)
 	{
 		if (mat != null && HaveRenderer())
 		{
@@ -1007,6 +1007,10 @@ public class ART_SpriteEffect : MonoBehaviour
 			{
 				deltatime = Time.realtimeSinceStartup - editorTime;
 				editorTime = Time.realtimeSinceStartup;
+			}
+            if (resetCurve)
+            {
+				deltatime = 0f;
 			}
 #endif
 			if (!setSpriteTransparent.boolValue)
@@ -2554,7 +2558,7 @@ public class ART_SpriteEffect : MonoBehaviour
     {
 		isPlayCurveInEditor = !isPlayCurveInEditor;
 		ResetTimeCurve();
-		SetAnimCurve(RenderingMat(effectMaterial));
+		SetAnimCurve(RenderingMat(effectMaterial),true);
 	}
 
 	/// <summary>
