@@ -1123,6 +1123,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteTimeGrayScale = 0f;
 		spriteTimeBrightness = 0f;
 		spriteTimeTintColor = 0f;
+		spriteTimeCutOut = 0f;
 		for (int i = 0; i < _numOfLayer; i++)
 		{
 			if (spriteEffectLayers[i] != null)
