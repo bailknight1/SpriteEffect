@@ -1,6 +1,6 @@
 {
     "name": "com.bailknight.spriteeffect",
-    "version": "1.0.3-alpha",
+    "version": "1.0.4-alpha",
     "displayName": "SpriteEffect",
     "description": "VFX material generating tool for UI Image & Sprite Renderer",
     "unity": "6000.1",
@@ -27,6 +27,7 @@
         }
     ]
 }
+
 
 
 
