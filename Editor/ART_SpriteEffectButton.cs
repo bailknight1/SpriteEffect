@@ -1044,7 +1044,7 @@ public class ART_SpriteEffectButton : Editor
                 }
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
-                CustomPropertyField(effect_UseSpriteMask[i], new GUIContent("Use _SpritEffecteMask"), effect_UseSpriteMask_override[i]);
+                CustomPropertyField(effect_UseSpriteMask[i], new GUIContent("Use _SpriteEffectMask"), effect_UseSpriteMask_override[i]);
                 if (effect_UseSpriteMask[i].boolValue)
                 {
                     CustomVector4Field("", ref effect_SpriteMaskValue[i], effect_SpriteMaskValue_override[i]);
