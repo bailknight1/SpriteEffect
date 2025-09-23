@@ -103152,7 +103152,7 @@ MonoBehaviour:
     vector4Value: {x: 1, y: 1, z: 0, w: 0}
     boolValue: 0
     colorValue: {r: 1, g: 1, b: 1, a: 1}
-    floatValue: 1
+    floatValue: 0
     layerBlendModeValue: 0
     gradientValue:
       serializedVersion: 2
