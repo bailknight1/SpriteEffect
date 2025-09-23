@@ -1037,7 +1037,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		if (isEnabled)
 		{
-			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, 0f)));
+			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, 0f, animCurve.postWrapMode)));
 		}
 	}
 
@@ -1046,8 +1046,8 @@ public class ART_SpriteEffect : MonoBehaviour
 		if (isEnabled)
 		{
 			Vector2 curveVal = Vector2.zero;
-			curveVal.x = animCurve1.Evaluate(CurveTime(animCurve1, ref effectTime1, deltaTime, timeOffset));
-			curveVal.y = animCurve2.Evaluate(CurveTime(animCurve2, ref effectTime2, deltaTime, timeOffset));
+			curveVal.x = animCurve1.Evaluate(CurveTime(animCurve1, ref effectTime1, deltaTime, timeOffset, animCurve1.postWrapMode));
+			curveVal.y = animCurve2.Evaluate(CurveTime(animCurve2, ref effectTime2, deltaTime, timeOffset, animCurve2.postWrapMode));
 			mat.SetVector(propertyID, curveVal);
 		}
 	}
@@ -1056,7 +1056,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		if (isEnabled)
 		{
-			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset)) * 360f * -Mathf.Deg2Rad);
+			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset, animCurve.postWrapMode)) * 360f * -Mathf.Deg2Rad);
 		}
 	}
 
@@ -1064,7 +1064,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		if (isEnabled)
 		{
-			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset)));
+			mat.SetFloat(propertyID, animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset, animCurve.postWrapMode)));
 		}
 	}
 
@@ -1072,7 +1072,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		if (isEnabled)
 		{
-			mat.SetColor(propertyID, gradient.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset, true)));
+			mat.SetColor(propertyID, gradient.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset, animCurve.postWrapMode, true)));
 		}
 	}
 
@@ -1080,7 +1080,7 @@ public class ART_SpriteEffect : MonoBehaviour
 	{
 		if (isEnabled)
 		{
-			flipbookValue.z = animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset));
+			flipbookValue.z = animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, timeOffset, animCurve.postWrapMode));
 			flipbookValue.w = 0f;
 			mat.SetVector(propertyID, flipbookValue);
 		}
@@ -1090,26 +1090,51 @@ public class ART_SpriteEffect : MonoBehaviour
     {
 		if (isEnabled)
 		{
-			value = animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, 0f));
+			value = animCurve.Evaluate(CurveTime(animCurve, ref effectTime, deltaTime, 0f, animCurve.postWrapMode));
 			mat.SetFloat(propertyID, value);
 		}
 	}
 
-	private float CurveTime(AnimationCurve animCurve, ref float effectTime, float deltaTime, float timeOffset, bool normalize = false)
+	private float CurveTime(AnimationCurve animCurve, ref float effectTime, float deltaTime, float timeOffset, WrapMode animCurveWrapMode = WrapMode.Once, bool normalize = false)
 	{
 		if (animCurve.length != 0)
 		{
 			var lastFrameTime = animCurve[animCurve.length - 1].time;
-			effectTime += deltaTime;
-			//if (effectTime > lastFrameTime)    // 자동으로 루프처리하던걸 안하고 애니메이션커브의 루프기능을 쓰는편이 훨씬 좋을것같다.
-			//{
-			//	effectTime = 0;
-			//}
-			var evalTime = effectTime + timeOffset;
-			//if (evalTime > lastFrameTime)
-			//{
-			//	evalTime = evalTime - lastFrameTime;
-			//}
+			float evalTime;
+			switch (animCurveWrapMode)
+			{
+				case WrapMode.Once:
+					effectTime += deltaTime;
+					if (effectTime > lastFrameTime)
+					{
+						effectTime = lastFrameTime;
+					}
+					evalTime = effectTime + timeOffset;
+					break;
+	
+				case WrapMode.Loop:
+					effectTime += deltaTime;
+					if (effectTime > lastFrameTime)
+					{
+						effectTime = 0;
+					}
+					evalTime = effectTime + timeOffset;
+					if (evalTime > lastFrameTime)
+					{
+						evalTime = evalTime - lastFrameTime;
+					}
+					break;
+
+				case WrapMode.PingPong:
+					effectTime += deltaTime;	
+					evalTime = Mathf.PingPong(effectTime + timeOffset, lastFrameTime);
+					break;
+
+				default:
+					effectTime += deltaTime;
+					evalTime = effectTime + timeOffset;
+					break;
+			}
 			if (normalize)
 			{
 				evalTime /= lastFrameTime;
