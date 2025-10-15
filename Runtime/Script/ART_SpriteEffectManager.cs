@@ -59,7 +59,6 @@ public class ART_SpriteEffectManager : MonoBehaviour
 			var spriteEffect = spriteEffects[i];
 			spriteEffect.effect.enabled = _playingIndex == i;
 			if (_playingIndex == i) spriteEffect.effect.Initialize();
-			//if (_playingIndex == i) spriteEffect.effect.UpdateMatFromManager();
 		}
 	}
 

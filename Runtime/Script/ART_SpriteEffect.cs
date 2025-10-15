@@ -768,8 +768,8 @@ public class ART_SpriteEffect : MonoBehaviour
 			if (CheckValueChange())  // 스크립트에 지정된 값을 메테리얼에 셋팅
 			{
 #if UNITY_EDITOR
-                if (!Application.isPlaying)
-                {
+				if (!Application.isPlaying)
+				{
 					SetMaterialValue(mat); //에디터에서만 처리. 플레이중엔 앞으로 변경될일이 99% 없다.
 				}
 #endif
@@ -2344,7 +2344,7 @@ public class ART_SpriteEffect : MonoBehaviour
 
 		spriteEffectLayers[i].effectTimingOffset.floatValue = mat.GetFloat($"_Effect{i + 1}TimingOffset");
 
-		spriteEffectLayers[i].effectUniformUV.boolValue = IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}UNIFORMUV_ON", $"_EFFECT{i + 1}UNIFORMUV_ON");
+		spriteEffectLayers[i].effectUniformUV.boolValue = IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}UNIFORMUV_ON", $"_Effect{i + 1}UniformUV");
 
 		spriteEffectLayers[i].effectUseAlpha.boolValue = IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}USEALPHA_ON", $"_Effect{i + 1}UseAlpha");
 
