@@ -2035,6 +2035,8 @@ Shader "Hidden/UI_Effect_Optimized" {
 
                     #if _REMOVEBASESPRITE_ON
                         finalAlpha += effect1Color;
+                        finalAlpha = _Effect1AlphaBlend ? finalAlpha : 0;
+                        finalAlpha = _Effect1BlendMask ? finalAlpha : 0;
                     #endif
 
                     finalColor = saturate(finalColor);
@@ -2257,6 +2259,8 @@ Shader "Hidden/UI_Effect_Optimized" {
 
                     #if _REMOVEBASESPRITE_ON
                         finalAlpha += effect2Color;
+                        finalAlpha = _Effect2AlphaBlend ? finalAlpha : 0;
+                        finalAlpha = _Effect2BlendMask ? finalAlpha : 0;
                     #endif
                     
                     finalColor = saturate(finalColor);
@@ -2489,6 +2493,8 @@ Shader "Hidden/UI_Effect_Optimized" {
 
                     #if _REMOVEBASESPRITE_ON
                         finalAlpha += effect3Color;
+                        finalAlpha = _Effect3AlphaBlend ? finalAlpha : 0;
+                        finalAlpha = _Effect3BlendMask ? finalAlpha : 0;
                     #endif
 
                     finalColor = saturate(finalColor);
@@ -2711,6 +2717,8 @@ Shader "Hidden/UI_Effect_Optimized" {
 
                     #if _REMOVEBASESPRITE_ON
                         finalAlpha += effect4Color;
+                        finalAlpha = _Effect4AlphaBlend ? finalAlpha : 0;
+                        finalAlpha = _Effect4BlendMask ? finalAlpha : 0;
                     #endif
 
                     finalColor = saturate(finalColor);
@@ -2934,6 +2942,8 @@ Shader "Hidden/UI_Effect_Optimized" {
 
                     #if _REMOVEBASESPRITE_ON
                         finalAlpha += effect5Color;
+                        finalAlpha = _Effect5AlphaBlend ? finalAlpha : 0;
+                        finalAlpha = _Effect5BlendMask ? finalAlpha : 0;
                     #endif
 
                     finalColor = saturate(finalColor);
@@ -3153,6 +3163,7 @@ Shader "Hidden/UI_Effect_Optimized" {
 
                     #if _REMOVEBASESPRITE_ON
                     finalAlpha += effect6Color;
+                    finalAlpha = _Effect6AlphaBlend ? finalAlpha : 0;
                     #endif
 
                     finalColor = saturate(finalColor);
