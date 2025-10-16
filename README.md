@@ -146,6 +146,7 @@ _This package requires **Unity 2018.3 or later**._
     - **Mask:** Use as an effect mask for the next numbered layer (Note: Mask mode always applies as a mask only to the layer immediately following the number. If a number is skipped, it will not be applied. When in mask mode, the effect of the current layer becomes transparent).
   - **Unstretch UV:** Forces the effect texture UV to be square regardless of the sprite aspect ratio.
   - **Directional Scroll:** Applies the effect rotation angle to the effect scroll direction (e.g., if an effect is rotated 90 degrees and scrolled vertically, it will scroll in the 90 degree rotated direction instead of vertically).
+  - **World space UV:** Use world space position as UV for Effect texture and Mask texture.
   - **Mask Distort Strength:** Sets the distortion strength of the effect texture UV by the effect mask G channel (0 means no distortion).
   - **Scroll:** Control the scroll distance of the time-based effect using an animation curve.
   - **Rotate:** Control the rotation angle of the time-based effect using an animation curve.
@@ -311,6 +312,7 @@ _**Unity 2018.3 또는 그 이상 버전**._ 지원(빌트인 & URP)
     - **Mask:** 다음 숫자의 레이어에 이펙트 마스크로 사용(주의: 마스크 모드는 항상 바로 다음 숫자의 레이어에만 마스크로서 적용됨. 숫자를 건너뛰면 적용되지않음. 마스크 모드시 현 레이어의 이팩트는 투명해짐).
   - **Unstretch UV:** 스프라이트 종횡비에 관계없이 이팩트 텍스쳐 UV를 정사각형으로 고정.
   - **Directional Scroll:** 이팩트 스크롤 방향에 이팩트 회전각도를 적용(예: 90도 회전한 이팩트를 수직방향으로 스크롤할경우 수직방향이 아닌 90도 회전된 방향으로 스크롤됨).
+  - **World space UV:** 이펙트 텍스쳐와 마스크 텍스쳐의 UV로 월드포지션을 사용.
   - **Mask Distort Strength:** 이팩트 마스크 G채널에 의한 이팩트 텍스쳐 UV의 왜곡 강도 설정(0일경우 왜곡없음).
   - **Scroll:** 시간별 이팩트 스크롤 거리를 애니메이션 커브로 제어.
   - **Rotate:** 시간별 이팩트 회전 각도를 애니메이션 커브로 제어.
