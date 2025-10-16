@@ -1824,7 +1824,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                     fixed3 effect1Color;
                     half2 effect1MaskUV;
                     effect1MaskUV = _Effect1UseMaskUV ? i.uv4.zw : i.uv4.xy;
-                    effect1MaskUV = _Effect1WorldUV ? i.uv0.zw : effect1MaskUV;
+                    effect1MaskUV = _Effect1WorldUV ? i.worldPosition : effect1MaskUV;
 
                     #if defined(_EFFECT1USEMASK_ON) && defined(_EFFECT1USETIMEROFFSETMASK_ON)
                         fixed2 _Effect1_TimerPreMask = tex2D(_Effect1Mask, i.uv0.zw).ba;
@@ -2044,7 +2044,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                     fixed3 effect2Color;
                     half2 effect2MaskUV;
                     effect2MaskUV = _Effect2UseMaskUV ? i.uv4.zw : i.uv4.xy;
-                    effect2MaskUV = _Effect2WorldUV ? i.uv1.xy : effect2MaskUV;
+                    effect2MaskUV = _Effect2WorldUV ? i.worldPosition : effect2MaskUV;
 
                     #if defined(_EFFECT2USEMASK_ON) && defined(_EFFECT2USETIMEROFFSETMASK_ON)
                         fixed2 _Effect2_TimerPreMask = tex2D(_Effect2Mask, i.uv1.xy).ba;
@@ -2266,7 +2266,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                     fixed3 effect3Color;
                     half2 effect3MaskUV;
                     effect3MaskUV = _Effect3UseMaskUV ? i.uv4.zw : i.uv4.xy;
-                    effect3MaskUV = _Effect3WorldUV ? i.uv1.zw : effect3MaskUV;
+                    effect3MaskUV = _Effect3WorldUV ? i.worldPosition : effect3MaskUV;
 
                     #if defined(_EFFECT3USEMASK_ON) && defined(_EFFECT3USETIMEROFFSETMASK_ON)
                         fixed2 _Effect3_TimerPreMask = tex2D(_Effect3Mask, i.uv1.zw).ba;
@@ -2498,7 +2498,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                     fixed3 effect4Color;
                     half2 effect4MaskUV;
                     effect4MaskUV = _Effect4UseMaskUV ? i.uv4.zw : i.uv4.xy;
-                    effect4MaskUV = _Effect4WorldUV ? i.uv2.xy : effect4MaskUV;
+                    effect4MaskUV = _Effect4WorldUV ? i.worldPosition : effect4MaskUV;
 
                     #if defined(_EFFECT4USEMASK_ON) && defined(_EFFECT4USETIMEROFFSETMASK_ON)
                         fixed2 _Effect4_TimerPreMask = tex2D(_Effect4Mask, i.uv2.xy).ba;
@@ -2720,7 +2720,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                     fixed3 effect5Color;
                     half2 effect5MaskUV;
                     effect5MaskUV = _Effect5UseMaskUV ? i.uv4.zw : i.uv4.xy;
-                    effect5MaskUV = _Effect5WorldUV ? i.uv2.zw : effect5MaskUV;
+                    effect5MaskUV = _Effect5WorldUV ? i.worldPosition : effect5MaskUV;
 
                     #if defined(_EFFECT5USEMASK_ON) && defined(_EFFECT5USETIMEROFFSETMASK_ON)
                         fixed2 _Effect5_TimerPreMask = tex2D(_Effect5Mask, i.uv2.zw).ba;
@@ -2943,7 +2943,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                     fixed3 effect6Color;
                     half2 effect6MaskUV;
                     effect6MaskUV = _Effect6UseMaskUV ? i.uv4.zw : i.uv4.xy;
-                    effect6MaskUV = _Effect6WorldUV ? i.uv3.xy : effect6MaskUV;
+                    effect6MaskUV = _Effect6WorldUV ? i.worldPosition : effect6MaskUV;
 
                     #if defined(_EFFECT6USEMASK_ON) && defined(_EFFECT6USETIMEROFFSETMASK_ON)
                         fixed2 _Effect6_TimerPreMask = tex2D(_Effect6Mask, i.uv3.xy).ba;
