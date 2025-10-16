@@ -51,6 +51,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect1TimerMaskVal("Effect1 Timer Mask Val", Vector) = (0.3,0.7,0.1,0.1)  // 최소,최대,페더값,시간배속
         _Effect1UseLuminanceMask("Effect1 Use Luminance Mask", Int) = 0
         _Effect1AlphaBlend("Effect1 Alpha Blend", Int) = 0
+        _Effect1WorldUV("Effect1 World UV", Int) = 0
         _Effect1UniformUV("Effect1 Uniform UV", Int) = 0
         _Effect1UseAlpha("Effect1 Use Alpha", Int) = 0
         _Effect1UseDistortMask("Effect1 Use Distort Mask", Int) = 0
@@ -82,6 +83,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect2TimerMaskVal("Effect2 Timer Mask Val", Vector) = (0.3,0.7,0.1,0.1)  // 최소,최대,페더값,시간배속
         _Effect2UseLuminanceMask("Effect2 Use Luminance Mask", Int) = 0
         _Effect2AlphaBlend("Effect2 Alpha Blend", Int) = 0
+        _Effect2WorldUV("Effect2 World UV", Int) = 0
         _Effect2UniformUV("Effect2 Uniform UV", Int) = 0
         _Effect2UseAlpha("Effect2 Use Alpha", Int) = 0
         _Effect2UseDistortMask("Effect2 Use Distort Mask", Int) = 0
@@ -113,6 +115,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect3TimerMaskVal("Effect3 Timer Mask Val", Vector) = (0.3,0.7,0.1,0.1)  // 최소,최대,페더값,시간배속
         _Effect3UseLuminanceMask("Effect3 Use Luminance Mask", Int) = 0
         _Effect3AlphaBlend("Effect3 Alpha Blend", Int) = 0
+        _Effect3WorldUV("Effect3 World UV", Int) = 0
         _Effect3UniformUV("Effect3 Uniform UV", Int) = 0
         _Effect3UseAlpha("Effect3 Use Alpha", Int) = 0
         _Effect3UseDistortMask("Effect3 Use Distort Mask", Int) = 0
@@ -144,6 +147,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect4TimerMaskVal("Effect4 Timer Mask Val", Vector) = (0.3,0.7,0.1,0.1)  // 최소,최대,페더값,시간배속
         _Effect4UseLuminanceMask("Effect4 Use Luminance Mask", Int) = 0
         _Effect4AlphaBlend("Effect4 Alpha Blend", Int) = 0
+        _Effect4WorldUV("Effect4 World UV", Int) = 0
         _Effect4UniformUV("Effect4 Uniform UV", Int) = 0
         _Effect4UseAlpha("Effect4 Use Alpha", Int) = 0
         _Effect4UseDistortMask("Effect4 Use Distort Mask", Int) = 0
@@ -175,6 +179,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect5TimerMaskVal("Effect5 Timer Mask Val", Vector) = (0.3, 0.7, 0.1, 0.1)  // 최소,최대,페더값,시간배속
         _Effect5UseLuminanceMask("Effect5 Use Luminance Mask", Int) = 0
         _Effect5AlphaBlend("Effect5 Alpha Blend", Int) = 0
+        _Effect5WorldUV("Effect5 World UV", Int) = 0
         _Effect5UniformUV("Effect5 Uniform UV", Int) = 0
         _Effect5UseAlpha("Effect5 Use Alpha", Int) = 0
         _Effect5UseDistortMask("Effect5 Use Distort Mask", Int) = 0
@@ -206,6 +211,7 @@ Shader "Hidden/UI_Effect_Optimized" {
         _Effect6TimerMaskVal("Effect6 Timer Mask Val", Vector) = (0.3, 0.7, 0.1, 0.1)  // 최소,최대,페더값,시간배속
         _Effect6UseLuminanceMask("Effect6 Use Luminance Mask", Int) = 0
         _Effect6AlphaBlend("Effect6 Alpha Blend", Int) = 0
+        _Effect6WorldUV("Effect6 World UV", Int) = 0
         _Effect6UniformUV("Effect6 Uniform UV", Int) = 0
         _Effect6UseAlpha("Effect6 Use Alpha", Int) = 0
         _Effect6UseDistortMask("Effect6 Use Distort Mask", Int) = 0
@@ -445,7 +451,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 fixed4 Glowcolor1 : COLOR1;
                 fixed2 Glowcolor2 : COLOR2;
 
-                float4 worldPosition : TEXCOORD5;
+                float2 worldPosition : TEXCOORD5;
                 float4  mask : TEXCOORD6;
                 UNITY_VERTEX_OUTPUT_STEREO
             };
@@ -457,9 +463,9 @@ Shader "Hidden/UI_Effect_Optimized" {
                 UNITY_DEFINE_INSTANCED_PROP(fixed4, _Rect)
                 UNITY_DEFINE_INSTANCED_PROP(float2, _AspectRatio)
                 UNITY_DEFINE_INSTANCED_PROP(float4, _MaskData)
-                #if !defined(_UIIMAGE_ON) && defined(_SPRITESLICED_ON)
+                //#if !defined(_UIIMAGE_ON) && defined(_SPRITESLICED_ON)
                 UNITY_DEFINE_INSTANCED_PROP(float4, _SpriteData)
-                #endif
+                //#endif
             UNITY_INSTANCING_BUFFER_END(Props)
 
 
@@ -584,6 +590,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform int _Effect1UseGlow;
                 uniform int _Effect1UseLuminanceMask;
                 uniform int _Effect1AlphaBlend;
+                uniform int _Effect1WorldUV;
                 uniform int _Effect1UniformUV;
                 uniform int _Effect1UseAlpha;
                 uniform int _Effect1UseDistortMask;
@@ -641,6 +648,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform int _Effect2UseGlow;
                 uniform int _Effect2UseLuminanceMask;
                 uniform int _Effect2AlphaBlend;
+                uniform int _Effect2WorldUV;
                 uniform int _Effect2UniformUV;
                 uniform int _Effect2UseAlpha;
                 uniform int _Effect2UseDistortMask;
@@ -698,6 +706,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform int _Effect3UseGlow;
                 uniform int _Effect3UseLuminanceMask;
                 uniform int _Effect3AlphaBlend;
+                uniform int _Effect3WorldUV;
                 uniform int _Effect3UniformUV;
                 uniform int _Effect3UseAlpha;
                 uniform int _Effect3UseDistortMask;
@@ -755,6 +764,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform int _Effect4UseGlow;
                 uniform int _Effect4UseLuminanceMask;
                 uniform int _Effect4AlphaBlend;
+                uniform int _Effect4WorldUV;
                 uniform int _Effect4UniformUV;
                 uniform int _Effect4UseAlpha;
                 uniform int _Effect4UseDistortMask;
@@ -812,6 +822,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform int _Effect5UseGlow;
                 uniform int _Effect5UseLuminanceMask;
                 uniform int _Effect5AlphaBlend;
+                uniform int _Effect5WorldUV;
                 uniform int _Effect5UniformUV;
                 uniform int _Effect5UseAlpha;
                 uniform int _Effect5UseDistortMask;
@@ -869,6 +880,7 @@ Shader "Hidden/UI_Effect_Optimized" {
                 uniform int _Effect6UseGlow;
                 uniform int _Effect6UseLuminanceMask;
                 uniform int _Effect6AlphaBlend;
+                uniform int _Effect6WorldUV;
                 uniform int _Effect6UniformUV;
                 uniform int _Effect6UseAlpha;
                 uniform int _Effect6UseDistortMask;
@@ -935,7 +947,9 @@ Shader "Hidden/UI_Effect_Optimized" {
                 #if !defined(_UIIMAGE_ON)
                 float2 worldPos = v.vertex.xy;
                 #endif
-                o.worldPosition = v.vertex;
+
+                float4 spriteDataVal = UNITY_ACCESS_INSTANCED_PROP(Props, _SpriteData);
+                o.worldPosition = (mul(unity_ObjectToWorld, v.vertex).xy - spriteDataVal.zw) * 0.1;
                 float4 vPosition = UnityObjectToClipPos(v.vertex);
                 o.pos = vPosition;
 
@@ -970,11 +984,12 @@ Shader "Hidden/UI_Effect_Optimized" {
                     //렌더러가 UI이미지가 아닐경우 여기서 아틀라스UV처리
                     fixed4 rectVal = UNITY_ACCESS_INSTANCED_PROP(Props, _Rect);
                     v.texcoord1.xy = half2((v.texcoord0.r - rectVal.x) / (rectVal.z - rectVal.x), (v.texcoord0.g - rectVal.y) / (rectVal.w - rectVal.y));
+                    //v.texcoord1.xy = (o.worldPosition - spriteDataVal.zw) * 0.1;
                     o.uv4.xy = v.texcoord1.xy;  //스프라이트 렌더러의 UV에 rect만 적용(슬라이스된 UV 적용시 사용)
                     float2 pivot = UNITY_ACCESS_INSTANCED_PROP(Props, _MaskData).zw;
                     o.uv4.xy = o.uv4.xy * UNITY_ACCESS_INSTANCED_PROP(Props, _MaskData).xy + pivot;  // 스프라이트 원본텍스쳐의 종횡비에 맞춰서 제작한 마스크의 uv가 어긋나지 않게 보정
                     #if _SPRITESLICED_ON   //스프라이트렌더러에서 드로우모드가 simple이 아닐경우
-                    float4 spriteDataVal = UNITY_ACCESS_INSTANCED_PROP(Props, _SpriteData);
+                    //float4 spriteDataVal = UNITY_ACCESS_INSTANCED_PROP(Props, _SpriteData);
                     v.texcoord1.xy = half2(worldPos.x / spriteDataVal.x, worldPos.y / spriteDataVal.y)+0.5;
                     o.uv4.zw = v.texcoord1.xy;   //일반 정규화 rectUV (이팩트와 동일)
                     #else
@@ -1019,7 +1034,8 @@ Shader "Hidden/UI_Effect_Optimized" {
                     float effectTime1 = _Time.g + _Effect1TimingOffset;
                     effectTime1 *= -1;
                     
-                    o.uv0.zw = _Effect1UniformUV ? ScaleUV(v.texcoord1.xy, 1, rectAspect) : ScaleUV(v.texcoord1.xy, 1);
+                    o.uv0.zw = _Effect1WorldUV ? o.worldPosition : v.texcoord1.xy;
+                    o.uv0.zw = _Effect1UniformUV ? ScaleUV(o.uv0.zw, 1, rectAspect) : ScaleUV(o.uv0.zw, 1);
               
                     #if defined(_EFFECT1USEMASK_ON) && defined(_EFFECT1USETIMEROFFSETMASK_ON)
                     //////
@@ -1067,7 +1083,8 @@ Shader "Hidden/UI_Effect_Optimized" {
                     float effectTime2 = _Time.g + _Effect2TimingOffset;
                     effectTime2 *= -1;
 
-                    o.uv1.xy = _Effect2UniformUV ? ScaleUV(v.texcoord1.xy, 1, rectAspect) : ScaleUV(v.texcoord1.xy, 1);
+                    o.uv1.xy = _Effect2WorldUV ? o.worldPosition : v.texcoord1.xy;
+                    o.uv1.xy = _Effect2UniformUV ? ScaleUV(o.uv1.xy, 1, rectAspect) : ScaleUV(o.uv1.xy, 1);
 
                     #if defined(_EFFECT2USEMASK_ON) && defined(_EFFECT2USETIMEROFFSETMASK_ON)
                     //////
@@ -1115,7 +1132,8 @@ Shader "Hidden/UI_Effect_Optimized" {
                     float effectTime3 = _Time.g + _Effect3TimingOffset;
                     effectTime3 *= -1;
 
-                    o.uv1.zw = _Effect3UniformUV ? ScaleUV(v.texcoord1.xy, 1, rectAspect) : ScaleUV(v.texcoord1.xy, 1);
+                    o.uv1.zw = _Effect3WorldUV ? o.worldPosition : v.texcoord1.xy;
+                    o.uv1.zw = _Effect3UniformUV ? ScaleUV(o.uv1.zw, 1, rectAspect) : ScaleUV(o.uv1.zw, 1);
 
                     #if defined(_EFFECT3USEMASK_ON) && defined(_EFFECT3USETIMEROFFSETMASK_ON)
                     //////
@@ -1163,7 +1181,8 @@ Shader "Hidden/UI_Effect_Optimized" {
                     float effectTime4 = _Time.g + _Effect4TimingOffset;
                     effectTime4 *= -1;
 
-                    o.uv2.xy = _Effect4UniformUV ? ScaleUV(v.texcoord1.xy, 1, rectAspect) : ScaleUV(v.texcoord1.xy, 1);
+                    o.uv2.xy = _Effect4WorldUV ? o.worldPosition : v.texcoord1.xy;
+                    o.uv2.xy = _Effect4UniformUV ? ScaleUV(o.uv2.xy, 1, rectAspect) : ScaleUV(o.uv2.xy, 1);
 
                     #if defined(_EFFECT4USEMASK_ON) && defined(_EFFECT4USETIMEROFFSETMASK_ON)
                     //////
@@ -1211,7 +1230,8 @@ Shader "Hidden/UI_Effect_Optimized" {
                     float effectTime5 = _Time.g + _Effect5TimingOffset;
                     effectTime5 *= -1;
 
-                    o.uv2.zw = _Effect5UniformUV ? ScaleUV(v.texcoord1.xy, 1, rectAspect) : ScaleUV(v.texcoord1.xy, 1);
+                    o.uv2.zw = _Effect5WorldUV ? o.worldPosition : v.texcoord1.xy;
+                    o.uv2.zw = _Effect5UniformUV ? ScaleUV(o.uv2.zw, 1, rectAspect) : ScaleUV(o.uv2.zw, 1);
 
                     #if defined(_EFFECT5USEMASK_ON) && defined(_EFFECT5USETIMEROFFSETMASK_ON)
                     //////
@@ -1259,7 +1279,8 @@ Shader "Hidden/UI_Effect_Optimized" {
                     float effectTime6 = _Time.g + _Effect6TimingOffset;
                     effectTime6 *= -1;
 
-                    o.uv3.xy = _Effect6UniformUV ? ScaleUV(v.texcoord1.xy, 1, rectAspect): ScaleUV(v.texcoord1.xy, 1);
+                    o.uv3.xy = _Effect6WorldUV ? o.worldPosition : v.texcoord1.xy;
+                    o.uv3.xy = _Effect6UniformUV ? ScaleUV(o.uv3.xy, 1, rectAspect): ScaleUV(o.uv3.xy, 1);
 
                     #if defined(_EFFECT6USEMASK_ON) && defined(_EFFECT6USETIMEROFFSETMASK_ON)
                     //////

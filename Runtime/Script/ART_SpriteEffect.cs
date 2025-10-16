@@ -123,6 +123,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		public SpriteEffectProperties effectUseTimerMask = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectTimerMaskValue = new SpriteEffectProperties(new Vector4(0.3f, 0.7f, 0.1f, 0.1f)); //new Vector4(0.3f, 0.7f, 0.1f, 0.1f)
 		public SpriteEffectProperties effectTimerMaskBaseUV = new SpriteEffectProperties(false); //bool false;
+		public SpriteEffectProperties effectWorldUV = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectUniformUV = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectColor = new SpriteEffectProperties(Color.white); //Color.white;
 		public SpriteEffectProperties effectBrightness = new SpriteEffectProperties(1f); //1f;
@@ -587,9 +588,11 @@ public class ART_SpriteEffect : MonoBehaviour
 	private Sprite previousSprite;
 
 	private bool changeSpriteCall = false;   //스프라이트변경요청이 있는가?
+	private bool useWorldUVInPlayMode = false;  //플레이모드중 월드스페이스 UV를 사용할것인가?
 	private bool useCurveInPlayMode = false;  //플레이모드중 항상 애니메이션 커브를 사용할것인가?
 	private bool? haveRenderer = null;  //플레이모드중 렌더러가 존재하는가?
 	private bool? isSpriteRenderer = null;  //플레이모드중 사용하는 렌더러가 스프라이트 렌더러인가?
+	private bool? isUseWorldUV = null;    //이번프레임에 커브체크를 이미 했는가?
 	private bool? isUseCurve = null;    //이번프레임에 커브체크를 이미 했는가?
 	private bool? isAspectChanged = null;  //이번프레임에 종횡비 변경 체크를 이미 했는가?
 	private bool isInitialized = false;  //초기화되었는가?
@@ -663,6 +666,7 @@ public class ART_SpriteEffect : MonoBehaviour
 				}
 				if (effectMaterial != null)
 				{
+					useWorldUVInPlayMode = CheckUseWorldUVInternal();
 					useCurveInPlayMode = CheckUseCurveInternal();
 
 					if (useCurveInPlayMode)
@@ -829,7 +833,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			{
 				m_spriteRendererData = new Vector4(Mathf.Max(0.0001f, sprite.rect.width / sprite.pixelsPerUnit),
 													Mathf.Max(0.0001f, sprite.rect.height / sprite.pixelsPerUnit),
-													0, 0);  // <- 실제로 쉐이더에서 사용하지않음. 프로퍼티블럭을 분할하기위해사용
+													transform.position.x, transform.position.y);  // <- 실제로 쉐이더에서 사용하지않음. 프로퍼티블럭을 분할하기위해사용
 			}
 
 			if (sprite != null)
@@ -1227,6 +1231,7 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private void ResetBoolChecks() // 1루프중 1번만 bool체크하도록 강제하는 처리
     {
+		isUseWorldUV = null;
 		isUseCurve = null;
 		isAspectChanged = null;
 #if UNITY_EDITOR
@@ -1236,7 +1241,7 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private bool NeedUpdate()    //업데이트가 필요한 경우  1. 초기화요청이 왓을때 /2. 애니메이션커브를 사용중 /3. 스프라이트랜더러의 종횡비가 변경됨 /4. 스프라이트가 변경됨 /5. 값의 변경사항이 있음
 	{
-		if (!isInitialized || CheckUseCurve() || NeedAspectUpdate() || CheckSpriteDataChange() || CheckValueChange())
+		if (!isInitialized || CheckUseWorldUV() || CheckUseCurve() || NeedAspectUpdate() || CheckSpriteDataChange() || CheckValueChange())
 		{
 			return true;
 		}
@@ -1245,6 +1250,24 @@ public class ART_SpriteEffect : MonoBehaviour
 			return false;
 		}
     }
+
+	private bool CheckUseWorldUV() //월드스페이스 UV를 사용중인가?
+	{
+		if (Application.isPlaying)  // 게임이 실행중  useWorldUVInPlayMode 가 참이면 항상 참
+		{
+			if (useWorldUVInPlayMode)
+			{
+				return true;
+			}
+			else return false;
+		}
+#if UNITY_EDITOR
+		else
+		{
+			return CheckUseWorldUVInternal();
+		}
+#endif
+	}
 
 	private bool CheckUseCurve() //커브를 사용중인가?
 	{
@@ -1263,6 +1286,27 @@ public class ART_SpriteEffect : MonoBehaviour
 		}
 #endif
 		else return false;
+	}
+
+	private bool CheckUseWorldUVInternal()  //실제로 월드스페이스 UV를 사용중인지 검사
+	{
+		if (isUseWorldUV.HasValue)
+		{
+			return isUseWorldUV.Value;
+		}
+		for (int i = 0; i < _numOfLayer; i++)
+		{
+			if (spriteEffectLayers[i] != null) // 매니저에서 신규생성할때 처음에 null이 됨. 왜 그럴까...?
+			{
+				if (spriteEffectLayers[i].effectWorldUV.boolValue)
+				{
+					isUseWorldUV = true;
+					return isUseWorldUV.Value;
+				}
+			}
+		}
+		isUseWorldUV = false;
+		return isUseWorldUV.Value;
 	}
 
 	private bool CheckUseCurveInternal()  //실제로 커브를 사용중인지 검사
@@ -1312,6 +1356,10 @@ public class ART_SpriteEffect : MonoBehaviour
         {
 			return true;
         }
+        if (Application.isPlaying && useWorldUVInPlayMode) //플레이중일때 월드스페이스 UV를 사용중이면 항상 참
+        {
+			return true;
+		}
 		if (Application.isPlaying && !changeSpriteCall)  //플레이중일땐 스프라이트 교체 콜이 없으면 무조건 거짓
 		{
 			return false;
@@ -1502,6 +1550,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		Vector4 layer1SpriteMaskValue = spriteEffectLayers[layer1].effectSpriteMaskValue.vector4Value;
 		Texture2D layer1Mask = spriteEffectLayers[layer1].effectMask.textureValue;
 		bool layer1UseMaskUV = spriteEffectLayers[layer1].effectUseMaskUV.boolValue;
+		bool layer1WorldUV = spriteEffectLayers[layer1].effectWorldUV.boolValue;
 		bool layer1UniformUV = spriteEffectLayers[layer1].effectUniformUV.boolValue;
 		Color layer1Color = spriteEffectLayers[layer1].effectColor.colorValue;
 		Gradient layer1Gradient = spriteEffectLayers[layer1].effectGradient.gradientValue;
@@ -1555,6 +1604,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[layer1].effectSpriteMaskValue.vector4Value = spriteEffectLayers[layer2].effectSpriteMaskValue.vector4Value;
 		spriteEffectLayers[layer1].effectMask.textureValue = spriteEffectLayers[layer2].effectMask.textureValue;
 		spriteEffectLayers[layer1].effectUseMaskUV.boolValue = spriteEffectLayers[layer2].effectUseMaskUV.boolValue;
+		spriteEffectLayers[layer1].effectWorldUV.boolValue = spriteEffectLayers[layer2].effectWorldUV.boolValue;
 		spriteEffectLayers[layer1].effectUniformUV.boolValue = spriteEffectLayers[layer2].effectUniformUV.boolValue;
 		spriteEffectLayers[layer1].effectColor.colorValue = spriteEffectLayers[layer2].effectColor.colorValue;
 		spriteEffectLayers[layer1].effectGradient.gradientValue = spriteEffectLayers[layer2].effectGradient.gradientValue;
@@ -1611,6 +1661,7 @@ public class ART_SpriteEffect : MonoBehaviour
 			spriteEffectLayers[layer2].effectSpriteMaskValue.vector4Value = layer1SpriteMaskValue;
 			spriteEffectLayers[layer2].effectMask.textureValue = layer1Mask;
 			spriteEffectLayers[layer2].effectUseMaskUV.boolValue = layer1UseMaskUV;
+			spriteEffectLayers[layer2].effectWorldUV.boolValue = layer1WorldUV;
 			spriteEffectLayers[layer2].effectUniformUV.boolValue = layer1UniformUV;
 			spriteEffectLayers[layer2].effectColor.colorValue = layer1Color;
 			spriteEffectLayers[layer2].effectGradient.gradientValue = layer1Gradient;
@@ -1677,19 +1728,25 @@ public class ART_SpriteEffect : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		if (Application.isPlaying)
-		{
-			return;
-		}
-        if (!isPlayCurveInEditor)
+        if (!Application.isPlaying)
         {
-			return;
-        }
-		if (CheckImageMaskableStateChanged() || CheckUseCurve())  //마스크 체크를 먼저해야함. 커브를 먼저 체크할경우 마스크체크가 스킵됨
-        {
-			UpdateMat(effectMaterial);
+			if (CheckUseWorldUVInternal())
+			{
+				SetRect(effectMaterial);
+			}
+
+			if (!isPlayCurveInEditor)
+			{
+				return;
+			}
+
+			if (CheckImageMaskableStateChanged() || CheckUseCurve())  //마스크 체크를 먼저해야함. 커브를 먼저 체크할경우 마스크체크가 스킵됨
+			{
+				UpdateMat(effectMaterial);
+			}
+
+			SetShaderUnscaledTime();
 		}
-		SetShaderUnscaledTime();
 	}
 
 	private bool CheckImageMaskableStateChanged()   //이미지 마스커블 상태가 변경됏을때 초기화요청
@@ -1917,6 +1974,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		//SetBlendModeKeyword(mat, $"_EFFECT{i + 1}BLENDMASK_ON", $"_EFFECT{i + 1}ALPHABLEND_ON", spriteEffectLayers[i].effectBlendMode.layerBlendModeValue);
 		SetBlendModeInt(mat, $"_Effect{i + 1}BlendMask", $"_Effect{i + 1}AlphaBlend", spriteEffectLayers[i].effectBlendMode.layerBlendModeValue);
 		mat.SetFloat($"_Effect{i + 1}TimingOffset", spriteEffectLayers[i].effectTimingOffset.floatValue);
+		mat.SetFloat($"_Effect{i + 1}WorldUV", spriteEffectLayers[i].effectWorldUV.boolValue ? 1 : 0);
 		//SetKeyword(mat, $"_EFFECT{i + 1}UNIFORMUV_ON", spriteEffectLayers[i].effectUniformUV.boolValue);
 		mat.SetFloat($"_Effect{i + 1}UniformUV", spriteEffectLayers[i].effectUniformUV.boolValue ? 1: 0);
 		//SetKeyword(mat, $"_EFFECT{i + 1}USEALPHA_ON", spriteEffectLayers[i].effectUseAlpha.boolValue);
@@ -2344,6 +2402,8 @@ public class ART_SpriteEffect : MonoBehaviour
 
 		spriteEffectLayers[i].effectTimingOffset.floatValue = mat.GetFloat($"_Effect{i + 1}TimingOffset");
 
+		spriteEffectLayers[i].effectWorldUV.boolValue = mat.GetFloat($"_Effect{i + 1}WorldUV") > 0 ? true : false;
+
 		spriteEffectLayers[i].effectUniformUV.boolValue = IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}UNIFORMUV_ON", $"_Effect{i + 1}UniformUV");
 
 		spriteEffectLayers[i].effectUseAlpha.boolValue = IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}USEALPHA_ON", $"_Effect{i + 1}UseAlpha");
@@ -2523,7 +2583,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		spriteEffectLayers[i].effectGlowSpeed.CompareValue(mat.GetFloat($"_Effect{i + 1}GlowSpeed"), $"_Effect{i + 1}GlowSpeed",ref overrideList);
 		spriteEffectLayers[i].effectBlendMode.CompareValue(GetLayerBlendMode(mat, $"_Effect{i + 1}BlendMask", $"_Effect{i + 1}AlphaBlend"), $"_Effect{i + 1}BlendMode", ref overrideList);
 		spriteEffectLayers[i].effectTimingOffset.CompareValue(mat.GetFloat($"_Effect{i + 1}TimingOffset"), $"_Effect{i + 1}TimingOffset", ref overrideList);
-		spriteEffectLayers[i].effectUniformUV.CompareValue(IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}UNIFORMUV_ON", $"_Effect{i + 1}UniformUV"), $"_Effect{i + 1}UniformUV", ref overrideList);
+		spriteEffectLayers[i].effectUniformUV.CompareValue(mat.GetFloat($"_Effect{i + 1}UniformUV"), $"_Effect{i + 1}UniformUV", ref overrideList);
 		spriteEffectLayers[i].effectUseAlpha.CompareValue(IsKeywordOrIntEnabled(mat, $"_EFFECT{i + 1}USEALPHA_ON", $"_Effect{i + 1}UseAlpha"), $"_Effect{i + 1}UseAlpha", ref overrideList);
 		spriteEffectLayers[i].effectScrollDirectional.CompareValue(IsKeywordEnabled(mat, $"_EFFECT{i + 1}USEDIRECTIONALSCROLL_ON"), $"_EFFECT{i + 1}USEDIRECTIONALSCROLL_ON", ref overrideList);
 		spriteEffectLayers[i].effectDistortStrength.CompareValue(mat.GetFloat($"_Effect{i + 1}MaskDistortStrength")*5f, $"_Effect{i + 1}MaskDistortStrength", ref overrideList);

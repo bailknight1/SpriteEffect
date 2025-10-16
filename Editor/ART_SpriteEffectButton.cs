@@ -33,6 +33,7 @@ public class ART_SpriteEffectButton : Editor
     public SerializedProperty[] effect_SpriteMaskValue = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_Mask = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UseMaskUV = new SerializedProperty[_numOfLayer];
+    public SerializedProperty[] effect_WorldUV = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UniformUV = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UseTimerMask = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_TimerMaskValue = new SerializedProperty[_numOfLayer];
@@ -80,6 +81,7 @@ public class ART_SpriteEffectButton : Editor
     public SerializedProperty[] effect_SpriteMaskValue_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_Mask_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UseMaskUV_override = new SerializedProperty[_numOfLayer];
+    public SerializedProperty[] effect_WorldUV_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UniformUV_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_UseTimerMask_override = new SerializedProperty[_numOfLayer];
     public SerializedProperty[] effect_TimerMaskValue_override = new SerializedProperty[_numOfLayer];
@@ -392,6 +394,7 @@ public class ART_SpriteEffectButton : Editor
         effect_SpriteMaskValue[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectSpriteMaskValue").FindPropertyRelative("vector4Value");
         effect_Mask[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectMask").FindPropertyRelative("textureValue");
         effect_UseMaskUV[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseMaskUV").FindPropertyRelative("boolValue");
+        effect_WorldUV[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectWorldUV").FindPropertyRelative("boolValue");
         effect_UniformUV[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUniformUV").FindPropertyRelative("boolValue");
         effect_UseTimerMask[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseTimerMask").FindPropertyRelative("boolValue");
         effect_TimerMaskValue[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTimerMaskValue").FindPropertyRelative("vector4Value");
@@ -440,6 +443,7 @@ public class ART_SpriteEffectButton : Editor
         effect_SpriteMaskValue_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectSpriteMaskValue").FindPropertyRelative("overrideValue");
         effect_Mask_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectMask").FindPropertyRelative("overrideValue");
         effect_UseMaskUV_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseMaskUV").FindPropertyRelative("overrideValue");
+        effect_WorldUV_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectWorldUV").FindPropertyRelative("overrideValue");
         effect_UniformUV_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUniformUV").FindPropertyRelative("overrideValue");
         effect_UseTimerMask_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectUseTimerMask").FindPropertyRelative("overrideValue");
         effect_TimerMaskValue_override[i] = effects.GetArrayElementAtIndex(i).FindPropertyRelative("effectTimerMaskValue").FindPropertyRelative("overrideffect_FlipBookCurve_overrideeValue");
@@ -1140,6 +1144,7 @@ public class ART_SpriteEffectButton : Editor
                     effect_RandomRotate[i].boolValue = false;
                 }
                 CustomPropertyField(effect_ScrollDirection[i], new GUIContent("Directional Scroll"), effect_ScrollDirection_override[i]);
+                CustomPropertyField(effect_WorldUV[i], new GUIContent("World space UV"), effect_WorldUV_override[i]);
                 EditorGUIUtility.labelWidth = 0;
                 EditorGUILayout.EndHorizontal();
                 EditorGUILayout.BeginHorizontal();
@@ -1351,6 +1356,7 @@ public class ART_SpriteEffectButton : Editor
         effect_GlowSpeed[i].floatValue = 0f;
         effect_BlendMode[i].intValue = 0;
         effect_TimingOffset[i].floatValue = 0f;
+        effect_WorldUV[i].boolValue = false;
         effect_UniformUV[i].boolValue = false;
         effect_UseAlpha[i].boolValue = false;
         effect_ScalePingPong[i].boolValue = false;
