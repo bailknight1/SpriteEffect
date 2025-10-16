@@ -1,3 +1,7 @@
+## [1.0.4-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.4-alpha) (2025-10-16)
+-NewFeature : When using with sprite renderer, effect layer texture and mask texture now can use world space position as UV. Useful for making stable overlay effect for sprite animation.<br>
+-Bugfix : When load material value "Unstrech UV" value didn't load properly.<br>
+-Bugfix : When use "Set Sprite Transparent" option effect layer blend mode not work as originally intended.<br>
 ## [1.0.3-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.3-alpha) (2025-09-22)
 -NewFeature : Use the "Play Animation Curve" button in the editor to update the animation curves Instead of always updating while using animation curves.<br>
 -BugFix : In Editor, the red override indicator on the "Use animation curve" buttons was not work properly.<br>
