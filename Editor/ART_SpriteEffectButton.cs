@@ -619,11 +619,16 @@ public class ART_SpriteEffectButton : Editor
             UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath(assetPath, typeof(UnityEngine.Object));
 
             EditorUtility.FocusProjectWindow();
+            //Selection.activeObject = obj;
 
             var pt = Type.GetType("UnityEditor.ProjectBrowser,UnityEditor");
             var ins = pt.GetField("s_LastInteractedProjectBrowser", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).GetValue(null);
             var showDirMeth = pt.GetMethod("ShowFolderContents", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+#if UNITY_6000_3_OR_NEWER
+            showDirMeth.Invoke(ins, new object[] { obj.GetEntityId(), true });
+#else
             showDirMeth.Invoke(ins, new object[] { obj.GetInstanceID(), true });
+#endif
         }
     }
 
