@@ -1,5 +1,7 @@
+## [1.0.7-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.7-alpha) (2026-03-11)
+-Bugfix : Fixed an issue where the build failed due to a compile error related to the World UV check method.<br>
 ## [1.0.6-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.6-alpha) (2026-03-11)
--Bugfix : Fixes an editor error that occurs when pressing the "Focus Folder" button in Unity 6.3LTS or newer.<br>
+-Bugfix : Fixed an editor error that occurs when pressing the "Focus Folder" button in Unity 6.3LTS or newer.<br>
 ## [1.0.5-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.5-alpha) (2025-10-16)
 -NewFeature : When using with sprite renderer, effect layer texture and mask texture now can use world space position as UV. Useful for making stable overlay effect for sprite animation.<br>
 -Bugfix : When load material value "Unstrech UV" value didn't load properly.<br>

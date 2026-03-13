@@ -123,7 +123,6 @@ public class ART_SpriteEffect : MonoBehaviour
 		public SpriteEffectProperties effectUseTimerMask = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectTimerMaskValue = new SpriteEffectProperties(new Vector4(0.3f, 0.7f, 0.1f, 0.1f)); //new Vector4(0.3f, 0.7f, 0.1f, 0.1f)
 		public SpriteEffectProperties effectTimerMaskBaseUV = new SpriteEffectProperties(false); //bool false;
-		public SpriteEffectProperties effectWorldUV = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectUniformUV = new SpriteEffectProperties(false);  //bool false;
 		public SpriteEffectProperties effectColor = new SpriteEffectProperties(Color.white); //Color.white;
 		public SpriteEffectProperties effectBrightness = new SpriteEffectProperties(1f); //1f;
@@ -153,7 +152,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		public bool confirmRemove = false;     //에디터에서 레이어를 지울 예정인가?
 #endif
 #endregion
-        public bool isEffectActive = false;
+		public bool isEffectActive = false;
 		public SpriteEffectProperties effectTimingOffset = new SpriteEffectProperties(0f); //0;
 		public SpriteEffectProperties effectGradient;  //Gradient
 
@@ -178,6 +177,7 @@ public class ART_SpriteEffect : MonoBehaviour
 		public AnimationCurve effectScaleCurve;
 		public AnimationCurve effectFlipBookCurve;
 		public SpriteEffectProperties effectUseLuminanceMask = new SpriteEffectProperties(false);  // = false;
+		public SpriteEffectProperties effectWorldUV = new SpriteEffectProperties(false);  //bool false;
 	}
 
 
@@ -1266,6 +1266,8 @@ public class ART_SpriteEffect : MonoBehaviour
 		{
 			return CheckUseWorldUVInternal();
 		}
+#else
+		else return false;
 #endif
 	}
 
