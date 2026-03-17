@@ -1,3 +1,5 @@
+## [1.0.8-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.8-alpha) (2026-03-17)
+-Bugfix : Fixed an issue where the first input value of an inspector property field was ignored.<br>
 ## [1.0.7-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.7-alpha) (2026-03-11)
 -Bugfix : Fixed an issue where the build failed due to a compile error related to the World UV check method.<br>
 ## [1.0.6-alpha](https://github.com/bailknight1/spriteEffect/tree/1.0.6-alpha) (2026-03-11)

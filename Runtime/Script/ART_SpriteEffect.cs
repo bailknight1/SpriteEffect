@@ -2656,6 +2656,11 @@ public class ART_SpriteEffect : MonoBehaviour
 	/// </summary>
 	public bool CheckMaterialChange()    // 에디터용
 	{
+		if (previousMaterial == null)
+		{
+			previousMaterial = createdMaterial;
+			return false;
+		}
 		if (createdMaterial == null)
 		{
 			return false;
